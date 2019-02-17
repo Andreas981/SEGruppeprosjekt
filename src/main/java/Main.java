@@ -8,4 +8,8 @@ public class Main {
     public static String aString(String aStringInput){
         return "Right";
     }
+
+    public static int calc(int x, int y){
+        return x+y;
+    }
 }
