@@ -4,4 +4,8 @@ public class Main {
         System.out.println("Hello World!");
         
     }
+
+    public static String aString(String aStringInput){
+        return "Right";
+    }
 }
