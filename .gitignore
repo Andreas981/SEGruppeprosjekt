@@ -3,6 +3,9 @@
 .idea/
 *.iml
 *.iws
+
+# Java
+*.class
  
 # Maven
 log/
