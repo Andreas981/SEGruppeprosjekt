@@ -17,8 +17,6 @@ public class Organizer extends User{
         locations = new ArrayList<Location>();
     }
 
-    //TODO Add Method for lisitng locations
-
     public void addLocation(Location location){
         locations.add(location);
     }

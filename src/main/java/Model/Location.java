@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 public class Location {
     String name, address;
-    Boolean publicLocation, multipleRoom;
+    Boolean publicLocation;
     ArrayList<Room> rooms;
     //TODO Add accounting for location
 
-    public Location(String name, String address, Boolean publicLocation, Boolean multipleRoom) {
+    public Location(String name, String address, Boolean publicLocation) {
         this.name = name;
         this.address = address;
         this.publicLocation = publicLocation;
-        this.multipleRoom = multipleRoom;
         this.rooms = new ArrayList<Room>();
     }
 
@@ -37,11 +36,5 @@ public class Location {
     }
     public void setPublicLocation(Boolean publicLocation) {
         this.publicLocation = publicLocation;
-    }
-    public Boolean getMultipleRoom() {
-        return multipleRoom;
-    }
-    public void setMultipleRoom(Boolean multipleRoom) {
-        this.multipleRoom = multipleRoom;
     }
 }
