@@ -6,7 +6,7 @@ public class Room {
     String name;
     int maxParticipents;
     Boolean eventInProgress;
-    ArrayList<SeatedEvent> events;
+    ArrayList<SeatedPlannedEvent> events;
     //TODO Make SeatedEvent Class
     //TODO Add accounting for event
 
@@ -14,7 +14,7 @@ public class Room {
         this.name = name;
         this.maxParticipents = maxParticipents;
         this.eventInProgress = eventInProgress;
-        this.events = new ArrayList<SeatedEvent>();
+        this.events = new ArrayList<SeatedPlannedEvent>();
     }
 
 
