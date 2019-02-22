@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class PlannedEvent {
     private String nameOfEvent;
-    // TODO Add organizer field
+    // TODO Add organizer<organizer> field
     private Date date;
     private Time timeOfEventStart;
     private int lengthOfEvent;
@@ -42,4 +42,7 @@ public class PlannedEvent {
     public int getAgeLimit() {
         return ageLimit;
     }
+
+    // TODO Buy ticket implementation
+    // TODO Check that the ticket is valid for this show
 }
