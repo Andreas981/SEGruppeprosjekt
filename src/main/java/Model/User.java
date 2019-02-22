@@ -4,14 +4,17 @@ package Model;
 import java.sql.Date;
 
 public abstract class User {
-    String firstName, lastName;
+    String firstName, lastName, mail, telephone, username, password;
     Date birthday;
 
-    public User(String firstName, String lastName, Date birthday) {
+    public User(String firstName, String lastName, String mail, String telephone, String username, String password, Date birthday) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.mail = mail;
+        this.telephone = telephone;
+        this.username = username;
+        this.password = password;
         this.birthday = birthday;
-        System.out.println("Bday: " + birthday);
     }
 
     public String getFullName(){
