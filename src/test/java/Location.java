@@ -16,7 +16,7 @@ public class Location {
 
     @Test
     public void addingLocationToOrganizerAndGettingTheName(){
-        organizer.addLocation(new Model.Location("TestLocation", "Hjemme", true, false));
+        organizer.addLocation(new Model.Location("TestLocation", "Hjemme", true));
         Assert.assertEquals("TestLocation", organizer.getLocations().get(0).getName());
     }
 }
