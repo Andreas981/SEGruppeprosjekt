@@ -22,7 +22,9 @@ public class Organizer extends User{
     public void addLocation(Location location){
         locations.add(location);
     }
-
+    public ArrayList<Location> getLocations(){
+        return locations;
+    }
 
     public String getOrganization() {
         return organization;
