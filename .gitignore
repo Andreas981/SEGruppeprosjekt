@@ -1,2 +1,15 @@
 
 \.idea/workspace\.xml
+
+ 
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Java
+*.class
+ 
+# Maven
+log/
+target/
