@@ -7,6 +7,8 @@ public class Room {
     int maxParticipents;
     Boolean eventInProgress;
     ArrayList<SeatedEvent> events;
+    //TODO Make SeatedEvent Class
+    //TODO Add accounting for event
 
     public Room(String name, int maxParticipents, Boolean eventInProgress) {
         this.name = name;
@@ -15,7 +17,9 @@ public class Room {
         this.events = new ArrayList<SeatedEvent>();
     }
 
-    
+
+    //TODO Method for increasing max participents
+    //TODO Method for decreasing max participents
 
 
     public String getName() {

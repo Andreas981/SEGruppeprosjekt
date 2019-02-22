@@ -6,6 +6,7 @@ public class Location {
     String name, address;
     Boolean publicLocation, multipleRoom;
     ArrayList<Room> rooms;
+    //TODO Add accounting for location
 
     public Location(String name, String address, Boolean publicLocation, Boolean multipleRoom) {
         this.name = name;
@@ -15,6 +16,9 @@ public class Location {
         this.rooms = new ArrayList<Room>();
     }
 
+
+    //TODO Method for adding a Seated Event
+    //TODO Method for removing a Seated Event
 
     public String getName() {
         return name;
