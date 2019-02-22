@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Abstract class ued for creating Events by Organizer's
  */
-public class PlannedEvent {
+public abstract class PlannedEvent {
     private String nameOfEvent;
     // TODO Add organizer<organizer> field
     private Date date;
