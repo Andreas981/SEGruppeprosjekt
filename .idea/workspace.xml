@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fff5b20e-8899-466c-a2f8-7708e6d89abe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/test/java/TestEventCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestEventCreation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Organizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Organizer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -14,11 +16,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="306">
+              <caret line="18" column="66" lean-forward="true" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#248#249#0" expanded="true" />
+                <element signature="e#328#329#0" expanded="true" />
+                <element signature="e#481#482#0" expanded="true" />
+                <element signature="e#505#506#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -28,6 +37,8 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="460">
               <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+            <state relative-caret-position="289">
+              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,6 +48,8 @@
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/PlannedEvent.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Organizer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="552">
               <caret line="38" column="29" lean-forward="true" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
@@ -53,6 +66,8 @@
                 <element signature="e#968#969#0" expanded="true" />
                 <element signature="e#999#1000#0" expanded="true" />
               </folding>
+            <state relative-caret-position="255">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
@@ -60,8 +75,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
+              <folding>
+                <element signature="e#64#65#0" expanded="true" />
+                <element signature="e#114#115#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/PlannedEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -93,11 +121,12 @@
         <option value="$PROJECT_DIR$/src/test/java/TestTicketSofatware.java" />
         <option value="$PROJECT_DIR$/src/test/java/Model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/Organizer.java" />
         <option value="$PROJECT_DIR$/src/test/java/User.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/Model/PlannedEvent.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestEventCreation.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Organizer.java" />
       </list>
     </option>
   </component>
@@ -142,6 +171,14 @@
               <item name="SEGruppeprosjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="SEGruppeprosjekt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEGruppeprosjekt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEGruppeprosjekt" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -153,18 +190,19 @@
             </path>
             <path>
               <item name="SEGruppeprosjekt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="SEGruppeprosjekt" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550847719425" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550848394916" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../SeGruppeprosjektForslag" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -189,7 +227,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestEventCreation.objectInstanceCreation">
+  <component name="RunManager" selected="JUnit.User (1)">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="SEGruppeprosjekt" />
@@ -238,9 +276,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.User (1)" />
         <item itemvalue="JUnit.TestEventCreation.objectInstanceCreation" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.User (1)" />
         <item itemvalue="JUnit.User.gettingTheBirthdayOfOrganizer" />
         <item itemvalue="JUnit.User.gettingWringNameFromOrganizer" />
       </list>
@@ -260,9 +298,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="User_gettingWringNameFromOrganizer - 2019.02.22 at 15h 42m 37s.xml">
-      <configuration name="User.gettingWringNameFromOrganizer" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="User_gettingWringNameFromOrganizer - 2019.02.22 at 15h 43m 32s.xml">
       <configuration name="User.gettingWringNameFromOrganizer" configurationId="JUnit" />
     </history-entry>
@@ -290,6 +325,9 @@
     <history-entry file="TestEventCreation_objectInstanceCreation - 2019.02.22 at 15h 58m 48s.xml">
       <configuration name="TestEventCreation.objectInstanceCreation" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestEventCreation_objectInstanceCreation - 2019.02.22 at 16h 02m 06s.xml">
+      <configuration name="TestEventCreation.objectInstanceCreation" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -302,9 +340,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4983871" visible="true" weight="0.102345414" />
       <window_info id="Structure" order="1" sideWeight="0.5016129" side_tool="true" weight="0.102345414" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20309168" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -380,8 +422,8 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/TestTicketSofatware.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/Organizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="137" selection-start-line="6" selection-start-column="137" selection-end-line="6" selection-end-column="137" />
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
@@ -396,16 +438,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#248#249#0" expanded="true" />
-            <element signature="e#328#329#0" expanded="true" />
-            <element signature="e#481#482#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#64#65#0" expanded="true" />
+            <element signature="e#114#115#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -428,6 +467,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
           <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        <state relative-caret-position="289">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -435,6 +476,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/PlannedEvent.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
           <caret line="38" column="29" lean-forward="true" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
@@ -450,6 +492,15 @@
             <element signature="e#936#937#0" expanded="true" />
             <element signature="e#968#969#0" expanded="true" />
             <element signature="e#999#1000#0" expanded="true" />
+          </folding>
+        <state relative-caret-position="306">
+          <caret line="18" column="66" lean-forward="true" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
           </folding>
         </state>
       </provider>
