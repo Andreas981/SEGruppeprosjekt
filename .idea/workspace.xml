@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fff5b20e-8899-466c-a2f8-7708e6d89abe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Organizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestTicketSofatware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestTicketSofatware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/testCaseStrings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Organizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Organizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,13 +17,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/Model/User.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="510">
+              <caret line="30" column="76" selection-start-line="30" selection-start-column="76" selection-end-line="30" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#167#168#0" expanded="true" />
+                <element signature="e#241#242#0" expanded="true" />
+                <element signature="e#248#249#0" expanded="true" />
+                <element signature="e#328#329#0" expanded="true" />
+                <element signature="e#481#482#0" expanded="true" />
+                <element signature="e#505#506#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -35,20 +38,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+            <state relative-caret-position="221">
+              <caret line="13" column="48" lean-forward="true" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
               <folding>
+                <element signature="e#76#77#0" expanded="true" />
                 <element signature="e#108#109#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/Organizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
               <folding>
                 <element signature="e#109#110#0" expanded="true" />
                 <element signature="e#151#152#0" expanded="true" />
@@ -94,10 +98,11 @@
         <option value="$PROJECT_DIR$/src/test/java/testCaseStrings.java" />
         <option value="$PROJECT_DIR$/src/test/java/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/Organizer.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestTicketSofatware.java" />
         <option value="$PROJECT_DIR$/src/test/java/Model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Organizer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/User.java" />
+        <option value="$PROJECT_DIR$/src/test/java/User.java" />
       </list>
     </option>
   </component>
@@ -162,14 +167,6 @@
             <path>
               <item name="SEGruppeprosjekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="SEGruppeprosjekt" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SEGruppeprosjekt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SEGruppeprosjekt" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -181,11 +178,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550846393522" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550847319812" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../SeGruppeprosjektForslag" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="Model" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Model" />
     </key>
@@ -202,37 +203,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.User.gettingFullNameOfOrganizer (1)">
-    <configuration name="Test.testAstring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.User (1)">
+    <configuration name="User (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SEGruppeprosjekt" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Test" />
-      <option name="METHOD_NAME" value="testAstring" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test.testCalc" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SEGruppeprosjekt" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Test" />
-      <option name="METHOD_NAME" value="testCalc" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="User" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SEGruppeprosjekt" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Model" />
-      <option name="MAIN_CLASS_NAME" value="Model.User" />
+      <option name="MAIN_CLASS_NAME" value="User" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -264,13 +239,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="User.gettingTheBirthdayOfOrganizer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SEGruppeprosjekt" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="User" />
+      <option name="METHOD_NAME" value="gettingTheBirthdayOfOrganizer" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="User.gettingWringNameFromOrganizer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SEGruppeprosjekt" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="User" />
+      <option name="METHOD_NAME" value="gettingWringNameFromOrganizer" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.User (1)" />
+        <item itemvalue="JUnit.User.gettingTheBirthdayOfOrganizer" />
+        <item itemvalue="JUnit.User.gettingWringNameFromOrganizer" />
         <item itemvalue="JUnit.User.gettingFullNameOfOrganizer (1)" />
         <item itemvalue="JUnit.User.gettingFullNameOfOrganizer" />
-        <item itemvalue="JUnit.User" />
-        <item itemvalue="JUnit.Test.testAstring" />
-        <item itemvalue="JUnit.Test.testCalc" />
       </list>
     </recent_temporary>
   </component>
@@ -288,23 +283,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="testCaseStrings_testAstring - 2019.02.17 at 19h 37m 33s.xml">
-      <configuration name="testCaseStrings.testAstring" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="testCaseStrings_testAstring - 2019.02.17 at 19h 37m 58s.xml">
-      <configuration name="testCaseStrings.testAstring" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="testCaseStrings_testCalc - 2019.02.17 at 19h 53m 10s.xml">
-      <configuration name="testCaseStrings.testCalc" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="testCaseStrings_testAstring - 2019.02.18 at 12h 10m 43s.xml">
-      <configuration name="testCaseStrings.testAstring" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="testCaseStrings_testCalc - 2019.02.18 at 12h 10m 48s.xml">
-      <configuration name="testCaseStrings.testCalc" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="testCaseStrings_testAstring - 2019.02.18 at 12h 11m 02s.xml">
       <configuration name="testCaseStrings.testAstring" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="User_gettingFullNameOfOrganizer_(1) - 2019.02.22 at 15h 39m 05s.xml">
+      <configuration name="User.gettingFullNameOfOrganizer (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="User_gettingWringNameFromOrganizer - 2019.02.22 at 15h 42m 37s.xml">
+      <configuration name="User.gettingWringNameFromOrganizer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="User_gettingWringNameFromOrganizer - 2019.02.22 at 15h 43m 32s.xml">
+      <configuration name="User.gettingWringNameFromOrganizer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="User_gettingTheBirthdayOfOrganizer - 2019.02.22 at 15h 49m 12s.xml">
+      <configuration name="User.gettingTheBirthdayOfOrganizer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="User_gettingTheBirthdayOfOrganizer - 2019.02.22 at 15h 49m 38s.xml">
+      <configuration name="User.gettingTheBirthdayOfOrganizer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="User_gettingTheBirthdayOfOrganizer - 2019.02.22 at 15h 50m 11s.xml">
+      <configuration name="User.gettingTheBirthdayOfOrganizer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="User_gettingTheBirthdayOfOrganizer - 2019.02.22 at 15h 51m 35s.xml">
+      <configuration name="User.gettingTheBirthdayOfOrganizer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="User_gettingTheBirthdayOfOrganizer - 2019.02.22 at 15h 54m 48s.xml">
+      <configuration name="User.gettingTheBirthdayOfOrganizer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="User_gettingTheBirthdayOfOrganizer - 2019.02.22 at 15h 55m 07s.xml">
+      <configuration name="User.gettingTheBirthdayOfOrganizer" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -320,17 +327,17 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20309168" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20309168" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Messages" weight="0.32827735" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.25135428" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25135428" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -391,33 +398,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Organizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="e#109#110#0" expanded="true" />
+            <element signature="e#151#152#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+        <state relative-caret-position="221">
+          <caret line="13" column="48" lean-forward="true" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
           <folding>
+            <element signature="e#76#77#0" expanded="true" />
             <element signature="e#108#109#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Model/User.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        <state relative-caret-position="510">
+          <caret line="30" column="76" selection-start-line="30" selection-start-column="76" selection-end-line="30" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Organizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-          <folding>
-            <element signature="e#109#110#0" expanded="true" />
-            <element signature="e#151#152#0" expanded="true" />
+            <element signature="e#167#168#0" expanded="true" />
+            <element signature="e#241#242#0" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
           </folding>
         </state>
       </provider>
