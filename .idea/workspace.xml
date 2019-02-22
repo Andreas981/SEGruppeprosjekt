@@ -181,7 +181,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550846197972" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550846393522" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../SeGruppeprosjektForslag" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -202,17 +202,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.User.gettingFullNameOfOrganizer">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="SEGruppeprosjekt" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.User.gettingFullNameOfOrganizer (1)">
     <configuration name="Test.testAstring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SEGruppeprosjekt" />
       <option name="PACKAGE_NAME" value="" />
@@ -237,7 +227,7 @@
       <module name="SEGruppeprosjekt" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Model.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -252,7 +242,7 @@
       <module name="SEGruppeprosjekt" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Model.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -264,13 +254,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="User.gettingFullNameOfOrganizer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SEGruppeprosjekt" />
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.User" />
+      <option name="METHOD_NAME" value="gettingFullNameOfOrganizer" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.User.gettingFullNameOfOrganizer (1)" />
         <item itemvalue="JUnit.User.gettingFullNameOfOrganizer" />
         <item itemvalue="JUnit.User" />
         <item itemvalue="JUnit.Test.testAstring" />
         <item itemvalue="JUnit.Test.testCalc" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
