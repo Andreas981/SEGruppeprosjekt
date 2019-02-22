@@ -3,7 +3,8 @@ package Model;
 import java.sql.Date;
 
 public class Organizer extends User{
-    public Organizer(String firstName, String lastName, Date birthday) {
-        super(firstName, lastName, birthday);
+
+    public Organizer(String firstName, String lastName, String mail, String telephone, String username, String password, Date birthday) {
+        super(firstName, lastName, mail, telephone, username, password, birthday);
     }
 }

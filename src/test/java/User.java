@@ -12,7 +12,7 @@ public class User {
 
     @Before
     public void settingUpOrganizer(){
-        organizer = new Organizer("Andreas", "Mikalsen", new Date(1998-1900, 6-1, 12));
+        organizer = new Organizer("Andreas", "Mikalsen", "amilal@hotmail.no", "97781816", "andremi","abc123", new Date(1998-1900, 6-1, 12));
     }
 
 
