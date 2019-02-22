@@ -3,6 +3,9 @@ package Model;
 import java.sql.Time;
 import java.util.Date;
 
+/**
+ * Abstract class ued for creating Events by Organizer's
+ */
 public class PlannedEvent {
     private String nameOfEvent;
     // TODO Add organizer<organizer> field
