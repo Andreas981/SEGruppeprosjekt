@@ -12,9 +12,7 @@ public class Organizer extends User{
         this.organization = organization;
         this.accessLevel = accessLevel;
     }
-
-
-
+    
     public String getOrganization() {
         return organization;
     }
