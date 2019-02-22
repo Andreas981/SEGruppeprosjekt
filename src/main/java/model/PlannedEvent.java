@@ -13,6 +13,7 @@ public class PlannedEvent {
     // TODO Add tickets<Ticket>
 
 
+    // TODO Make class abstract
     public PlannedEvent(String nameOfEvent, Date date, Time timeOfEventStart, int lengthOfEvent, int ageLimit) {
         // TODO Faulty input try/catch?
         this.nameOfEvent = nameOfEvent;
