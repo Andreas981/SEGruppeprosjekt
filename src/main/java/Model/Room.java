@@ -43,4 +43,10 @@ public class Room {
     public void setEventInProgress(Boolean eventInProgress) {
         this.eventInProgress = eventInProgress;
     }
+    public ArrayList<SeatedPlannedEvent> getEvents() {
+        return events;
+    }
+    public void setEvents(ArrayList<SeatedPlannedEvent> events) {
+        this.events = events;
+    }
 }
