@@ -2,6 +2,7 @@ package Dummy;
 
 
 import Model.Customer;
+import Model.Location;
 import Model.Organizer;
 
 import java.sql.Date;
@@ -17,7 +18,13 @@ public class InitStart {
         Database.customers.add(new Customer("Per", "Persen", "per@persen.com", "11223344", "persen", "WhyWeNoHash?", new Date(1995-1900, 7, 15)));
 
 
-        
+        //Setting up locations for Kari Normann
+        Database.organizers.get(0).addLocation(new Location("Høgskolen i Østfold", "Veien 12", true));
+        //Setting up locations for Ole Olsen
+        Database.organizers.get(1).addLocation(new Location("Thon Hotell Ski", "SkiVeien 123", true));
+        Database.organizers.get(1).addLocation(new Location("Thon Hotell Oslo", "OsloVeien 1", true));
+
+        //Setting up rooms for Kari Normann
 
 
 

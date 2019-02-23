@@ -16,8 +16,10 @@ public class Location {
     }
 
 
-    //TODO Method for adding a Seated Event
-    //TODO Method for removing a Seated Event
+    //TODO Method for removing a Room
+    public void addRoom(Room room){
+        rooms.add(room);
+    }
 
     public String getName() {
         return name;
