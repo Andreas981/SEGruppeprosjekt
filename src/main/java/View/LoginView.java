@@ -30,8 +30,7 @@ public class LoginView {
         System.out.print("Password: ");
         String password = new Scanner(System.in).next();
 
-        //Calls on controller to login
-        if(Controller.loggInUser(userRole, username, password)){
+        if(Controller.loggInUser.login(userRole, username, password)){
             System.out.println("You're logged in");
             switch (userRole){
                 case 1:
