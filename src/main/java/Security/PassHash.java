@@ -14,7 +14,7 @@ public class PassHash {
             byte[] digest = md.digest();
 
             BigInteger bigInt = new BigInteger(1, digest);
-            
+
             return bigInt.toString(16);
 
         }catch (NoSuchAlgorithmException e){
