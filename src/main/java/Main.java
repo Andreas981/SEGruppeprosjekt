@@ -1,7 +1,10 @@
+import Dummy.*;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        InitStart.Init();
+        System.out.println(Database.organizers.get(0).getPassword());
     }
 
 }
