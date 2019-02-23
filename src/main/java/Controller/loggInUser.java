@@ -1,10 +1,6 @@
 package Controller;
 
 import Dummy.Database;
-import Model.Organizer;
-import Model.User;
-
-import java.util.ArrayList;
 
 public class loggInUser {
 
@@ -19,8 +15,35 @@ public class loggInUser {
                     break;
                 }
             }
+            if (foundUsername == -1){
+                return false;
+            }
+
+            if(Database.organizers.get(foundUsername).getPassword().equals(Security.PassHash.hashPassword(password))){
+                Database.currentLoggedInOrganizer = Database.organizers.get(foundUsername);
+                System.out.println(Database.currentLoggedInOrganizer.getOrganization());
+                return true;
+            }
+
         }else if(userRole == 2){
             //Login customer
+            int foundUsername = -1;
+            for (int i = 0; i < Database.customers.size(); i++){
+                if (Database.customers.get(i).getUsername().equals(username)){
+                    foundUsername = i;
+                    break;
+                }
+            }
+            if(foundUsername == -1){
+                return false;
+            }
+
+            if(Database.customers.get(foundUsername).getPassword().equals(Security.PassHash.hashPassword(password))){
+                Database.currentLoggedInCustomer = Database.customers.get(foundUsername);
+                System.out.println();
+                return true;
+            }
+
         }
 
         return false;

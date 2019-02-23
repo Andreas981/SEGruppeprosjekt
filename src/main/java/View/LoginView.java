@@ -32,7 +32,7 @@ public class LoginView {
 
         if(Controller.loggInUser.login(userRole, username, password)){
             System.out.println("You're logged in");
-            switch (userRole){
+            /*switch (userRole){
                 case 1:
                     View.OrganizerView();
                     break;
@@ -42,7 +42,7 @@ public class LoginView {
                 default:
                     System.out.println("Something went wrong");
                     break;
-            }
+            }*/
         }else{
             System.out.println("Sorry, you could not login");
             login();

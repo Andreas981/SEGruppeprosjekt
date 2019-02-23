@@ -10,6 +10,7 @@ public class Database {
     public static ArrayList<Organizer> organizers = new ArrayList<Organizer>();
     public static ArrayList<Customer> customers = new ArrayList<Customer>();
 
-    public static User currentLoggedInUser = null;
+    public static Organizer currentLoggedInOrganizer = null;
+    public static Customer currentLoggedInCustomer = null;
 
 }
