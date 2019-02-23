@@ -3,6 +3,8 @@ package Controller;
 import Dummy.Database;
 import Model.Customer;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class RegisterUserController {
@@ -29,9 +31,25 @@ public class RegisterUserController {
         return true;
     }
 
-    public static boolean registerUserIntoDatabase(String firstName, String lastName, String mail, String telephone, String username, String password, Date birthday){
+    public static Date parseInputDate(String dateEntered){
+        SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
+        Date dateParsed = null;
         try {
-            Database.customers.add(new Customer(firstName,lastName,mail,telephone,username,Security.PassHash.hashPassword(password),birthday));
+            //Parsing the String
+            dateParsed = birthDay.parse(dateEntered);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            System.out.println("Invalid date input! Should be Day-Month-Year");
+            return null;
+        }
+        return dateParsed;
+    }
+
+    public static boolean registerUserIntoDatabase(String firstName, String lastName, String mail
+            , String telephone, String username, String password, Date birthday){
+        try {
+            Database.customers.add(new Customer(firstName,lastName,mail
+                    ,telephone,username,Security.PassHash.hashPassword(password),birthday));
         }catch (Exception e){
             System.out.println("Could not add user to database");
             return false;

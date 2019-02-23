@@ -9,27 +9,30 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class RegisterUserView {
-    // Anyone can create a customer account
-    // For creating a organizer, an administrator account must be used.
-
     public String createNewUser() {
-        boolean inputValidation = true;
+        // Anyone can create a customer account
+        // For creating a organizer, an administrator account must be used.
+        Boolean inputValidation = true;
         while (inputValidation) {
             // Ask for username:
             Scanner scanner = new Scanner(System.in);
             System.out.println("Please enter a desired username:");
             String userName;
             try {
+                // Make call to controller to search for user name
+                // Search through "database" to see if the already exist a user with current name
                 userName = scanner.next();
                 inputValidation = RegisterUserController.userNameIsValid(userName);
+                if(!inputValidation){
+                    System.out.println("Username is already taken + \n " +
+                            "Please try again");
+                }
             } catch (StringIndexOutOfBoundsException s) {
                 System.out.println("Please enter a valid username:");
                 break;
 
             }
 
-            // Make call to controller to search for user name
-            // Search through "database" to see if the already exist a user with current name
             System.out.println("Enter your first name:");
             String firstName ="";
             try {
@@ -73,20 +76,22 @@ public class RegisterUserView {
                 break;
             }
             System.out.println("Please type in your date of birth:");
-            SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
             System.out.println("DD-MM-YYYY");
             String dateEntered = scanner.next();
-            Date dateParsed = null;
+            Date birthDay;
             try {
-                //Parsing the String
-                dateParsed = birthDay.parse(dateEntered);
-            } catch (ParseException e) {
-                e.printStackTrace();
+                 birthDay = RegisterUserController.parseInputDate(dateEntered);
+                 if(birthDay.equals(null)){
+                     break;
+                 }
+            }catch (Exception e){
+                // TODO Proper exception method
                 break;
             }
 
             if(inputValidation){
-                RegisterUserController.registerUserIntoDatabase(firstName,lastName,mail,telephone,userName,password, dateParsed);
+                RegisterUserController.registerUserIntoDatabase(firstName,lastName,mail,telephone
+                        ,userName,password,birthDay );
                 return "User registered";
             }
                 //Send all fields to controller
