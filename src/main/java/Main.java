@@ -10,9 +10,13 @@ public class Main {
         //Initializing the dummy database
         InitStart.Init();
 
-        printMenu();
+        displayMenu();
+
+    }
+
+    public static void displayMenu(){
         Scanner scanner = new Scanner(System.in);
-        // TODO Make menu into method
+        printMenu();
         // TODO input validation
 
         int userSelection = scanner.nextInt();
@@ -22,6 +26,7 @@ public class Main {
                 break;
             case 2:
                 System.out.println(new RegisterUserView().createNewUser());
+                displayMenu();
                 break;
             case 3:
                 System.out.println("Not implemented");
@@ -36,7 +41,6 @@ public class Main {
 
 
         }
-
     }
 
     public static void printMenu(){
