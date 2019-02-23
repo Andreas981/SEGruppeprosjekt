@@ -12,6 +12,13 @@ public class loggInUser {
 
         if(userRole == 1){
             //Login organizer
+            int foundUsername = -1;
+            for (int i = 0; i < Database.organizers.size(); i++){
+                if (Database.organizers.get(i).getUsername().equals(username)){
+                    foundUsername = i;
+                    break;
+                }
+            }
         }else if(userRole == 2){
             //Login customer
         }
