@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * Class for creating Room in Location
+ * Class for creating Room in Location.
  * A Room can have one or more events
  */
 

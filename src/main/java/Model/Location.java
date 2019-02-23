@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Class for creating Location in Organizer.
- * A location can have one or more rooms
+ * A location can have one or more rooms.
  */
 
 public class Location {
