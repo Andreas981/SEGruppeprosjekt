@@ -17,28 +17,23 @@ public class RegisterUserView {
             // Ask for username:
             Scanner scanner = new Scanner(System.in);
             System.out.println("Please enter a desired username:");
-            String userName;
-            try {
+            String userName = scanner.next();
                 // Make call to controller to search for user name
                 // Search through "database" to see if the already exist a user with current name
-                userName = scanner.next();
-                inputValidation = RegisterUserController.userNameIsValid(userName);
-                if(!inputValidation){
+                if(RegisterUserController.userNameIsValid(userName)){
+
+                }else {
                     System.out.println("Username is already taken + \n " +
                             "Please try again");
+                    createNewUser();
                 }
-            } catch (StringIndexOutOfBoundsException s) {
-                System.out.println("Please enter a valid username:");
-                break;
-
-            }
-
             System.out.println("Enter your first name:");
-            String firstName ="";
+            String firstName;
             try {
                  firstName = scanner.next();
             } catch (StringIndexOutOfBoundsException s) {
                 System.out.println("Please enter a valid first name:");
+                createNewUser();
                 break;
             }
             System.out.println("Enter your last name:");
@@ -47,15 +42,16 @@ public class RegisterUserView {
                lastName = scanner.next();
             } catch (StringIndexOutOfBoundsException s) {
                 System.out.println("Please enter a valid first name:");
+                createNewUser();
                 break;
             }
-
             System.out.println("Enter your email:");
             String mail;
             try {
                 mail = scanner.next();
             } catch (StringIndexOutOfBoundsException s) {
                 System.out.println("Please enter a valid first name:");
+                createNewUser();
                 break;
             }
             System.out.println("Please enter your phone number");
@@ -64,6 +60,7 @@ public class RegisterUserView {
                 telephone = scanner.next();
             } catch (StringIndexOutOfBoundsException s) {
                 System.out.println("Please enter a valid first name:");
+                createNewUser();
                 break;
             }
             // TODO Validate password
@@ -73,6 +70,7 @@ public class RegisterUserView {
                 password = scanner.next();
             } catch (StringIndexOutOfBoundsException s) {
                 System.out.println("Please enter a valid first name:");
+                createNewUser();
                 break;
             }
             System.out.println("Please type in your date of birth:");
@@ -88,13 +86,13 @@ public class RegisterUserView {
                 // TODO Proper exception method
                 break;
             }
-
+            //Send all fields to controller
             if(inputValidation){
                 RegisterUserController.registerUserIntoDatabase(firstName,lastName,mail,telephone
                         ,userName,password,birthDay );
                 return "User registered";
             }
-                //Send all fields to controller
+            inputValidation = false;
 
         }
         return "Failed creating user";

@@ -45,6 +45,8 @@ public class RegisterUserController {
         return dateParsed;
     }
 
+
+
     public static boolean registerUserIntoDatabase(String firstName, String lastName, String mail
             , String telephone, String username, String password, Date birthday){
         try {
