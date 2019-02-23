@@ -4,12 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LoginView {
-    /*
-    - Ask for which role the user is
-    - Prompt for username
-    - Prompt for password
-    - Check if it's a match
-     */
+
     public void login(){
         System.out.println("\nWelcome");
         System.out.println("Are you a (1)Organizer or (2)Customer?");
@@ -27,7 +22,6 @@ public class LoginView {
             System.out.println("Sorry, that is not an option");
             login();
         }
-
     }
 
     private void askForUserName(int userRole) {
@@ -37,6 +31,24 @@ public class LoginView {
         String password = new Scanner(System.in).next();
 
         //Calls on controller to login
+        if(Controller.loggInUser(userRole, username, password)){
+            System.out.println("You're logged in");
+            switch (userRole){
+                case 1:
+                    View.OrganizerView();
+                    break;
+                case 2:
+                    View.CustomerView();
+                    break;
+                default:
+                    System.out.println("Something went wrong");
+                    break;
+            }
+        }else{
+            System.out.println("Sorry, you could not login");
+            login();
+        }
+
 
     }
 }
