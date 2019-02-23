@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class LoginView {
 
-    public void login(){
+    public static void login(){
         System.out.println("\nWelcome");
         System.out.println("Are you a (1)Organizer or (2)Customer?");
 
@@ -24,7 +24,7 @@ public class LoginView {
         }
     }
 
-    private void askForUserName(int userRole) {
+    private static void askForUserName(int userRole) {
         System.out.print("\nUsername: ");
         String username = new Scanner(System.in).next();
         System.out.print("Password: ");
@@ -32,17 +32,19 @@ public class LoginView {
 
         if(Controller.loggInUser.login(userRole, username, password)){
             System.out.println("You're logged in");
-            /*switch (userRole){
+            switch (userRole){
                 case 1:
-                    View.OrganizerView();
+                    login();
+                    OrganizerMenu.OrganizerMenu();
                     break;
                 case 2:
-                    View.CustomerView();
+                    login();
+                    CustomerMenu.CustomerMenu();
                     break;
                 default:
                     System.out.println("Something went wrong");
                     break;
-            }*/
+            }
         }else{
             System.out.println("Sorry, you could not login");
             login();
