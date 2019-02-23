@@ -9,8 +9,8 @@ public class RegisterUserController {
 
     public static Boolean userNameIsValid(String userName){
         // Search through database to see if userName exist
-        for (int i = 0; i < Database.organizers.size(); i++){
-            if (Database.organizers.get(i).getUsername().equals(userName)){
+        for (int i = 0; i < Database.customers.size(); i++){
+            if (Database.customers.get(i).getUsername().equals(userName)){
                 return false;
             }
         }
@@ -20,8 +20,8 @@ public class RegisterUserController {
 
     public static Boolean mailIsValid(String mail){
         // Search through database to see if userName exist
-        for (int i = 0; i < Database.organizers.size(); i++){
-            if (Database.organizers.get(i).getMail().equals(mail)){
+        for (int i = 0; i < Database.customers.size(); i++){
+            if (Database.customers.get(i).getMail().equals(mail)){
                 return false;
             }
         }

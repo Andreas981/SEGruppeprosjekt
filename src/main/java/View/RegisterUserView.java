@@ -74,6 +74,7 @@ public class RegisterUserView {
             }
             System.out.println("Please type in your date of birth:");
             SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
+            System.out.println("DD-MM-YYYY");
             String dateEntered = scanner.next();
             Date dateParsed = null;
             try {
