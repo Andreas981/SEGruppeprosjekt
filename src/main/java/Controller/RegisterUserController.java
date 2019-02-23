@@ -31,7 +31,7 @@ public class RegisterUserController {
 
     public static boolean registerUserIntoDatabase(String firstName, String lastName, String mail, String telephone, String username, String password, Date birthday){
         try {
-            Database.customers.add(new Customer(firstName,lastName,mail,telephone,username,password,birthday));
+            Database.customers.add(new Customer(firstName,lastName,mail,telephone,username,Security.PassHash.hashPassword(password),birthday));
         }catch (Exception e){
             System.out.println("Could not add user to database");
             return false;
