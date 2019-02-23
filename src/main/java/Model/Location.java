@@ -2,6 +2,11 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * Class for creating Location in Organizer.
+ * A location can have one or more rooms
+ */
+
 public class Location {
     String name, address;
     Boolean publicLocation;

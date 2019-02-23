@@ -3,6 +3,10 @@ package Model;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/**
+ * The type of user that will organize an event
+ */
+
 public class Organizer extends User{
 
     String organization;

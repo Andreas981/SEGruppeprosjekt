@@ -3,6 +3,9 @@ package Model;
 
 import java.sql.Date;
 
+/**
+ * Abstract class used to create Organizer and Customer
+ */
 public abstract class User {
     String firstName, lastName, mail, telephone, username, password;
     Date birthday;

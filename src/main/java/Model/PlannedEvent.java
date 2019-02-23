@@ -4,7 +4,7 @@ import java.sql.Time;
 import java.util.Date;
 
 /**
- * Abstract class ued for creating Events by Organizer's
+ * Abstract class used for creating Events by Organizer's
  */
 public abstract class PlannedEvent {
     private String nameOfEvent;

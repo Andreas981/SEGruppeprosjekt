@@ -2,6 +2,11 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * Class for creating Room in Location
+ * A Room can have one or more events
+ */
+
 public class Room {
     String name;
     int maxParticipents;
