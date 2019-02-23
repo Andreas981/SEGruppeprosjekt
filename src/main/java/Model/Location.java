@@ -44,4 +44,7 @@ public class Location {
     public void setPublicLocation(Boolean publicLocation) {
         this.publicLocation = publicLocation;
     }
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
 }

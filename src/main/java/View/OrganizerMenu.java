@@ -1,7 +1,6 @@
 package View;
 
 import Dummy.Database;
-import Model.Location;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -81,10 +80,13 @@ public class OrganizerMenu {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("What would you do?");
+        System.out.println("\nWhat would you do?");
         System.out.println("(1) See a location");
         System.out.println("(2) Add a location");
-        System.out.println("(3) Go back");
+        System.out.println("(3) Remove a location");
+        System.out.println("(4) Go back");
+
+        //TODO Add Remove a location functionality
 
         int choice = 0;
         try{
@@ -96,13 +98,29 @@ public class OrganizerMenu {
 
         switch (choice){
             case 1:
+                //Se specific locaiton
+                System.out.println("\nWhich location do you want to see?");
+                int location;
+                try{
+                    location = scanner.nextInt();
+                    seeSpecificLocation(location);
+                }catch (InputMismatchException e){
+                    System.out.println("Sorry, that is not an option");
+                    locationMenu();
+                }
+
                 break;
             case 2:
                 //Add location
                 addLocation();
                 break;
             case 3:
+                //Remove location
                 break;
+            case 4:
+                levelTwoOrganizer();
+                break;
+
             default:
                 System.out.println("Sorry, that is not an option");
                 break;
@@ -110,7 +128,31 @@ public class OrganizerMenu {
 
     }
 
-    private static void levelOneOrganizer() {
+    private static void seeSpecificLocation(int location) {
+        if (location >= 0 && location <= Database.currentLoggedInOrganizer.getLocations().size()){
+            System.out.println("\nName: "+Database.currentLoggedInOrganizer.getLocations().get(location).getName());
+            System.out.println("Address: "+Database.currentLoggedInOrganizer.getLocations().get(location).getAddress());
+            System.out.println("Is public: "+Database.currentLoggedInOrganizer.getLocations().get(location).getPublicLocation());
+            if (Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size() == 0){
+                System.out.println("Thre is no registered rooms for this locaton");
+            }else{
+                System.out.println("Rooms for this location: ");
+                for(int i = 0; i < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size(); i++){
+                    System.out.println("\t(" + i + ")" + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(i).getName());
+                }
+            }
 
+
+            //TODO Add functionality to Rooms within a location
+
+
+        }else{
+            System.out.println("That is not a option");
+            locationMenu();
+        }
+    }
+
+    private static void levelOneOrganizer() {
+        //TODO Menu for level one organizer
     }
 }
