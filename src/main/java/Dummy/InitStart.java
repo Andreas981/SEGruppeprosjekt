@@ -30,7 +30,7 @@ public class InitStart {
         Database.organizers.get(0).getLocations().get(0).addRoom(new Room("Aud 4", 200, false));
         Database.organizers.get(0).getLocations().get(0).addRoom(new Room("D1-058", 50, true));
 
-        
+
 
 
 
