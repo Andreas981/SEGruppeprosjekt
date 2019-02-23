@@ -34,11 +34,9 @@ public class LoginView {
             System.out.println("You're logged in");
             switch (userRole){
                 case 1:
-                    login();
                     OrganizerMenu.OrganizerMenu();
                     break;
                 case 2:
-                    login();
                     CustomerMenu.CustomerMenu();
                     break;
                 default:
