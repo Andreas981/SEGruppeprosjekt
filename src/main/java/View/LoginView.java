@@ -6,8 +6,7 @@ import java.util.Scanner;
 public class LoginView {
 
     public static void login(){
-        System.out.println("\nWelcome");
-        System.out.println("Are you a (1)Organizer or (2)Customer?");
+        System.out.println("\nAre you a (1)Organizer or (2)Customer?");
 
         int userRole;
         try{

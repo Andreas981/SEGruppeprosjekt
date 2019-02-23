@@ -21,7 +21,6 @@ public class loggInUser {
 
             if(Database.organizers.get(foundUsername).getPassword().equals(Security.PassHash.hashPassword(password))){
                 Database.currentLoggedInOrganizer = Database.organizers.get(foundUsername);
-                System.out.println(Database.currentLoggedInOrganizer.getOrganization());
                 return true;
             }
 
@@ -40,7 +39,6 @@ public class loggInUser {
 
             if(Database.customers.get(foundUsername).getPassword().equals(Security.PassHash.hashPassword(password))){
                 Database.currentLoggedInCustomer = Database.customers.get(foundUsername);
-                System.out.println();
                 return true;
             }
 

@@ -81,7 +81,7 @@ public class OrganizerMenu {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("What would you do?");
+        System.out.println("\nWhat would you do?");
         System.out.println("(1) See a location");
         System.out.println("(2) Add a location");
         System.out.println("(3) Go back");
