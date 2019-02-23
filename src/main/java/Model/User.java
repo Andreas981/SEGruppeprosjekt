@@ -1,7 +1,7 @@
 package Model;
 
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Abstract class used to create Organizer and Customer
