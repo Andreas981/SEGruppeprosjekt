@@ -86,6 +86,8 @@ public class OrganizerMenu {
         System.out.println("(3) Remove a location");
         System.out.println("(4) Go back");
 
+        //TODO Add Remove a location functionality
+
         int choice = 0;
         try{
             choice = scanner.nextInt();
@@ -140,6 +142,10 @@ public class OrganizerMenu {
                 }
             }
 
+
+            //TODO Add functionality to Rooms within a location
+
+
         }else{
             System.out.println("That is not a option");
             locationMenu();
@@ -147,6 +153,6 @@ public class OrganizerMenu {
     }
 
     private static void levelOneOrganizer() {
-
+        //TODO Menu for level one organizer
     }
 }
