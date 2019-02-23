@@ -24,6 +24,9 @@ public class Room {
     //TODO Method for adding seated event
     //TODO Method for removing seated event
 
+    public void addEvent(SeatedPlannedEvent seatedPlannedEvent){
+        events.add(seatedPlannedEvent);
+    }
 
 
     public String getName() {
@@ -47,7 +50,5 @@ public class Room {
     public ArrayList<SeatedPlannedEvent> getEvents() {
         return events;
     }
-    public void setEvents(ArrayList<SeatedPlannedEvent> events) {
-        this.events = events;
-    }
+
 }

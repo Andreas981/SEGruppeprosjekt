@@ -4,6 +4,7 @@ package Dummy;
 import Model.Customer;
 import Model.Location;
 import Model.Organizer;
+import Model.Room;
 
 import java.sql.Date;
 
@@ -25,6 +26,11 @@ public class InitStart {
         Database.organizers.get(1).addLocation(new Location("Thon Hotell Oslo", "OsloVeien 1", true));
 
         //Setting up rooms for Kari Normann
+        Database.organizers.get(0).getLocations().get(0).addRoom(new Room("Aud Max", 400, false));
+        Database.organizers.get(0).getLocations().get(0).addRoom(new Room("Aud 4", 200, false));
+        Database.organizers.get(0).getLocations().get(0).addRoom(new Room("D1-058", 50, true));
+
+        
 
 
 
