@@ -69,7 +69,7 @@ public class OrganizerMenu {
 
         System.out.println("\nThis is you're registered locations: ");
         for (int i = 0; i < Database.currentLoggedInOrganizer.getLocations().size(); i++){
-            System.out.println("(" + i + ") " + Database.currentLoggedInOrganizer.getLocations().get(i).getName());
+            System.out.println("\t(" + i + ") " + Database.currentLoggedInOrganizer.getLocations().get(i).getName());
         }
 
         locationMenu();
@@ -85,8 +85,6 @@ public class OrganizerMenu {
         System.out.println("(2) Add a location");
         System.out.println("(3) Remove a location");
         System.out.println("(4) Go back");
-
-        //TODO Add Remove a location functionality
 
         int choice = 0;
         try{
@@ -116,6 +114,7 @@ public class OrganizerMenu {
                 break;
             case 3:
                 //Remove location
+                //TODO Add Remove a location functionality
                 break;
             case 4:
                 levelTwoOrganizer();
