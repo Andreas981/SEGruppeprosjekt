@@ -22,7 +22,7 @@ public class Main {
         int userSelection = scanner.nextInt();
         switch (userSelection) {
             case 1:
-                new LoginView().login();
+                View.LoginView.promptLoginScreen();
                 break;
             case 2:
                 System.out.println(new RegisterUserView().createNewUser());

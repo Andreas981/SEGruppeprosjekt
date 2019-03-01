@@ -67,6 +67,8 @@ public class OrganizerMenu {
 
     private static void seeLocation() {
 
+
+
         System.out.println("\nThis is you're registered locations: ");
         for (int i = 0; i < Database.currentLoggedInOrganizer.getLocations().size(); i++){
             System.out.println("\t(" + i + ") " + Database.currentLoggedInOrganizer.getLocations().get(i).getName());

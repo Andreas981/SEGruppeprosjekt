@@ -15,6 +15,7 @@ public class InitStart {
         Database.organizers.add(new Organizer("Kari", "Normann", "kari@normann.no", "12345678", "karino", Security.PassHash.hashPassword("abc123"), new Date(1976-1900, 5, 23), "HiØ", 2));
         Database.organizers.add(new Organizer("Ole", "Olsen", "Ole.12@gmail.no", "98765432", "oleol", Security.PassHash.hashPassword("abc123"), new Date(1985-1900, 3, 12), "Thon Hotell", 1));
 
+
         //Setting up customer
         Database.customers.add(new Customer("Per", "Persen", "per@persen.com", "11223344", "persen", Security.PassHash.hashPassword("abc123"), new Date(1995-1900, 7, 15)));
 
@@ -29,9 +30,6 @@ public class InitStart {
         Database.organizers.get(0).getLocations().get(0).addRoom(new Room("Aud Max", 400, false));
         Database.organizers.get(0).getLocations().get(0).addRoom(new Room("Aud 4", 200, false));
         Database.organizers.get(0).getLocations().get(0).addRoom(new Room("D1-058", 50, true));
-
-
-
 
 
     }
