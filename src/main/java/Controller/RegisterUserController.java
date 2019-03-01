@@ -82,7 +82,7 @@ public class RegisterUserController {
     private void askForUserPhoneNumber() {
         registerUserView.displayPromptForUserPhoneNumber();
         userPhoneNumber = scanner.next();
-        if(userEmail.length()>=8){
+        if(userPhoneNumber.length()>=8){
             askForUserBirthDate();
         }else{
             registerUserView.displayErrorToUser("Please input a valid phone number");
@@ -98,7 +98,7 @@ public class RegisterUserController {
             askForUserPassword();
         }else{
             registerUserView.displayErrorToUser("Invalid date entered! \n" +
-                    "Enter it like 1980-02-01");
+                    "Enter it like 01-02-1983");
             askForUserBirthDate();
         }
     }
@@ -108,8 +108,12 @@ public class RegisterUserController {
         registerUserView.displayPromptForUserPassword();
         userPassword = scanner.next();
         if(userPassword.length()>=5){
-            registerUserIntoDatabase(userFirstName,userLastName,userEmail,userPhoneNumber,
-                    userName,userPassword,userBirthDay);
+            if((registerUserIntoDatabase(userFirstName,userLastName,userEmail,userPhoneNumber,
+                    userName,userPassword,userBirthDay))){
+                registerUserView.displayUserRegistered();
+            }else{
+                registerUserView.displayErrorToUser("Database down?");
+            }
         }else{
             registerUserView.displayErrorToUser("Please input a stronger password");
             askForUserPassword();
@@ -118,7 +122,7 @@ public class RegisterUserController {
 
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
-    public Boolean isUserNameIsValid(String userName){
+    private Boolean isUserNameIsValid(String userName){
         // Search through database to see if userName exist
         for (int i = 0; i < Database.customers.size(); i++){
             if (Database.customers.get(i).getUsername().equals(userName)){
@@ -129,7 +133,7 @@ public class RegisterUserController {
         return true;
     }
 
-    public static Boolean mailIsValid(String mail){
+    private static Boolean mailIsValid(String mail){
         // Search through database to see if userName exist
         for (int i = 0; i < Database.customers.size(); i++){
             if (Database.customers.get(i).getMail().equals(mail)){
@@ -140,7 +144,7 @@ public class RegisterUserController {
         return true;
     }
 
-    public static boolean tryParseInputDate(String dateEntered){
+    private boolean tryParseInputDate(String dateEntered){
         SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
         Date dateParsed = null;
         try {

@@ -1,3 +1,4 @@
+import Controller.RegisterUserController;
 import Dummy.*;
 import View.LoginView;
 import View.RegisterUserView;
@@ -25,7 +26,8 @@ public class Main {
                 View.LoginView.promptLoginScreen();
                 break;
             case 2:
-                System.out.println(new RegisterUserView().createNewUser());
+                RegisterUserController registerAnewUser = new RegisterUserController();
+                registerAnewUser.startRegistration();
                 displayMenu();
                 break;
             case 3:

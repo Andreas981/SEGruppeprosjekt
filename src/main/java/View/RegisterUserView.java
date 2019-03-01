@@ -47,6 +47,10 @@ public class RegisterUserView {
                 "In format: DD-MM-YYYY");
     }
 
+    public void displayUserRegistered(){
+        System.out.println("User registered successfully");
+    }
+
 }
     /*
     public String createNewUser() {
