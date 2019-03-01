@@ -89,4 +89,33 @@ public class OrganizerMenu {
     public void displayPromptForLocationAdded() {
         System.out.println("Location added");
     }
+
+    public void displayPromptForSpesificLocationMenu() {
+        System.out.println("What would you like to do?");
+        System.out.println("\t(0) See a room");
+        System.out.println("\t(1) Delete a room");
+        System.out.println("\t(2) Add a room");
+        System.out.println("\t(3) Edit a room");
+        System.out.println("\t(4) Go back");
+    }
+
+    public void displayPromptForRoomName() {
+        System.out.println("\nRoom name: ");
+    }
+
+    public void displayPromptForMaxParticipents() {
+        System.out.println("Max participents:");
+    }
+
+    public void displayPromptForRoomAdded() {
+        System.out.println("Room added...");
+    }
+
+    public void displayPromptForWhichRoomToDelete() {
+        System.out.println("Which room do you want to delete?");
+    }
+
+    public void displayPromptForRoomRemoved() {
+        System.out.println("Room removed");
+    }
 }
