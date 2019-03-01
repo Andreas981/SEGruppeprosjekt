@@ -35,8 +35,9 @@ public class User {
         Assert.assertEquals("andremi", organizer.getUsername());
     }
     @Test
-    public void gettingMailAddress(){
+    public void gettingMailAddressFromOrganizer(){
         Assert.assertEquals("andremi@hiof.no", organizer.getMail());
     }
+
 
 }
