@@ -1,7 +1,5 @@
 import Controller.RegisterUserController;
 import Dummy.*;
-import View.LoginView;
-import View.RegisterUserView;
 
 import java.util.Scanner;
 
