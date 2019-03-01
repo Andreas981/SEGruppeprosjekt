@@ -2,6 +2,7 @@ package Controller;
 
 import Dummy.Database;
 import Model.Customer;
+import Model.Organizer;
 import View.RegisterUserView;
 
 import java.text.ParseException;
@@ -10,7 +11,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class RegisterUserController {
-    // Fields collected
     private String userName;
     private String userFirstName;
     private String userLastName;
@@ -18,15 +18,26 @@ public class RegisterUserController {
     private String userPhoneNumber;
     private String userPassword;
     private Date userBirthDay;
+    private String organization;
+    private int accessLevel;
     private RegisterUserView registerUserView;
     private Scanner scanner;
+    private boolean isOrganizer = false;
 
+    // Constructor for a customer
     public RegisterUserController(){
         registerUserView = new RegisterUserView();
         scanner = new Scanner(System.in);
     }
 
-    public void startRegistration(){
+    // TODO Validation for a registered admin is logged in
+    // Constructor for a organizer, can only be used by admin
+
+    public RegisterUserController(boolean isOrganizer) {
+        this.isOrganizer = isOrganizer;
+    }
+
+    public void startRegistrationForUser(){
         registerUserView.displayPromptForUserName();
         userName = scanner.next();
         if(userName.length()>5){
@@ -34,11 +45,11 @@ public class RegisterUserController {
                 askForFirstname();
             }else{
                 registerUserView.displayErrorToUser("You have selected a invalid username");
-                startRegistration();
+                startRegistrationForUser();
             }
         }else{
             registerUserView.displayErrorToUser("Username must at least contain 5 characters");
-            startRegistration();
+            startRegistrationForUser();
         }
     }
 
@@ -108,20 +119,46 @@ public class RegisterUserController {
         registerUserView.displayPromptForUserPassword();
         userPassword = scanner.next();
         if(userPassword.length()>=5){
-            if((registerUserIntoDatabase(userFirstName,userLastName,userEmail,userPhoneNumber,
-                    userName,userPassword,userBirthDay))){
-                registerUserView.displayUserRegistered();
+            if(isOrganizer){
+                askForOrganization();
             }else{
-                registerUserView.displayErrorToUser("Database down?");
+                if((registerCustomerIntoDatabase(userFirstName,userLastName,userEmail,userPhoneNumber,
+                        userName,userPassword,userBirthDay))){
+                    registerUserView.displayUserRegistered();
+                }else{
+                    registerUserView.displayErrorToUser("Database down?");
+                }
             }
+
         }else{
             registerUserView.displayErrorToUser("Please input a stronger password");
             askForUserPassword();
         }
     }
 
+    private void askForOrganization() {
+        System.out.println("Organization affiliation?");;
+        organization = scanner.next();
+        if(organization.length()>1){
+            askForAccessLevel();
+        }else{
+            registerUserView.displayErrorToUser("Please input a organization");
+            askForOrganization();
+        }
+    }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////
+    // TODO INTEGER parse validation
+    private void askForAccessLevel() {
+        System.out.println("Access level 1 or 2?");
+        accessLevel = Integer.parseInt(scanner.next());
+        if(accessLevel>0 && accessLevel <3){
+            registerOrganizerIntoDatabase();
+        }else{
+            registerUserView.displayErrorToUser("Invalid level detected");
+            askForAccessLevel();
+        }
+    }
+
     private Boolean isUserNameIsValid(String userName){
         // Search through database to see if userName exist
         for (int i = 0; i < Database.customers.size(); i++){
@@ -172,13 +209,23 @@ public class RegisterUserController {
         return dateParsed;
     }
 
-
-
-    private boolean registerUserIntoDatabase(String firstName, String lastName, String mail
+    private boolean registerCustomerIntoDatabase(String firstName, String lastName, String mail
             , String telephone, String username, String password, Date birthday){
         try {
             Database.customers.add(new Customer(firstName,lastName,mail
                     ,telephone,username,Security.PassHash.hashPassword(password),birthday));
+        }catch (Exception e){
+            System.out.println("Could not add user to database");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean registerOrganizerIntoDatabase(){
+        try {
+            Database.organizers.add(new Organizer(userFirstName,userLastName,userEmail
+                    ,userPhoneNumber,userName,Security.PassHash.hashPassword(userPassword),
+                    userBirthDay,organization,accessLevel));
         }catch (Exception e){
             System.out.println("Could not add user to database");
             return false;
