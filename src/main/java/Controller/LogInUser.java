@@ -5,7 +5,7 @@ import Dummy.Database;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class loggInUser {
+public class LogInUser {
 
 
     public int initLogin(){
@@ -35,7 +35,7 @@ public class loggInUser {
         switch(userRole){
 
             case 1:
-                new Controller.OrganizerMenu().initOrganizerMenu();
+                new OrganizerMenuController().initOrganizerMenu();
                 break;
             case 2:
                 System.out.println("HAHA");

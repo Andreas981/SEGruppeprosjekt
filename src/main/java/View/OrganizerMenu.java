@@ -118,4 +118,14 @@ public class OrganizerMenu {
     public void displayPromptForRoomRemoved() {
         System.out.println("Room removed");
     }
+
+    public void displayPromptForSeeingSpesificRoom() {
+        System.out.println("Which room do you want to see?");
+    }
+
+    public void displayPromptForRoomDetails(int location, int room) {
+        System.out.println("\nName: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getName() +
+                "\nMax participents: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getMaxParticipents() +
+                "\nEvent in process: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEventInProgress());
+    }
 }

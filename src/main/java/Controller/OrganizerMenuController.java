@@ -1,13 +1,12 @@
 package Controller;
 
 import Dummy.Database;
-import Model.Organizer;
 import Model.Room;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class OrganizerMenu {
+public class OrganizerMenuController {
 
     private View.OrganizerMenu organizerMenu = new View.OrganizerMenu();
 
@@ -190,6 +189,7 @@ public class OrganizerMenu {
         }
         switch (choice){
             case 0:
+                seeRoom(location);
                 break;
             case 1:
                 deleteRoom(location);
@@ -206,6 +206,25 @@ public class OrganizerMenu {
                 organizerMenu.displayPromptForNotAnOption();
                 spesificLocationMenu(location);
         }
+    }
+
+    private void seeRoom(int location) {
+        Scanner scanner = new Scanner(System.in);
+        organizerMenu.displayPromptForSeeingSpesificRoom();
+        int choice = -1;
+        try{
+            choice = scanner.nextInt();
+            if(choice != -1 && choice < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size() && choice > -1)
+                spesificRoom(location, choice);
+            else
+                organizerMenu.displayPromptForNotAnOption();
+        }catch (InputMismatchException e){
+            organizerMenu.displayPromptForNotAnOption();
+        }
+    }
+
+    private void spesificRoom(int location, int room) {
+        organizerMenu.displayPromptForRoomDetails(location, room);
     }
 
     private void deleteRoom(int location) {
