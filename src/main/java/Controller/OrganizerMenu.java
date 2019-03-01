@@ -20,7 +20,7 @@ public class OrganizerMenu {
 
         Scanner scanner = new Scanner(System.in);
 
-        organizerMenu.promptMenuLevelTwo();
+        organizerMenu.displayPromptForLevelTwoOrganizer();
 
         int choice;
         try{
@@ -33,36 +33,36 @@ public class OrganizerMenu {
                     addLocation();
                     break;
                 default:
-                    System.out.println("Sorry, that is not an option");
+                    organizerMenu.displayPromptForNotAnOption();
                     levelTwoOrganizer();
                     break;
             }
         }catch (InputMismatchException e){
-            System.out.println("Sorry, that is not an option");
+            organizerMenu.displayPromptForNotAnOption();
             levelTwoOrganizer();
         }
     }
 
     private void addLocation() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\nName of location?");
+        organizerMenu.displayPromptForLocationName();
         String name = scanner.next();
-        System.out.println("Location address?");
+        organizerMenu.displayPromptForLocationAddress();
         String address = scanner.next();
-        System.out.println("Is it a public location? (1)yes (2)no");
+        organizerMenu.displayPromptForLocationPublic();
         int publicLocaiton = -1;
         try{
             publicLocaiton = scanner.nextInt();
         }catch (InputMismatchException e){
-            System.out.println("Sorry, that is not an option");
+            organizerMenu.displayPromptForNotAnOption();
         }
 
         if(publicLocaiton == 1 || publicLocaiton == 2){
             if(Controller.Location.addLocation(name, address, publicLocaiton)){
-                System.out.println("Location added");
+                organizerMenu.displayPromptForLocationAdded();
                 seeLocation();
             }else{
-                System.out.println("Something went wrong");
+                organizerMenu.displayPromptForSomethingWentWrong();
                 levelTwoOrganizer();
             }
         }
@@ -73,7 +73,7 @@ public class OrganizerMenu {
 
         String registeredLocations = "";
 
-        System.out.println("\nThis is you're registered locations: ");
+        organizerMenu.displayPromptForRegisteredLocation();
         for (int i = 0; i < Database.currentLoggedInOrganizer.getLocations().size(); i++){
             registeredLocations += "\t(" + i + ") " + Database.currentLoggedInOrganizer.getLocations().get(i).getName() + "\n";
         }
@@ -94,20 +94,20 @@ public class OrganizerMenu {
         try{
             choice = scanner.nextInt();
         }catch (InputMismatchException e){
-            System.out.println("Sorry, that is not an option");
+            organizerMenu.displayPromptForNotAnOption();
             locationMenu();
         }
 
         switch (choice){
             case 1:
-                //Se specific locaiton
-                System.out.println("\nWhich location do you want to see?");
+                //See specific locaiton
+                organizerMenu.displayPromptForSpesificLocation();
                 int location;
                 try{
                     location = scanner.nextInt();
                     seeSpecificLocation(location);
                 }catch (InputMismatchException e){
-                    System.out.println("Sorry, that is not an option");
+                    organizerMenu.displayPromptForNotAnOption();
                     locationMenu();
                 }
 
@@ -125,7 +125,7 @@ public class OrganizerMenu {
                 break;
 
             default:
-                System.out.println("Sorry, that is not an option");
+                organizerMenu.displayPromptForNotAnOption();
                 break;
         }
 
@@ -133,37 +133,34 @@ public class OrganizerMenu {
 
     private void removeLocation() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Which location do you want to remove?");
+        organizerMenu.displayPromptForRemovingLocation();
         int choice;
         try{
             choice = scanner.nextInt();
-            System.out.println("Are you sure?");
-            System.out.println("yes(y)/no(n)");
+            organizerMenu.displayPromptForAreYouSure();
             String confirm = scanner.next();
             if (confirm.toLowerCase().startsWith("n")){
                 locationMenu();
             }else if(confirm.toLowerCase().startsWith("y")){
                 if(choice >= 0 && choice <= Database.currentLoggedInOrganizer.getLocations().size()){
                     Database.currentLoggedInOrganizer.getLocations().remove(choice);
-                    System.out.println("Location deleted!");
+                    organizerMenu.displayPromptForLocationDeleted();
                     seeLocation();
                 }
             }
         }catch (InputMismatchException e){
-            System.out.println("Sorry, that is not a legal choice");
+            organizerMenu.displayPromptForNotAnOption();
             seeLocation();
         }
     }
     private void seeSpecificLocation(int location) {
         if (location >= 0 && location <= Database.currentLoggedInOrganizer.getLocations().size()){
-            System.out.println("\nName: "+Database.currentLoggedInOrganizer.getLocations().get(location).getName() +
-                    "\nAddress: "+Database.currentLoggedInOrganizer.getLocations().get(location).getAddress() +
-                    "\nIs public: "+Database.currentLoggedInOrganizer.getLocations().get(location).getPublicLocation()
-            );
+
+            organizerMenu.displayPromptForSpesicficLocationDetails(location);
             if (Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size() == 0){
-                System.out.println("Thre is no registered rooms for this locaton");
+                organizerMenu.displayPromptForNoRegisteredRooms();
             }else{
-                System.out.println("Rooms for this location: ");
+                organizerMenu.displayPromptForRoomsInSpesificLocation();
                 for(int i = 0; i < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size(); i++){
                     System.out.println("\t(" + i + ")" + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(i).getName());
                 }
@@ -174,7 +171,7 @@ public class OrganizerMenu {
 
 
         }else{
-            System.out.println("That is not a option");
+            organizerMenu.displayPromptForNotAnOption();
             locationMenu();
         }
     }
