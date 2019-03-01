@@ -1,3 +1,4 @@
+import Controller.CustomerMenuController;
 import Controller.LogInUser;
 import Controller.RegisterUserController;
 import Dummy.*;
@@ -30,7 +31,8 @@ public class Main {
                 displayMenu();
                 break;
             case 3:
-                System.out.println("Not implemented");
+                CustomerMenuController displayEvents = new CustomerMenuController();
+                displayEvents.enterCustomerMenu();
                 break;
             case 4:
                 System.out.println("Goodbye");

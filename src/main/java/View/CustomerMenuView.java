@@ -1,7 +1,7 @@
 package View;
 
-public class CustomerMenu {
-    public static void CustomerMenu(){
+public class CustomerMenuView {
+    public static void displayCustomerMenu(){
 
     }
 }
