@@ -1,3 +1,4 @@
+import Controller.LogInUser;
 import Controller.RegisterUserController;
 import Dummy.*;
 
@@ -21,7 +22,7 @@ public class Main {
         int userSelection = scanner.nextInt();
         switch (userSelection) {
             case 1:
-                new Controller.loggInUser().initLogin();
+                new LogInUser().initLogin();
                 break;
             case 2:
                 RegisterUserController registerAnewUser = new RegisterUserController();

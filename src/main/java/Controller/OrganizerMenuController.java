@@ -1,11 +1,12 @@
 package Controller;
 
 import Dummy.Database;
+import Model.Room;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class OrganizerMenu {
+public class OrganizerMenuController {
 
     private View.OrganizerMenu organizerMenu = new View.OrganizerMenu();
 
@@ -95,7 +96,7 @@ public class OrganizerMenu {
             choice = scanner.nextInt();
         }catch (InputMismatchException e){
             organizerMenu.displayPromptForNotAnOption();
-            locationMenu();
+            seeLocation();
         }
 
         switch (choice){
@@ -108,7 +109,7 @@ public class OrganizerMenu {
                     seeSpecificLocation(location);
                 }catch (InputMismatchException e){
                     organizerMenu.displayPromptForNotAnOption();
-                    locationMenu();
+                    seeLocation();
                 }
 
                 break;
@@ -121,7 +122,7 @@ public class OrganizerMenu {
                 removeLocation();
                 break;
             case 4:
-                //levelTwoOrganizer();
+                levelTwoOrganizer();
                 break;
 
             default:
@@ -168,15 +169,99 @@ public class OrganizerMenu {
 
 
             //TODO Add functionality to Rooms within a location
+            spesificLocationMenu(location);
 
 
         }else{
             organizerMenu.displayPromptForNotAnOption();
-            locationMenu();
+            seeLocation();
         }
     }
 
+    private void spesificLocationMenu(int location) {
+        int choice = -1;
+        organizerMenu.displayPromptForSpesificLocationMenu();
+        try{
+            choice = new Scanner(System.in).nextInt();
+        }catch (InputMismatchException e){
+            organizerMenu.displayPromptForNotAnOption();
+            seeSpecificLocation(location);
+        }
+        switch (choice){
+            case 0:
+                seeRoom(location);
+                break;
+            case 1:
+                deleteRoom(location);
+                break;
+            case 2:
+                addRooomInput(location);
+                break;
+            case 3:
+                break;
+            case 4:
+                seeLocation();
+                break;
+            default:
+                organizerMenu.displayPromptForNotAnOption();
+                spesificLocationMenu(location);
+        }
+    }
 
+    private void seeRoom(int location) {
+        Scanner scanner = new Scanner(System.in);
+        organizerMenu.displayPromptForSeeingSpesificRoom();
+        int choice = -1;
+        try{
+            choice = scanner.nextInt();
+            if(choice != -1 && choice < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size() && choice > -1)
+                spesificRoom(location, choice);
+            else
+                organizerMenu.displayPromptForNotAnOption();
+        }catch (InputMismatchException e){
+            organizerMenu.displayPromptForNotAnOption();
+        }
+    }
+
+    private void spesificRoom(int location, int room) {
+        organizerMenu.displayPromptForRoomDetails(location, room);
+    }
+
+    private void deleteRoom(int location) {
+        Scanner scanner = new Scanner(System.in);
+        int choice = -1;
+        organizerMenu.displayPromptForWhichRoomToDelete();
+        try{
+            choice = scanner.nextInt();
+        }catch (InputMismatchException e){
+            organizerMenu.displayPromptForNotAnOption();
+        }
+        if(Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size() != 0 && choice < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size() && choice > -1)
+            Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().remove(choice);
+        organizerMenu.displayPromptForRoomRemoved();
+        spesificLocationMenu(location);
+    }
+
+    private void addRooomInput(int location) {
+        Scanner scanner = new Scanner(System.in);
+        try{
+            organizerMenu.displayPromptForRoomName();
+            String name = scanner.next();
+            organizerMenu.displayPromptForMaxParticipents();
+            int max = scanner.nextInt();
+            addRoom(location, name, max);
+        }catch (InputMismatchException e){
+            organizerMenu.displayPromptForNotAnOption();
+            spesificLocationMenu(location);
+        }
+
+    }
+
+    private void addRoom(int location, String name, int max) {
+        Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().add(new Room(name, max, false));
+        organizerMenu.displayPromptForRoomAdded();
+        spesificLocationMenu(location);
+    }
 
 
     private static void levelOneOrganizer() {
