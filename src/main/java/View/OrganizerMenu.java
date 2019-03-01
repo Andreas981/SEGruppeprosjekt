@@ -35,7 +35,7 @@ public class OrganizerMenu {
     }
 
     public void displayPromptForLocationAddress() {
-        System.out.println("Location address?");
+        System.out.println("LocationController address?");
     }
 
     public void displayPromptForLocationPublic() {
@@ -56,7 +56,7 @@ public class OrganizerMenu {
     }
 
     public void displayPromptForLocationDeleted() {
-        System.out.println("Location deleted!");
+        System.out.println("LocationController deleted!");
     }
 
     public void displayPromptForSpesicficLocationDetails(int location) {
@@ -87,7 +87,7 @@ public class OrganizerMenu {
     }
 
     public void displayPromptForLocationAdded() {
-        System.out.println("Location added");
+        System.out.println("LocationController added");
     }
 
     public void displayPromptForSpesificLocationMenu() {

@@ -46,6 +46,11 @@ public abstract class PlannedEvent {
         return ageLimit;
     }
 
+    @Override
+    public String toString(){
+        return nameOfEvent ;
+    }
+
     // TODO Buy ticket implementation
     // TODO Check that the ticket is valid for this show
 }

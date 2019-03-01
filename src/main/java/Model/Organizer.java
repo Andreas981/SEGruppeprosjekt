@@ -13,6 +13,7 @@ public class Organizer extends User{
     int accessLevel;
     ArrayList<Location> locations;
     //TODO Add accounting for organizer
+    // TODO Add nonSeatedEvents booking
 
     public Organizer(String firstName, String lastName, String mail, String telephone, String username, String password, Date birthday, String organization, int  accessLevel) {
         super(firstName, lastName, mail, telephone, username, password, birthday);

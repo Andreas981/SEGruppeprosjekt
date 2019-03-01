@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * Class for creating Location in Organizer.
+ * Class for creating LocationController in Organizer.
  * A location can have one or more rooms.
  */
 

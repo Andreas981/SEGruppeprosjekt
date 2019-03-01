@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.sql.Date;
 
-public class Location {
+public class LocationController {
 
     Organizer organizer;
 

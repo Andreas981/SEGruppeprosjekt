@@ -59,7 +59,7 @@ public class OrganizerMenuController {
         }
 
         if(publicLocaiton == 1 || publicLocaiton == 2){
-            if(Controller.Location.addLocation(name, address, publicLocaiton)){
+            if(LocationController.addLocation(name, address, publicLocaiton)){
                 organizerMenu.displayPromptForLocationAdded();
                 seeLocation();
             }else{
