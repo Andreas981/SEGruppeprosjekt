@@ -16,9 +16,6 @@ public class OrganizerMenu {
 
     }
 
-    private static void levelOneOrganizer() {
-        //TODO Menu for level one organizer
-    }
 
     public void listRegisteredLocations(String registeredLocations) {
         System.out.println(registeredLocations);

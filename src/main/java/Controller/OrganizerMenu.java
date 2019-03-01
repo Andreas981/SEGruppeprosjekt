@@ -11,7 +11,7 @@ public class OrganizerMenu {
 
     public void initOrganizerMenu(){
         if (Database.currentLoggedInOrganizer.getAccessLevel() == 1){
-            //levelOneOrganizer();
+            levelOneOrganizer();
         }else if(Database.currentLoggedInOrganizer.getAccessLevel() == 2){
             levelTwoOrganizer();
         }
@@ -178,4 +178,12 @@ public class OrganizerMenu {
             locationMenu();
         }
     }
+
+
+
+
+    private static void levelOneOrganizer() {
+        //TODO Menu for level one organizer
+    }
+
 }
