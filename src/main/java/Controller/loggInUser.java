@@ -1,8 +1,6 @@
 package Controller;
 
 import Dummy.Database;
-import View.CustomerMenu;
-import View.OrganizerMenu;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -10,26 +8,45 @@ import java.util.Scanner;
 public class loggInUser {
 
 
-    public void initLogin(){
+    public int initLogin(){
         System.out.println("\nAre you a (1)Organizer or (2)Customer?");
 
-        int userRole;
+        int userRole = 0;
         try{
             userRole = new Scanner(System.in).nextInt();
 
-            if (userRole == 1 || userRole == 2){
+            int role = askForUserName(userRole);
 
-                askForUserName(userRole);
+            if (role == 1 || role == 2){
+                System.out.println(userRole);
+                goToMenu(userRole);
             }else{
                 System.out.println("Sorry, that is not an option");
+                initLogin();
             }
         }catch (InputMismatchException e){
             System.out.println("Sorry, that is not an option");
             initLogin();
         }
+        return 0;
     }
 
-    private void askForUserName(int userRole) {
+    private void goToMenu(int userRole) {
+        switch(userRole){
+
+            case 1:
+                new Controller.OrganizerMenu().initOrganizerMenu();
+                break;
+            case 2:
+                System.out.println("HAHA");
+                break;
+            default:
+                System.out.println("Something went wrong while logging in");
+                break;
+        }
+    }
+
+    private int askForUserName(int userRole) {
         System.out.print("\nUsername: ");
         String username = new Scanner(System.in).next();
         System.out.print("Password: ");
@@ -37,21 +54,11 @@ public class loggInUser {
 
         if(login(userRole, username, password)){
             System.out.println("You're logged in");
-            switch (userRole){
-                case 1:
-                    OrganizerMenu.OrganizerMenu();
-                    break;
-                case 2:
-                    CustomerMenu.CustomerMenu();
-                    break;
-                default:
-                    System.out.println("Something went wrong");
-                    break;
-            }
+            return userRole;
         }else{
             System.out.println("Sorry, you could not login");
-            initLogin();
         }
+        return 0;
     }
 
     private Boolean login(int userRole, String username, String password){

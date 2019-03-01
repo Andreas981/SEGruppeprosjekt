@@ -39,4 +39,5 @@ public class User {
         Assert.assertEquals("andremi@hiof.no", organizer.getMail());
     }
 
+
 }

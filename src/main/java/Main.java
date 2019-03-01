@@ -23,7 +23,7 @@ public class Main {
         int userSelection = scanner.nextInt();
         switch (userSelection) {
             case 1:
-                View.LoginView.promptLoginScreen();
+                new Controller.loggInUser().initLogin();
                 break;
             case 2:
                 RegisterUserController registerAnewUser = new RegisterUserController();
