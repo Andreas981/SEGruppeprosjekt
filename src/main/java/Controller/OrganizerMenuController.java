@@ -168,7 +168,6 @@ public class OrganizerMenuController {
             }
 
 
-            //TODO Add functionality to Rooms within a location
             spesificLocationMenu(location);
 
 
@@ -198,6 +197,7 @@ public class OrganizerMenuController {
                 addRooomInput(location);
                 break;
             case 3:
+                editRoom(location);
                 break;
             case 4:
                 seeLocation();
@@ -205,6 +205,42 @@ public class OrganizerMenuController {
             default:
                 organizerMenu.displayPromptForNotAnOption();
                 spesificLocationMenu(location);
+        }
+    }
+
+    private void editRoom(int location) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Which room?");
+        int room = -1;
+        try{
+            room = scanner.nextInt();
+        }catch (InputMismatchException e){
+            organizerMenu.displayPromptForNotAnOption();
+            seeSpecificLocation(location);
+        }
+        if(room > 0 && room < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size()){
+
+            System.out.println("\nWrite \"-1\" if you dont want to edit a field");
+            System.out.println("Name: ");
+            String name = scanner.next();
+            //TODO Debug method!!
+            int max = -1;
+            try{
+                System.out.println("Max participents: ");
+                max = scanner.nextInt();
+            }catch (InputMismatchException e){
+                organizerMenu.displayPromptForNotAnOption();
+                seeSpecificLocation(location);
+            }
+            if(!name.equals("-1"))
+                Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).setName(name);
+            if(max >= 0)
+                Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).setMaxParticipents(max);
+            System.out.println("Room edited");
+            seeSpecificLocation(location);
+        }else{
+            organizerMenu.displayPromptForNotAnOption();
+            seeSpecificLocation(location);
         }
     }
 
