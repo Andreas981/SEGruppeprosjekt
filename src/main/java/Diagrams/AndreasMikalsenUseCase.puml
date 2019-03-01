@@ -1,0 +1,24 @@
+@startuml
+
+:Organizer: as Org
+:Customer: as Cus
+
+Org -left-> (Add location)
+Org -right-> (Add rooms)
+Org --> (Add events)
+Org ---> (See tickets)
+Org --> (Edit events)
+Org --> (See events)
+
+Cus ---> (Buy ticket)
+Cus --> (See ticket)
+Cus --> (See events)
+Cus -right-> (Cancel ticket)
+
+newpage
+
+:Administrator: as Admin
+Admin --> (Add organizers)
+Admin --> (Edit organizers)
+note left of Admin : Everything a \norganizer can do
+@enduml
