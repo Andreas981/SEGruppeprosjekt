@@ -9,6 +9,7 @@ import org.joda.time.LocalDate;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RegisterUserController {
@@ -110,7 +111,7 @@ public class RegisterUserController {
             askForUserPassword();
         }else{
             registerUserView.displayErrorToUser("Invalid date entered! \n" +
-                    "Enter it like 01-02-1983");
+                    "Enter it like 1980-02-03");
             askForUserBirthDate();
         }
     }
@@ -182,19 +183,15 @@ public class RegisterUserController {
         return true;
     }
 
-    private boolean tryParseInputDate(String dateEntered){
-
-        LocalDate dateParsed = new LocalDate();
-        try {
-            //Parsing the String
-            dateParsed.parse(dateEntered);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Invalid date input! Should be Year-month-day");
-            return false;
+    private boolean tryParseInputDate(String dateInput) {
+        String patternForDate = "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]";
+        System.out.println("Trying: " + dateInput );
+        if (Security.RegEx.regEx(patternForDate, dateInput)){
+            return true;
         }
-        return true;
+        return false;
     }
+
 
     private LocalDate parseInputDate(String dateEntered){
         //SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
