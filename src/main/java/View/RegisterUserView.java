@@ -36,7 +36,7 @@ public class RegisterUserView {
 
     public void displayPromptForBirthdate(){
         System.out.println("Please enter a valid birth date. \n" +
-                "In format: DD-MM-YYYY");
+                "In format: YYYY-MM-DD");
     }
 
     public void displayUserRegistered(){

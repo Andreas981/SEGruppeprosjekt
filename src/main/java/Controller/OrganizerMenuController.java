@@ -319,8 +319,8 @@ public class OrganizerMenuController {
 
     private void addEventPrompt(int location, int room) {
         //String nameOfEvent, String dateOfEvent, Time timeOfEventStart, int lengthOfEvent, int ageLimit
-        String patternForDate = "[0-9]^4-[0-9]^2-[0-9]^2";
-        String patternForTime = "[0-9]^2-[0-9]^2";
+        String patternForDate = "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]";
+        String patternForTime = "[0-9][0-9]-[0-9][0-9]";
         System.out.println("Name of event: ");
         String name = new Scanner(System.in).nextLine();
         //TODO Add Joda date to event
