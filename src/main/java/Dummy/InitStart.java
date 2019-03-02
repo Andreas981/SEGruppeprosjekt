@@ -31,7 +31,7 @@ public class InitStart {
 
         // Dummy event for HIØ Playing at Aud Max
         Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(0).addEvent(new SeatedPlannedEvent("Example seated event",new Date(1988,3,2)
+                .get(0).addEvent(new SeatedPlannedEvent("Example seated event","03-02-2000"
                 ,new Time(22),
                 100,18));
 

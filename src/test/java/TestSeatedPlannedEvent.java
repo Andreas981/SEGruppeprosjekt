@@ -11,7 +11,7 @@ public class TestSeatedPlannedEvent {
 
     @Test
     public void createAseatedEvent(){
-        SeatedPlannedEvent seatedPlannedEvent = new SeatedPlannedEvent("TestEvent",new Date(2019,4,4),new Time(22,2,22),90,18);
+        SeatedPlannedEvent seatedPlannedEvent = new SeatedPlannedEvent("TestEvent","2-3-2019",new Time(22),4,22);
         Assert.assertEquals(seatedPlannedEvent,seatedPlannedEvent);
     }
 }

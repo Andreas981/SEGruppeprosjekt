@@ -8,12 +8,13 @@ public class NonSeatedPlannedEvent extends PlannedEvent {
     private String meetUp;
 
     // TODO Modified constructor for different events:
-    public NonSeatedPlannedEvent(String nameOfEvent, Date date, Time timeOfEventStart, int lengthOfEvent, int ageLimit
-            , int freeSpace, String meetUp) {
-        super(nameOfEvent, date, timeOfEventStart, lengthOfEvent, ageLimit);
+
+    public NonSeatedPlannedEvent(String nameOfEvent, String dateOfEvent, Time timeOfEventStart, int lengthOfEvent, int ageLimit, int freeSpace, String meetUp) {
+        super(nameOfEvent, dateOfEvent, timeOfEventStart, lengthOfEvent, ageLimit);
         this.freeSpace = freeSpace;
         this.meetUp = meetUp;
     }
+
     // TODO Field for list of specialNotice
     // TODO field for boolean that can be checked if the event is free
     // TODO Allow users with an account to be added to participants ArrayList<customer>
