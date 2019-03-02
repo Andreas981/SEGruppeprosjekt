@@ -2,9 +2,12 @@ package Controller;
 
 import Dummy.Database;
 import Model.Room;
+import org.joda.time.LocalDateTime;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class OrganizerMenuController {
 
@@ -260,6 +263,77 @@ public class OrganizerMenuController {
 
     private void spesificRoom(int location, int room) {
         organizerMenu.displayPromptForRoomDetails(location, room);
+        System.out.println("Events in this room: ");
+        for(int i = 0; i < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().size(); i++){
+            System.out.println("\t(" + i + ") " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(i).getNameOfEvent());
+        }
+        roomMenu(location, room);
+    }
+
+    private void roomMenu(int location, int room) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nWhat would you like to do?");
+        System.out.println("\t(0) See event");
+        System.out.println("\t(1) Add event");
+        System.out.println("\t(2) Remove event");
+        System.out.println("\t(3) Edit event");
+        System.out.println("\t(4) Go back");
+        int choice = -1;
+        try{
+            choice = scanner.nextInt();
+            switch (choice){
+                case 0:
+
+                    break;
+                case 1:
+                    addEventPrompt(location, room);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    seeSpecificLocation(location);
+                    break;
+                default:
+                    organizerMenu.displayPromptForNotAnOption();
+                    spesificRoom(location, room);
+            }
+        }catch (InputMismatchException e){
+            organizerMenu.displayPromptForNotAnOption();
+            spesificRoom(location, room);
+        }
+    }
+
+    private void addEventPrompt(int location, int room) {
+        //String nameOfEvent, String dateOfEvent, Time timeOfEventStart, int lengthOfEvent, int ageLimit
+        String patternForDate = "[0-9]^4-[0-9]^2-[0-9]^2";
+        String patternForTime = "[0-9]^2-[0-9]^2";
+        System.out.println("Name of event: ");
+        String name = new Scanner(System.in).nextLine();
+        //TODO Add Joda date to event
+        System.out.println("Date of event (YYYY-MM-DD): ");
+        String date = new Scanner(System.in).next();
+        System.out.println("Start time of event (HH-MM): ");
+        String time = new Scanner(System.in).next();
+        int ageLimit = -1;
+        try{
+            System.out.println("Age limit");
+            ageLimit = new Scanner(System.in).nextInt();
+        }catch (InputMismatchException e){
+            organizerMenu.displayPromptForNotAnOption();
+            spesificRoom(location, room);
+        }
+
+        if (regEx(patternForDate, date) && regEx(patternForTime, time) && ageLimit != -1)
+            addEvent(name, date, time, ageLimit);
+
+
+
+    }
+
+    private void addEvent(String name, String date, String time, int ageLimit) {
+        //TODO Add event
     }
 
     private void deleteRoom(int location) {
@@ -296,6 +370,12 @@ public class OrganizerMenuController {
         Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().add(new Room(name, max, false));
         organizerMenu.displayPromptForRoomAdded();
         spesificLocationMenu(location);
+    }
+
+    public Boolean regEx(String pattern, String input){
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(input);
+        return m.find();
     }
 
 
