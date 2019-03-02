@@ -128,6 +128,7 @@ public class OrganizerMenuController {
 
             default:
                 organizerMenu.displayPromptForNotAnOption();
+                seeLocation();
                 break;
         }
 
