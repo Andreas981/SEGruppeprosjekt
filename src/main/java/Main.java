@@ -31,8 +31,8 @@ public class Main {
                 displayMenu();
                 break;
             case 3:
-                CustomerMenuController displayEvents = new CustomerMenuController();
-                displayEvents.enterCustomerMenu();
+                CustomerMenuController.displayOnGoingEvents();
+                displayMenu();
                 break;
             case 4:
                 System.out.println("Goodbye");

@@ -11,4 +11,9 @@ public class SeatedPlannedEvent extends PlannedEvent {
     }
 
     // TODO Method for displaying sold tickets
+
+    @Override
+    public String toString(){
+        return getNameOfEvent();
+    }
 }
