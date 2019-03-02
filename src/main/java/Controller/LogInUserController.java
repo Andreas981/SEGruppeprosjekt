@@ -40,8 +40,7 @@ public class LogInUserController {
                 new OrganizerMenuController().initOrganizerMenu();
                 break;
             case 2:
-                //TODO Add customer login
-                //TODO Add customer menu
+                new CustomerMenuController().enterCustomerMenu();
                 break;
             default:
                 logInView.displayPromptForSomwthingWentWrong();
