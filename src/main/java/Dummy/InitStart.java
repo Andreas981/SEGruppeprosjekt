@@ -34,6 +34,21 @@ public class InitStart {
         // Dummy event for HIØ Playing at Aud Max
         Database.organizers.get(0).getLocations().get(0).getRooms()
                 .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+        Database.organizers.get(0).getLocations().get(0).getRooms()
+                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+        Database.organizers.get(0).getLocations().get(0).getRooms()
+                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+        Database.organizers.get(0).getLocations().get(0).getRooms()
+                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+
+        Database.organizers.get(0).getLocations().get(0).getRooms()
+                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+        Database.organizers.get(0).getLocations().get(0).getRooms()
+                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+        Database.organizers.get(0).getLocations().get(0).getRooms()
+                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+        Database.organizers.get(0).getLocations().get(0).getRooms()
+                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
 
 
 
