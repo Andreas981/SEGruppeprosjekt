@@ -2,15 +2,13 @@ package View;
 
 import Dummy.Database;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class OrganizerMenu {
 
     public void displayPromptForLevelTwoOrganizer() {
 
         //The menu that the organizer will see
-        System.out.println("What would you like to do?");
+        System.out.println("\nWhat would you like to do?");
         System.out.println("(1) See locations");
         System.out.println("(2) Add location");
 
@@ -23,10 +21,10 @@ public class OrganizerMenu {
     public void promptLocationMenu() {
 
         System.out.println("\nWhat would you do?");
-        System.out.println("(1) See a location");
-        System.out.println("(2) Add a location");
-        System.out.println("(3) Remove a location");
-        System.out.println("(4) Go back");
+        System.out.println("\t(1) See a location");
+        System.out.println("\t(2) Add a location");
+        System.out.println("\t(3) Remove a location");
+        System.out.println("\t(4) Go back");
 
     }
 
@@ -35,7 +33,7 @@ public class OrganizerMenu {
     }
 
     public void displayPromptForLocationAddress() {
-        System.out.println("LocationController address?");
+        System.out.println("Location address?");
     }
 
     public void displayPromptForLocationPublic() {
@@ -56,11 +54,12 @@ public class OrganizerMenu {
     }
 
     public void displayPromptForLocationDeleted() {
-        System.out.println("LocationController deleted!");
+        System.out.println("Location deleted!");
     }
 
     public void displayPromptForSpesicficLocationDetails(int location) {
-        System.out.println("\nName: "+Database.currentLoggedInOrganizer.getLocations().get(location).getName() +
+        System.out.println("\n****************************");
+        System.out.println("Name: "+Database.currentLoggedInOrganizer.getLocations().get(location).getName() +
                 "\nAddress: "+Database.currentLoggedInOrganizer.getLocations().get(location).getAddress() +
                 "\nIs public: "+Database.currentLoggedInOrganizer.getLocations().get(location).getPublicLocation()
         );
@@ -87,11 +86,11 @@ public class OrganizerMenu {
     }
 
     public void displayPromptForLocationAdded() {
-        System.out.println("LocationController added");
+        System.out.println("Location added");
     }
 
     public void displayPromptForSpesificLocationMenu() {
-        System.out.println("What would you like to do?");
+        System.out.println("\nWhat would you like to do?");
         System.out.println("\t(0) See a room");
         System.out.println("\t(1) Delete a room");
         System.out.println("\t(2) Add a room");
@@ -124,7 +123,8 @@ public class OrganizerMenu {
     }
 
     public void displayPromptForRoomDetails(int location, int room) {
-        System.out.println("\nName: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getName() +
+        System.out.println("\n****************************");
+        System.out.println("Name: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getName() +
                 "\nMax participents: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getMaxParticipents() +
                 "\nEvent in progress: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEventInProgress());
     }
@@ -147,5 +147,9 @@ public class OrganizerMenu {
 
     public void displayPromptForWhichRoomToEdit() {
         System.out.println("Which room?");
+    }
+
+    public void displayPromptForEventRemoved() {
+        System.out.println("Event removed");
     }
 }

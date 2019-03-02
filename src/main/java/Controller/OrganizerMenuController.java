@@ -2,12 +2,11 @@ package Controller;
 
 import Dummy.Database;
 import Model.Room;
+import Model.SeatedPlannedEvent;
 import org.joda.time.LocalDateTime;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class OrganizerMenuController {
 
@@ -48,15 +47,14 @@ public class OrganizerMenuController {
     }
 
     private void addLocation() {
-        Scanner scanner = new Scanner(System.in);
         organizerMenu.displayPromptForLocationName();
-        String name = scanner.next();
+        String name = new Scanner(System.in).next();
         organizerMenu.displayPromptForLocationAddress();
-        String address = scanner.next();
+        String address = new Scanner(System.in).next();
         organizerMenu.displayPromptForLocationPublic();
         int publicLocaiton = -1;
         try{
-            publicLocaiton = scanner.nextInt();
+            publicLocaiton = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             organizerMenu.displayPromptForNotAnOption();
         }
@@ -169,6 +167,7 @@ public class OrganizerMenuController {
                     System.out.println("\t(" + i + ")" + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(i).getName());
                 }
             }
+            System.out.println("****************************");
 
 
             spesificLocationMenu(location);
@@ -263,10 +262,12 @@ public class OrganizerMenuController {
 
     private void spesificRoom(int location, int room) {
         organizerMenu.displayPromptForRoomDetails(location, room);
+        //TODO Refacotr strings
         System.out.println("Events in this room: ");
         for(int i = 0; i < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().size(); i++){
             System.out.println("\t(" + i + ") " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(i).getNameOfEvent());
         }
+        System.out.println("****************************");
         roomMenu(location, room);
     }
 
@@ -283,7 +284,7 @@ public class OrganizerMenuController {
             choice = scanner.nextInt();
             switch (choice){
                 case 0:
-
+                    seeEventPrompt(location, room);
                     break;
                 case 1:
                     addEventPrompt(location, room);
@@ -306,24 +307,52 @@ public class OrganizerMenuController {
         }
     }
 
-    private void removeEventPrompt(int location, int room) {
-        System.out.println("Which event do you want to remove?");
+    private void seeEventPrompt(int location, int room) {
+        System.out.println("Which event do you want to see?");
         int choice = -1;
         try{
-
+            choice = new Scanner(System.in).nextInt();
+            seeEvent(location, room, choice);
         }catch (InputMismatchException e){
             organizerMenu.displayPromptForNotAnOption();
             spesificRoom(location, room);
         }
     }
 
+    private void seeEvent(int location, int room, int event) {
+        System.out.println("****************************************");
+        System.out.println("\tName:      " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(event).getNameOfEvent());
+        System.out.println("\tDate:      " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(event).getDateOfEvent().toLocalDate().toString() +
+                " " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(event).getDateOfEvent().toLocalTime().toString());
+        System.out.println("\tDurance:   " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(event).getLengthOfEvent());
+        System.out.println("\tAge limit: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(event).getAgeLimit());
+        System.out.println("****************************************");
+        spesificRoom(location, room);
+    }
+
+    private void removeEventPrompt(int location, int room) {
+        System.out.println("Which event do you want to remove?");
+        int choice = -1;
+        try{
+            choice = new Scanner(System.in).nextInt();
+            removeEvent(location, room, choice);
+        }catch (InputMismatchException e){
+            organizerMenu.displayPromptForNotAnOption();
+            spesificRoom(location, room);
+        }
+    }
+
+    private void removeEvent(int location, int room, int event) {
+        Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().remove(event);
+        organizerMenu.displayPromptForEventRemoved();
+        spesificRoom(location, room);
+    }
+
     private void addEventPrompt(int location, int room) {
-        //String nameOfEvent, String dateOfEvent, Time timeOfEventStart, int lengthOfEvent, int ageLimit
-        String patternForDate = "[0-9]^4-[0-9]^2-[0-9]^2";
-        String patternForTime = "[0-9]^2-[0-9]^2";
-        System.out.println("Name of event: ");
+        String patternForDate = "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]";
+        String patternForTime = "[0-9][0-9]-[0-9][0-9]";
+        System.out.println("\nName of event: ");
         String name = new Scanner(System.in).nextLine();
-        //TODO Add Joda date to event
         System.out.println("Date of event (YYYY-MM-DD): ");
         String date = new Scanner(System.in).next();
         System.out.println("Start time of event (HH-MM): ");
@@ -340,14 +369,27 @@ public class OrganizerMenuController {
         }
 
         if (Security.RegEx.regEx(patternForDate, date) && Security.RegEx.regEx(patternForTime, time) && ageLimit != -1)
-            addEvent(name, date, time, ageLimit);
-
-
+            addEvent(location, room, name, date, time, ageLimit, lengthOfEvent);
+        else{
+            organizerMenu.displayPromptForNotAnOption();
+            spesificRoom(location, room);
+        }
 
     }
 
-    private void addEvent(String name, String date, String time, int ageLimit) {
-        //TODO Add event
+    private void addEvent(int location, int room, String name, String date, String time, int ageLimit, int lengthOfEvent) {
+        String[] dateArray = date.split("-");
+        String[] timeArray = time.split("-");
+        Database.currentLoggedInOrganizer
+                .getLocations()
+                .get(location)
+                .getRooms()
+                .get(room)
+                .getEvents()
+                .add(new SeatedPlannedEvent(name, new LocalDateTime(Integer.parseInt(dateArray[0]), Integer.parseInt(dateArray[1]), Integer.parseInt(dateArray[2]), Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1])), lengthOfEvent, ageLimit));
+
+        System.out.println("Event added");
+        spesificRoom(location, room);
     }
 
     private void deleteRoom(int location) {
@@ -362,16 +404,15 @@ public class OrganizerMenuController {
         if(Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size() != 0 && choice < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size() && choice > -1)
             Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().remove(choice);
         organizerMenu.displayPromptForRoomRemoved();
-        spesificLocationMenu(location);
+        seeSpecificLocation(location);
     }
 
     private void addRooomInput(int location) {
-        Scanner scanner = new Scanner(System.in);
         try{
             organizerMenu.displayPromptForRoomName();
-            String name = scanner.next();
+            String name = new Scanner(System.in).next();
             organizerMenu.displayPromptForMaxParticipents();
-            int max = scanner.nextInt();
+            int max = new Scanner(System.in).nextInt();
             addRoom(location, name, max);
         }catch (InputMismatchException e){
             organizerMenu.displayPromptForNotAnOption();
@@ -383,7 +424,7 @@ public class OrganizerMenuController {
     private void addRoom(int location, String name, int max) {
         Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().add(new Room(name, max, false));
         organizerMenu.displayPromptForRoomAdded();
-        spesificLocationMenu(location);
+        seeSpecificLocation(location);
     }
 
 
