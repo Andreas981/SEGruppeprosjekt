@@ -210,7 +210,7 @@ public class OrganizerMenuController {
 
     private void editRoom(int location) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Which room?");
+        organizerMenu.displayPromptForWhichRoomToEdit();
         int room = -1;
         try{
             room = scanner.nextInt();
@@ -218,15 +218,14 @@ public class OrganizerMenuController {
             organizerMenu.displayPromptForNotAnOption();
             seeSpecificLocation(location);
         }
-        if(room > 0 && room < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size()){
+        if(room >= 0 && room < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().size()){
 
-            System.out.println("\nWrite \"-1\" if you dont want to edit a field");
-            System.out.println("Name: ");
-            String name = scanner.next();
-            //TODO Debug method!!
+            organizerMenu.displayPromptForNotEditField();
+            organizerMenu.displayPromptForNewRoomName();
+            String name = new Scanner(System.in).nextLine();
             int max = -1;
             try{
-                System.out.println("Max participents: ");
+                organizerMenu.displayPromptForNewMaxParticipents();
                 max = scanner.nextInt();
             }catch (InputMismatchException e){
                 organizerMenu.displayPromptForNotAnOption();
@@ -236,7 +235,7 @@ public class OrganizerMenuController {
                 Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).setName(name);
             if(max >= 0)
                 Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).setMaxParticipents(max);
-            System.out.println("Room edited");
+            organizerMenu.displayPromptForRoomEdited();
             seeSpecificLocation(location);
         }else{
             organizerMenu.displayPromptForNotAnOption();

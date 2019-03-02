@@ -126,6 +126,26 @@ public class OrganizerMenu {
     public void displayPromptForRoomDetails(int location, int room) {
         System.out.println("\nName: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getName() +
                 "\nMax participents: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getMaxParticipents() +
-                "\nEvent in process: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEventInProgress());
+                "\nEvent in progress: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEventInProgress());
+    }
+
+    public void displayPromptForNotEditField() {
+        System.out.println("\nWrite \"-1\" if you dont want to edit a field");
+    }
+
+    public void displayPromptForNewRoomName() {
+        System.out.println("Name: ");
+    }
+
+    public void displayPromptForNewMaxParticipents() {
+        System.out.println("Max participents: ");
+    }
+
+    public void displayPromptForRoomEdited() {
+        System.out.println("Room edited");
+    }
+
+    public void displayPromptForWhichRoomToEdit() {
+        System.out.println("Which room?");
     }
 }
