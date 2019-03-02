@@ -27,8 +27,9 @@ public class CustomerMenuController {
                         System.out.println("            No planned events");
                     }else{
                         for(Model.PlannedEvent aEvent : aRoom.getEvents()){
-                            System.out.println("            " + aEvent.getNameOfEvent() + " " + aEvent.getDateOfEventInput()
-                                    + "-" + aEvent.getDateOfEvent().getMonth() + "-" + aEvent.getDateOfEvent().getYear() + " "
+                            System.out.println("            " + aEvent.getNameOfEvent()
+                                    + " " + aEvent.getDateOfEvent().toLocalDate().toString() + " \n" +
+                                    "               Starting at: " + aEvent.getDateOfEvent().toLocalTime().getHourOfDay() + ":" +aEvent.getDateOfEvent().getMinuteOfHour() + " "
                             + aEvent.getLengthOfEvent() + "min runtime ");
                         }
                     }

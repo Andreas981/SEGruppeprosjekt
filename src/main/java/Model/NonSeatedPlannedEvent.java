@@ -1,7 +1,7 @@
 package Model;
 
-import java.sql.Time;
-import java.util.Date;
+import org.joda.time.LocalDateTime;
+
 
 public class NonSeatedPlannedEvent extends PlannedEvent {
     private int freeSpace;
@@ -9,8 +9,8 @@ public class NonSeatedPlannedEvent extends PlannedEvent {
 
     // TODO Modified constructor for different events:
 
-    public NonSeatedPlannedEvent(String nameOfEvent, String dateOfEvent, Time timeOfEventStart, int lengthOfEvent, int ageLimit, int freeSpace, String meetUp) {
-        super(nameOfEvent, dateOfEvent, timeOfEventStart, lengthOfEvent, ageLimit);
+    public NonSeatedPlannedEvent(String nameOfEvent, LocalDateTime dateOfEvent, int lengthOfEvent, int ageLimit, int freeSpace, String meetUp) {
+        super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
         this.freeSpace = freeSpace;
         this.meetUp = meetUp;
     }
