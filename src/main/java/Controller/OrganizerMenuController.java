@@ -289,6 +289,7 @@ public class OrganizerMenuController {
                     addEventPrompt(location, room);
                     break;
                 case 2:
+                    removeEventPrompt(location, room);
                     break;
                 case 3:
                     break;
@@ -299,6 +300,17 @@ public class OrganizerMenuController {
                     organizerMenu.displayPromptForNotAnOption();
                     spesificRoom(location, room);
             }
+        }catch (InputMismatchException e){
+            organizerMenu.displayPromptForNotAnOption();
+            spesificRoom(location, room);
+        }
+    }
+
+    private void removeEventPrompt(int location, int room) {
+        System.out.println("Which event do you want to remove?");
+        int choice = -1;
+        try{
+
         }catch (InputMismatchException e){
             organizerMenu.displayPromptForNotAnOption();
             spesificRoom(location, room);
@@ -317,15 +329,17 @@ public class OrganizerMenuController {
         System.out.println("Start time of event (HH-MM): ");
         String time = new Scanner(System.in).next();
         int ageLimit = -1;
+        int lengthOfEvent = -1;
         try{
             System.out.println("Age limit");
             ageLimit = new Scanner(System.in).nextInt();
+
         }catch (InputMismatchException e){
             organizerMenu.displayPromptForNotAnOption();
             spesificRoom(location, room);
         }
 
-        if (regEx(patternForDate, date) && regEx(patternForTime, time) && ageLimit != -1)
+        if (Security.RegEx.regEx(patternForDate, date) && Security.RegEx.regEx(patternForTime, time) && ageLimit != -1)
             addEvent(name, date, time, ageLimit);
 
 
@@ -372,11 +386,7 @@ public class OrganizerMenuController {
         spesificLocationMenu(location);
     }
 
-    public Boolean regEx(String pattern, String input){
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(input);
-        return m.find();
-    }
+
 
 
     private static void levelOneOrganizer() {
