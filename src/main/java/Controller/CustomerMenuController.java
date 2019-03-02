@@ -59,7 +59,7 @@ public class CustomerMenuController {
                             .get(j).getRooms().get(k).getName());
                     for(int m = 0; m<Database.organizers.get(i).getLocations().get(j)
                             .getRooms().get(k).getEvents().size();m++){
-
+                        System.out.println("            _________________________________________________");
                         PlannedEvent plannedEvent = Database.organizers.get(i).getLocations().get(j).getRooms()
                                 .get(k).getEvents()
                                 .get(m);
@@ -69,6 +69,7 @@ public class CustomerMenuController {
                                 + ":" +plannedEvent.getDateOfEvent().getMinuteOfHour() + " "
                                 + plannedEvent.getLengthOfEvent() +  "min runtime \n" +
                                 "            Event number: (" + (i) + (j) + (k) + (m) + ")");
+
                     }
             }
         }
