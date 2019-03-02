@@ -4,10 +4,11 @@ import Dummy.Database;
 import Model.Customer;
 import Model.Organizer;
 import View.RegisterUserView;
+import org.joda.time.LocalDate;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.Scanner;
 
 public class RegisterUserController {
@@ -17,7 +18,7 @@ public class RegisterUserController {
     private String userEmail;
     private String userPhoneNumber;
     private String userPassword;
-    private Date userBirthDay;
+    private LocalDate userBirthDay;
     private String organization;
     private int accessLevel;
     private RegisterUserView registerUserView;
@@ -182,35 +183,29 @@ public class RegisterUserController {
     }
 
     private boolean tryParseInputDate(String dateEntered){
-        SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
-        Date dateParsed = null;
+
+        LocalDate dateParsed = new LocalDate();
         try {
             //Parsing the String
-            dateParsed = birthDay.parse(dateEntered);
-        } catch (ParseException e) {
+            dateParsed.parse(dateEntered);
+        } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Invalid date input! Should be Day-Month-Year");
+            System.out.println("Invalid date input! Should be Year-month-day");
             return false;
         }
         return true;
     }
 
-    private Date parseInputDate(String dateEntered){
-        SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
-        Date dateParsed = null;
-        try {
-            //Parsing the String
-            dateParsed = birthDay.parse(dateEntered);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.out.println("Invalid date input! Should be Day-Month-Year");
-            return null;
-        }
+    private LocalDate parseInputDate(String dateEntered){
+        //SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
+        LocalDate dateParsed = new LocalDate();
+        //Parsing the String
+            dateParsed.parse(dateEntered);
         return dateParsed;
     }
 
     private boolean registerCustomerIntoDatabase(String firstName, String lastName, String mail
-            , String telephone, String username, String password, Date birthday){
+            , String telephone, String username, String password, LocalDate birthday){
         try {
             Database.customers.add(new Customer(firstName,lastName,mail
                     ,telephone,username,Security.PassHash.hashPassword(password),birthday));

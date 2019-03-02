@@ -1,4 +1,5 @@
 import Model.Organizer;
+import org.joda.time.LocalDate;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +13,7 @@ public class User {
 
     @Before
     public void settingUpOrganizer(){
-        organizer = new Organizer("Andreas", "Mikalsen", "andremi@hiof.no", "97781816", "andremi","abc123", new Date(1998-1900, 6-1, 12), "HiØ", 1);
+        organizer = new Organizer("Andreas", "Mikalsen", "andremi@hiof.no", "97781816", "andremi","abc123", new LocalDate(1998,6,1), "HiØ", 1);
     }
     @Test
     public void gettingFullNameOfOrganizer(){
