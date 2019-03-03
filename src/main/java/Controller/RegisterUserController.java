@@ -5,11 +5,6 @@ import Model.Customer;
 import Model.Organizer;
 import View.RegisterUserView;
 import org.joda.time.LocalDate;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RegisterUserController {
@@ -34,7 +29,6 @@ public class RegisterUserController {
 
     // TODO Validation for a registered admin is logged in
     // Constructor for a organizer, can only be used by admin
-
     public RegisterUserController(boolean isOrganizer) {
         this.isOrganizer = isOrganizer;
     }
@@ -86,7 +80,6 @@ public class RegisterUserController {
             }else{
                 registerUserView.displayErrorToUser("You already have a account registered with this email");
             }
-
         }else{
             registerUserView.displayErrorToUser("Please input a valid email");
         }
@@ -183,22 +176,16 @@ public class RegisterUserController {
         return true;
     }
 
+    // See if the data entered is valid:
     private boolean tryParseInputDate(String dateInput) {
         String patternForDate = "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]";
-        System.out.println("Trying: " + dateInput );
-        if (Security.RegEx.regEx(patternForDate, dateInput)){
-            return true;
-        }
-        return false;
+        return Security.RegEx.regEx(patternForDate, dateInput);
     }
 
 
     private LocalDate parseInputDate(String dateEntered){
-        //SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
-        LocalDate dateParsed = new LocalDate();
         //Parsing the String
-            dateParsed.parse(dateEntered);
-        return dateParsed;
+        return  LocalDate.parse(dateEntered);
     }
 
     private boolean registerCustomerIntoDatabase(String firstName, String lastName, String mail
