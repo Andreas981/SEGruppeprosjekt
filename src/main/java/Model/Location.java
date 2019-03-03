@@ -21,7 +21,6 @@ public class Location {
     }
 
 
-    //TODO Method for removing a Room
     public void addRoom(Room room){
         rooms.add(room);
     }
