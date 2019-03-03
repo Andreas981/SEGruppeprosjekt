@@ -11,6 +11,7 @@ public class OrganizerMenu {
         System.out.println("\nWhat would you like to do?");
         System.out.println("(1) See locations");
         System.out.println("(2) Add location");
+        System.out.println("(3) Sign out");
 
     }
 

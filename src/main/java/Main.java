@@ -17,6 +17,7 @@ public class Main {
     }
 
     public static void displayMenu(){
+        Boolean exit = false;
         Scanner scanner = new Scanner(System.in);
         printMenu();
         // TODO input validation
@@ -37,13 +38,14 @@ public class Main {
                 break;
             case 4:
                 System.out.println("Goodbye");
+                exit = true;
                 break;
             default:
                 System.out.println("Something went wrong");
                 printMenu();
-
-
-
+        }
+        if(!exit){
+            displayMenu();
         }
     }
 

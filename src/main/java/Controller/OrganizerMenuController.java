@@ -35,6 +35,9 @@ public class OrganizerMenuController {
                 case 2:
                     addLocation();
                     break;
+                case 3:
+                    Database.currentLoggedInOrganizer = null;
+                    break;
                 default:
                     organizerMenu.displayPromptForNotAnOption();
                     levelTwoOrganizer();
