@@ -149,10 +149,17 @@ public class RegisterUserController {
         }
     }
 
-    // TODO INTEGER parse validation
     private void askForAccessLevel() {
         System.out.println("Access level 1 or 2?");
-        accessLevel = Integer.parseInt(scanner.next());
+        int level = 0;
+        try{
+            level = scanner.nextInt();
+        }catch (InputMismatchException e){
+            System.out.println("Sorry, that is not an option");
+            askForAccessLevel();
+        }
+
+        accessLevel = level;
         if(accessLevel>0 && accessLevel <3){
             registerOrganizerIntoDatabase();
         }else{

@@ -266,7 +266,6 @@ public class OrganizerMenuController {
 
     private void spesificRoom(int location, int room) {
         organizerMenu.displayPromptForRoomDetails(location, room);
-        //TODO Refacotr strings
         organizerMenu.displayPromptForEventsInRoom();
         for(int i = 0; i < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().size(); i++){
             System.out.println("\t(" + i + ") " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(i).getNameOfEvent());

@@ -26,9 +26,6 @@ public class Room {
     //TODO Method for increasing max participents
     //TODO Method for decreasing max participents
 
-    //TODO Method for adding seated event
-    //TODO Method for removing seated event
-
     public void addEvent(SeatedPlannedEvent seatedPlannedEvent){
         events.add(seatedPlannedEvent);
     }
