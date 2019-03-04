@@ -25,7 +25,7 @@ public class Main {
                 break;
             case 2:
                 RegisterUserController registerAnewUser = new RegisterUserController();
-                registerAnewUser.startRegistrationForCustomer();
+                registerAnewUser.startRegistrationForUser();
                 displayMenu();
                 break;
             case 3:
