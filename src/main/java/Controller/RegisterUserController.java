@@ -5,6 +5,8 @@ import Model.Customer;
 import Model.Organizer;
 import View.RegisterUserView;
 import org.joda.time.LocalDate;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RegisterUserController {
