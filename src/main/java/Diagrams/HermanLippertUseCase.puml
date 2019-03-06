@@ -1,20 +1,14 @@
 @startuml
-:Main Admin: as Admin
-(Use the application) as (Use)
 
-User -> (Start)
-User --> (Use)
+Customer --> (Choose events(seated and nonseated)
+Customer --> (Buy ticket)
+Customer --> (Cancel ticket)
+Customer --> (See bought tickets)
 
-Admin ---> (Use)
+newpage
 
-note right of Admin : This is an example.
+Orginaizer -->(Create, delete and edit Events(Seated and nonseated)
+Orginaizer -->(Create, delete and edit redigere Location)
+Orginaizer -->(Create, delete and edit redigere rooms)
 
-note right of (Use)
-A note can also
-be on several lines
-end note
-
-note "This note is connected\nto several objects." as N2
-(Start) .. N2
-N2 .. (Use)
 @enduml
