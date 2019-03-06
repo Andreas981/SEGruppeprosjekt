@@ -1,5 +1,8 @@
+Sekvensdiagram for registering av ny "Customer" bruker
 @startuml
-User -> Database:Create user organizer
 
+User -> Customer:Register Customer
+Customer -> Database:Add customer account
+User <-- Database:Return customer account
 
 @enduml
