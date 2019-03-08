@@ -123,11 +123,14 @@ public class CustomerMenuController {
         for (int i = 0; i < eventNumber.length;i++){
             System.out.println(eventNumber[i]);
         }
-        if(Database.organizers.indexOf(eventNumber[0]) != -1){
-            if (Database.organizers.get(eventNumber[0]).getLocations().indexOf(eventNumber[1]) != -1) {
-                if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().indexOf(eventNumber[2]) != -1){
+        if(Database.organizers.indexOf(Database.organizers.get(eventNumber[0])) != -1){
+            if (Database.organizers.get(eventNumber[0]).getLocations().indexOf(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1])) != -1) {
+                if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().indexOf(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
+                        .get(eventNumber[2])) != -1){
                     if(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                            .get(eventNumber[2]).getEvents().indexOf(eventNumber[3]) != -1){
+                            .get(eventNumber[2]).getEvents().indexOf(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
+                                    .get(eventNumber[2]).getEvents()
+                                    .get(eventNumber[3])) != -1){
                         return true;
                     }
                     return false;
