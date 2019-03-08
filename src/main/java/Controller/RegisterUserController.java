@@ -4,10 +4,9 @@ import Dummy.Database;
 import Model.Customer;
 import Model.Organizer;
 import View.RegisterUserView;
+import org.joda.time.LocalDate;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RegisterUserController {
@@ -17,7 +16,7 @@ public class RegisterUserController {
     private String userEmail;
     private String userPhoneNumber;
     private String userPassword;
-    private Date userBirthDay;
+    private LocalDate userBirthDay;
     private String organization;
     private int accessLevel;
     private RegisterUserView registerUserView;
@@ -32,7 +31,6 @@ public class RegisterUserController {
 
     // TODO Validation for a registered admin is logged in
     // Constructor for a organizer, can only be used by admin
-
     public RegisterUserController(boolean isOrganizer) {
         this.isOrganizer = isOrganizer;
     }
@@ -84,7 +82,6 @@ public class RegisterUserController {
             }else{
                 registerUserView.displayErrorToUser("You already have a account registered with this email");
             }
-
         }else{
             registerUserView.displayErrorToUser("Please input a valid email");
         }
@@ -109,7 +106,7 @@ public class RegisterUserController {
             askForUserPassword();
         }else{
             registerUserView.displayErrorToUser("Invalid date entered! \n" +
-                    "Enter it like 01-02-1983");
+                    "Enter it like 1980-02-03");
             askForUserBirthDate();
         }
     }
@@ -147,10 +144,17 @@ public class RegisterUserController {
         }
     }
 
-    // TODO INTEGER parse validation
     private void askForAccessLevel() {
         System.out.println("Access level 1 or 2?");
-        accessLevel = Integer.parseInt(scanner.next());
+        int level = 0;
+        try{
+            level = scanner.nextInt();
+        }catch (InputMismatchException e){
+            System.out.println("Sorry, that is not an option");
+            askForAccessLevel();
+        }
+
+        accessLevel = level;
         if(accessLevel>0 && accessLevel <3){
             registerOrganizerIntoDatabase();
         }else{
@@ -181,36 +185,20 @@ public class RegisterUserController {
         return true;
     }
 
-    private boolean tryParseInputDate(String dateEntered){
-        SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
-        Date dateParsed = null;
-        try {
-            //Parsing the String
-            dateParsed = birthDay.parse(dateEntered);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.out.println("Invalid date input! Should be Day-Month-Year");
-            return false;
-        }
-        return true;
+    // See if the data entered is valid:
+    private boolean tryParseInputDate(String dateInput) {
+        String patternForDate = "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]";
+        return Security.RegEx.regEx(patternForDate, dateInput);
     }
 
-    private Date parseInputDate(String dateEntered){
-        SimpleDateFormat birthDay = new SimpleDateFormat("dd-MM-yyyy");
-        Date dateParsed = null;
-        try {
-            //Parsing the String
-            dateParsed = birthDay.parse(dateEntered);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.out.println("Invalid date input! Should be Day-Month-Year");
-            return null;
-        }
-        return dateParsed;
+
+    private LocalDate parseInputDate(String dateEntered){
+        //Parsing the String
+        return  LocalDate.parse(dateEntered);
     }
 
     private boolean registerCustomerIntoDatabase(String firstName, String lastName, String mail
-            , String telephone, String username, String password, Date birthday){
+            , String telephone, String username, String password, LocalDate birthday){
         try {
             Database.customers.add(new Customer(firstName,lastName,mail
                     ,telephone,username,Security.PassHash.hashPassword(password),birthday));

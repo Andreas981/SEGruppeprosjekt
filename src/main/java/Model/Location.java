@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * Class for creating Location in Organizer.
+ * Class for creating LocationController in Organizer.
  * A location can have one or more rooms.
  */
 
@@ -21,7 +21,6 @@ public class Location {
     }
 
 
-    //TODO Method for removing a Room
     public void addRoom(Room room){
         rooms.add(room);
     }

@@ -1,4 +1,5 @@
 import Model.SeatedPlannedEvent;
+import org.joda.time.LocalDateTime;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,7 +12,7 @@ public class TestSeatedPlannedEvent {
 
     @Test
     public void createAseatedEvent(){
-        SeatedPlannedEvent seatedPlannedEvent = new SeatedPlannedEvent("TestEvent",new Date(2019,4,4),new Time(22,2,22),90,18);
+        SeatedPlannedEvent seatedPlannedEvent = new SeatedPlannedEvent("Example seated event",new LocalDateTime(2019,3,2,22,00),200,20);
         Assert.assertEquals(seatedPlannedEvent,seatedPlannedEvent);
     }
 }

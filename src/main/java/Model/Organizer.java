@@ -1,6 +1,8 @@
 package Model;
 
-import java.util.Date;
+
+import org.joda.time.LocalDate;
+
 import java.util.ArrayList;
 
 /**
@@ -11,14 +13,15 @@ public class Organizer extends User{
 
     String organization;
     int accessLevel;
-    ArrayList<Location> locations;
+    ArrayList<Location> locations = new ArrayList<Location>();
     //TODO Add accounting for organizer
+    // TODO Add nonSeatedEvents booking
 
-    public Organizer(String firstName, String lastName, String mail, String telephone, String username, String password, Date birthday, String organization, int  accessLevel) {
+
+    public Organizer(String firstName, String lastName, String mail, String telephone, String username, String password, LocalDate birthday, String organization, int accessLevel) {
         super(firstName, lastName, mail, telephone, username, password, birthday);
         this.organization = organization;
         this.accessLevel = accessLevel;
-        locations = new ArrayList<Location>();
     }
 
     public void addLocation(Location location){

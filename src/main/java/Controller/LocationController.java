@@ -2,7 +2,7 @@ package Controller;
 
 import Dummy.Database;
 
-public class Location {
+public class LocationController {
     public static Boolean addLocation(String name, String address, int publicLocaiton) {
 
         if(publicLocaiton == 1 || publicLocaiton == 2){

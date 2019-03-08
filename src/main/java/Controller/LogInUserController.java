@@ -1,15 +1,18 @@
 package Controller;
 
 import Dummy.Database;
+import View.LogInView;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class loggInUser {
+public class LogInUserController {
 
+    LogInView logInView = new LogInView();
 
     public int initLogin(){
-        System.out.println("\nAre you a (1)Organizer or (2)Customer?");
+        logInView.displayPromptForUserRoleChoice();
 
         int userRole = 0;
         try{
@@ -21,42 +24,44 @@ public class loggInUser {
                 System.out.println(userRole);
                 goToMenu(userRole);
             }else{
-                System.out.println("Sorry, that is not an option");
+                logInView.displayPromptForNotAnOption();
                 initLogin();
             }
         }catch (InputMismatchException e){
-            System.out.println("Sorry, that is not an option");
+            logInView.displayPromptForNotAnOption();
             initLogin();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return 0;
     }
 
-    private void goToMenu(int userRole) {
+    private void goToMenu(int userRole) throws IOException {
         switch(userRole){
 
             case 1:
-                new Controller.OrganizerMenu().initOrganizerMenu();
+                new OrganizerMenuController().initOrganizerMenu();
                 break;
             case 2:
-                System.out.println("HAHA");
+                new CustomerMenuController().enterCustomerMenu();
                 break;
             default:
-                System.out.println("Something went wrong while logging in");
+                logInView.displayPromptForSomwthingWentWrong();
                 break;
         }
     }
 
     private int askForUserName(int userRole) {
-        System.out.print("\nUsername: ");
+        logInView.displayPromptForUsername();
         String username = new Scanner(System.in).next();
-        System.out.print("Password: ");
+        logInView.displayPromptForPassword();
         String password = new Scanner(System.in).next();
 
         if(login(userRole, username, password)){
-            System.out.println("You're logged in");
+            logInView.displayPromptForLoggedIn();
             return userRole;
         }else{
-            System.out.println("Sorry, you could not login");
+            logInView.displayPromptForNotAnOption();
         }
         return 0;
     }

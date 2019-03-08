@@ -1,7 +1,6 @@
 package Model;
 
-import java.sql.Time;
-import java.util.Date;
+import org.joda.time.LocalDateTime;
 
 /**
  * Abstract class used for creating Events by Organizer's
@@ -9,33 +8,21 @@ import java.util.Date;
 public abstract class PlannedEvent {
     private String nameOfEvent;
     // TODO Add organizer<organizer> field
-    private Date date;
-    private Time timeOfEventStart;
+    private LocalDateTime dateOfEvent;
     private int lengthOfEvent;
     private int ageLimit;
     // TODO Add tickets<Ticket>
 
 
-    // TODO Make class abstract
-    public PlannedEvent(String nameOfEvent, Date date, Time timeOfEventStart, int lengthOfEvent, int ageLimit) {
-        // TODO Faulty input try/catch?
+    public PlannedEvent(String nameOfEvent, LocalDateTime dateOfEvent, int lengthOfEvent, int ageLimit) {
         this.nameOfEvent = nameOfEvent;
-        this.date = date;
-        this.timeOfEventStart = timeOfEventStart;
+        this.dateOfEvent = dateOfEvent;
         this.lengthOfEvent = lengthOfEvent;
         this.ageLimit = ageLimit;
     }
 
     public String getNameOfEvent() {
         return nameOfEvent;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public Time getTimeOfEventStart() {
-        return timeOfEventStart;
     }
 
     public int getLengthOfEvent() {
@@ -46,6 +33,13 @@ public abstract class PlannedEvent {
         return ageLimit;
     }
 
-    // TODO Buy ticket implementation
-    // TODO Check that the ticket is valid for this show
+    public LocalDateTime getDateOfEvent() {
+        return dateOfEvent;
+    }
+
+    @Override
+    public String toString(){
+        return nameOfEvent ;
+    }
+
 }
