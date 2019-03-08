@@ -15,7 +15,6 @@ public class Main {
         //Initializing the dummy database
         InitStart.Init();
 
-
         displayMenu();
 
     }

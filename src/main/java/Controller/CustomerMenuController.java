@@ -120,7 +120,7 @@ public class CustomerMenuController {
     private Boolean checkIfEventExist(int[] eventNumber) {
         // TODO Migrate to real db
         // TODO Query
-        for (int i = 0; i < eventNumber.length;i++){
+        for (int i = 0; i < eventNumber.length;i++) {
             System.out.println(eventNumber[i]);
         }
         if(Database.organizers.indexOf(Database.organizers.get(eventNumber[0])) != -1){
