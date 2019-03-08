@@ -107,9 +107,11 @@ public class CustomerMenuController {
         }
         if(checkIfEventExist(eventNumber)){
             // Grab the event and send to order controller
+            System.out.println("OKAY");
         }
         else{
             System.out.println("The event you have entered does not exist");
+            enterCustomerMenu();
         }
 
     }
@@ -118,15 +120,17 @@ public class CustomerMenuController {
     private Boolean checkIfEventExist(int[] eventNumber) {
         // TODO Migrate to real db
         // TODO Query
-        if(Database.organizers.get(eventNumber[0]).){
-            if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1])!=null){
-                if (!(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                        .get(eventNumber[2]).equals(null))){
-                    if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                            .get(eventNumber[2]).getEvents()
-                            .get(eventNumber[3]) != null){
+        for (int i = 0; i < eventNumber.length;i++){
+            System.out.println(eventNumber[i]);
+        }
+        if(Database.organizers.indexOf(eventNumber[0]) != -1){
+            if (Database.organizers.get(eventNumber[0]).getLocations().indexOf(eventNumber[1]) != -1) {
+                if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().indexOf(eventNumber[2]) != -1){
+                    if(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
+                            .get(eventNumber[2]).getEvents().indexOf(eventNumber[3]) != -1){
                         return true;
-                    } return false;
+                    }
+                    return false;
                 }
                 return false;
             }
@@ -134,6 +138,7 @@ public class CustomerMenuController {
         }
         return false;
     }
+
 
 
 
