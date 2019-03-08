@@ -14,8 +14,8 @@ public class Organizer extends User{
     String organization;
     int accessLevel;
     ArrayList<Location> locations = new ArrayList<Location>();
+    ArrayList<NonSeatedPlannedEvent> nonSeatedPlannedEvents = new ArrayList<NonSeatedPlannedEvent>();
     //TODO Add accounting for organizer
-    // TODO Add nonSeatedEvents booking
 
 
     public Organizer(String firstName, String lastName, String mail, String telephone, String username, String password, LocalDate birthday, String organization, int accessLevel) {
@@ -29,6 +29,10 @@ public class Organizer extends User{
     }
     public ArrayList<Location> getLocations(){
         return locations;
+    }
+
+    public void addNonSeatedPlannedEvent(NonSeatedPlannedEvent event){
+        nonSeatedPlannedEvents.add(event);
     }
 
     public String getOrganization() {

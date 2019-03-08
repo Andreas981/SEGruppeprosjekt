@@ -4,7 +4,6 @@ package Dummy;
 import Model.*;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
-import org.joda.time.LocalDate;
 
 
 
@@ -14,7 +13,7 @@ public class InitStart {
 
         // Setting up organizers
         Database.organizers.add(new Organizer("Kari", "Normann", "kari@normann.no", "12345678", "karino", Security.PassHash.hashPassword("abc123"),new LocalDate(2000,2,2), "HiØ", 2));
-        Database.organizers.add(new Organizer("Ole", "Olsen", "Ole.12@gmail.no", "98765432", "oleol", Security.PassHash.hashPassword("abc123"), new LocalDate(2000,2,2), "Thon Hotell", 2));
+        Database.organizers.add(new Organizer("Ole", "Olsen", "Ole.12@gmail.no", "98765432", "oleol", Security.PassHash.hashPassword("abc123"), new LocalDate(2000,2,2), "Thon Hotell", 1));
 
 
         // Setting up customer
