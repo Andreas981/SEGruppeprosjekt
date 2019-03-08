@@ -3,6 +3,7 @@ package Controller;
 import Dummy.Database;
 import View.LogInView;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -29,11 +30,13 @@ public class LogInUserController {
         }catch (InputMismatchException e){
             logInView.displayPromptForNotAnOption();
             initLogin();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return 0;
     }
 
-    private void goToMenu(int userRole) {
+    private void goToMenu(int userRole) throws IOException {
         switch(userRole){
 
             case 1:

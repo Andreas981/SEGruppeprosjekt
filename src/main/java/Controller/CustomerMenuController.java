@@ -6,6 +6,8 @@ import Model.Organizer;
 import Model.PlannedEvent;
 import Model.Room;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 
@@ -44,7 +46,7 @@ public class CustomerMenuController {
     }
 
     // Used by a logged in user
-    public void enterCustomerMenu(){
+    public void enterCustomerMenu() {
         System.out.println("_____________________________________________________________________");
         for(int i = 0;i<Database.organizers.size();i++) {
             System.out.println("*********************************************************************");
@@ -75,7 +77,8 @@ public class CustomerMenuController {
         }
 
         }
-        askForUserSelection();
+            askForUserSelection();
+
     }
 
     //TODO SOUT IN VIEW of customerMenu
@@ -83,16 +86,60 @@ public class CustomerMenuController {
         System.out.println("Please enter the event number of the performance you wish to purchase tickets to.");
         // TODO Input validation
         String eventNumberInput = scanner.next();
-        String[] eventSplit = eventNumberInput.split("");
-        int[] eventNumber = new int[eventSplit.length];
-
-        for(int i = 0; i<eventSplit.length;i++){
-            eventNumber[i] = Integer.parseInt(eventSplit[i]);
+        if(eventNumberInput.length()<4) {
+            System.out.println("Invalid selection entered");
+            enterCustomerMenu();
+        }else{
+            validateUserSelection(eventNumberInput);
         }
+    }
+
+    private void validateUserSelection(String userInput) {
+        String[] eventSplit = userInput.split("");
+        int[] eventNumber = new int[eventSplit.length];
+        try  {
+            for (int i = 0; i < eventSplit.length; i++) {
+                eventNumber[i] = Integer.parseInt(eventSplit[i]);
+            }
+        }catch (NumberFormatException e){
+            System.out.println("Invalid selection entered");
+            enterCustomerMenu();
+        }
+        if(checkIfEventExist(eventNumber)){
+            // Grab the event and send to order controller
+        }
+        else{
+            System.out.println("The event you have entered does not exist");
+        }
+
+    }
+
+    // Control that that valid int selection exist in the database
+    private Boolean checkIfEventExist(int[] eventNumber) {
+        // TODO Migrate to real db
+        // TODO Query
+        if(Database.organizers.get(eventNumber[0]).){
+            if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1])!=null){
+                if (!(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
+                        .get(eventNumber[2]).equals(null))){
+                    if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
+                            .get(eventNumber[2]).getEvents()
+                            .get(eventNumber[3]) != null){
+                        return true;
+                    } return false;
+                }
+                return false;
+            }
+            return false;
+        }
+        return false;
+    }
+
+
+
+    private void selectEvent(int[] eventNumber){
         PlannedEvent plannedEvent = Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
                 .get(eventNumber[2]).getEvents()
                 .get(eventNumber[3]);
-        System.out.println("You have selected : " + plannedEvent.getNameOfEvent());
-
     }
 }
