@@ -1,14 +1,14 @@
 @startuml
 
-Customer --> (Choose events(seated and nonseated)
+Customer --> (Choose events)
 Customer --> (Buy ticket)
 Customer --> (Cancel ticket)
-Customer --> (See bought tickets)
+Customer --> (See ticket history)
 
 newpage
 
-Orginaizer -->(Create, delete and edit Events(Seated and nonseated)
-Orginaizer -->(Create, delete and edit redigere Location)
-Orginaizer -->(Create, delete and edit redigere rooms)
+Organizer -->(Create, delete and edit Events<seated and nonseated>)
+Organizer -->(Create, delete and edit Location)
+Organizer -->(Create, delete and edit Rooms)
 
 @enduml
