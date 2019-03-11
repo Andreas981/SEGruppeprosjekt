@@ -464,6 +464,7 @@ public class OrganizerMenuController {
         int freeSpace = -1;
         try{
             organizerMenu.displayPromptForAddEventLength();
+            organizerMenu.displayPromptForAddEventLength();
             length = new Scanner(System.in).nextInt();
             organizerMenu.displayPromptForAddEventAgeLimit();
             ageLimit = new Scanner(System.in).nextInt();
