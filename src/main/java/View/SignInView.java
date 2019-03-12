@@ -1,5 +1,6 @@
 package View;
 
+import Controller.MenuController;
 import Controller.SignInUserController;
 import Dummy.Database;
 
@@ -41,7 +42,7 @@ public class SignInView {
             switch(userRole){
                 case 1:
                     System.out.println("You're logged in");
-                    new OrganizerMenuView();
+                    new MenuController().startOrganizerView();
                     break;
                 case 2:
                     System.out.println("You're logged in");
@@ -54,6 +55,7 @@ public class SignInView {
         }else{
             Database.currentLoggedInOrganizer = null;
             Database.currentLoggedInCustomer = null;
+            System.out.println("Something went wrong while logging in");
         }
     }
 
