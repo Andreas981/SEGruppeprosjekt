@@ -19,4 +19,6 @@ public class RoomController {
         if(!max.equals(".") && Integer.parseInt(max) > 0)
             Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).setMaxParticipents(Integer.parseInt(max));
     }
+
+
 }
