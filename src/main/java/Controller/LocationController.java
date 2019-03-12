@@ -23,7 +23,6 @@ public class LocationController {
         return false;
     }
     public void editLocaiton(int location, String name, String address, String publicLocaiton){
-
         if(!name.equals("."))
             Database.currentLoggedInOrganizer.getLocations().get(location).setName(name);
         if(!address.equals("."))

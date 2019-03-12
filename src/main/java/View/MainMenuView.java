@@ -2,6 +2,7 @@ package View;
 
 import Controller.CustomerMenuController;
 import Controller.RegisterUserController;
+import Dummy.Database;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -9,7 +10,10 @@ import java.util.Scanner;
 public class MainMenuView {
 
     public void displayMenu(){
-        Boolean exit = false;
+
+        Database.currentLoggedInOrganizer = null;
+        Database.currentLoggedInCustomer = null;
+
         Scanner scanner = new Scanner(System.in);
         printMenu();
 
@@ -22,7 +26,7 @@ public class MainMenuView {
                     break;
                 case 2:
                     RegisterUserController registerAnewUser = new RegisterUserController();
-                    registerAnewUser.startRegistrationForUser();
+                    //registerAnewUser.startRegistrationForUser();
                     displayMenu();
                     break;
                 case 3:
@@ -31,8 +35,7 @@ public class MainMenuView {
                     break;
                 case 4:
                     System.out.println("Goodbye");
-                    exit = true;
-                    break;
+                    return;
                 default:
                     System.out.println("Something went wrong");
                     printMenu();
@@ -41,9 +44,8 @@ public class MainMenuView {
             System.out.println("Sorry, that is not an option");
         }
 
-        if(!exit){
-            displayMenu();
-        }
+        displayMenu();
+
     }
 
     public static void printMenu(){
