@@ -51,6 +51,11 @@ public class RegisterUserView {
     public void displayPromptForUserLastname() {
         System.out.println("Please enter your lastname:");
         userLastName = scanner.next();
+        if(registerUserController.checkLastName(userLastName)) displayPromptForUserEmail();
+        else{
+            System.out.println("Invalid last name detected. Please try again");
+            displayPromptForUserLastname();
+        }
     }
 
     public void displayPromptForUserEmail() {
@@ -98,9 +103,7 @@ public class RegisterUserView {
 
         accessLevel = level;
         if(accessLevel>0 && accessLevel <3){
-            registerOrganizerIntoDatabase();
         }else{
-            registerUserView.displayErrorToUser("Invalid level detected");
             askForAccessLevel();
         }
     }
