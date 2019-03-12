@@ -40,9 +40,11 @@ public class SignInView {
         if(signInController.login(userRole, username, password)){
             switch(userRole){
                 case 1:
+                    System.out.println("You're logged in");
                     new OrganizerMenuView();
                     break;
                 case 2:
+                    System.out.println("You're logged in");
                     //new CustomerMenuController().enterCustomerMenu();
                     break;
                 default:
@@ -54,16 +56,9 @@ public class SignInView {
             Database.currentLoggedInCustomer = null;
         }
     }
-
-
+    
     private void displayPromptForNotAnOption() {
         System.out.println("Sorry, that is not an option");
-    }
-    private void displayPromptForSomwthingWentWrong() {
-        System.out.println("Something went wrong while logging in");
-    }
-    private void displayPromptForLoggedIn() {
-        System.out.println("You're logged in");
     }
 
 }
