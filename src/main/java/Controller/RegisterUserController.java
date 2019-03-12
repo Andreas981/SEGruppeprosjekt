@@ -7,7 +7,7 @@ import View.RegisterUserView;
 import org.joda.time.LocalDate;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
+
 
 public class RegisterUserController {
     private String userName;
@@ -20,13 +20,12 @@ public class RegisterUserController {
     private String organization;
     private int accessLevel;
     private RegisterUserView registerUserView;
-    private Scanner scanner;
+
     private boolean isOrganizer = false;
 
     // Constructor for a customer
     public RegisterUserController(){
-        registerUserView = new RegisterUserView();
-        scanner = new Scanner(System.in);
+
     }
 
     // TODO Validation for a registered admin is logged in
@@ -35,36 +34,25 @@ public class RegisterUserController {
         this.isOrganizer = isOrganizer;
     }
 
-    public void startRegistrationForUser(){
-        registerUserView.displayPromptForUserName();
-        userName = scanner.next();
+    public boolean checkUsername(String userName){
         if(userName.length()>5){
             if(isUserNameIsValid(userName)){
-                askForFirstname();
-            }else{
-                registerUserView.displayErrorToUser("You have selected a invalid username");
-                startRegistrationForUser();
+                return true;
             }
-        }else{
-            registerUserView.displayErrorToUser("Username must at least contain 5 characters");
-            startRegistrationForUser();
         }
+        return false;
     }
 
-    private void askForFirstname() {
-        registerUserView.displayPromptForUserFirstname();
-        userFirstName = scanner.next();
+    public boolean checkFirstname(String userFirstName) {
         if(userFirstName.length()>1){
-            askForLastname();
-        }else{
-            registerUserView.displayErrorToUser("Please input a first name");
-            askForFirstname();
+            return true;
         }
+        return false;
     }
 
     private void askForLastname() {
         registerUserView.displayPromptForUserLastname();
-        userLastName = scanner.next();
+
         if(userLastName.length()>1){
             askForUserEmail();
         }else{
@@ -75,7 +63,7 @@ public class RegisterUserController {
 
     private void askForUserEmail() {
         registerUserView.displayPromptForUserEmail();
-        userEmail = scanner.next();
+
         if(userEmail.length()>1){
             if(mailIsValid(userEmail)){
                 askForUserPhoneNumber();
@@ -89,7 +77,7 @@ public class RegisterUserController {
 
     private void askForUserPhoneNumber() {
         registerUserView.displayPromptForUserPhoneNumber();
-        userPhoneNumber = scanner.next();
+
         if(userPhoneNumber.length()>=8){
             askForUserBirthDate();
         }else{
@@ -100,7 +88,7 @@ public class RegisterUserController {
 
     private void askForUserBirthDate() {
         registerUserView.displayPromptForBirthdate();
-        String birthDayEntered = scanner.next();
+
         if(tryParseInputDate(birthDayEntered)){
             userBirthDay = parseInputDate(birthDayEntered);
             askForUserPassword();
@@ -114,7 +102,7 @@ public class RegisterUserController {
     // TODO Password validation method
     private void askForUserPassword() {
         registerUserView.displayPromptForUserPassword();
-        userPassword = scanner.next();
+
         if(userPassword.length()>=5){
             if(isOrganizer){
                 askForOrganization();
@@ -133,8 +121,8 @@ public class RegisterUserController {
         }
     }
 
-    private void askForOrganization() {
-        System.out.println("Organization affiliation?");;
+    private void askForOrganization(String organization) {
+
         organization = scanner.next();
         if(organization.length()>1){
             askForAccessLevel();
@@ -144,24 +132,7 @@ public class RegisterUserController {
         }
     }
 
-    private void askForAccessLevel() {
-        System.out.println("Access level 1 or 2?");
-        int level = 0;
-        try{
-            level = scanner.nextInt();
-        }catch (InputMismatchException e){
-            System.out.println("Sorry, that is not an option");
-            askForAccessLevel();
-        }
 
-        accessLevel = level;
-        if(accessLevel>0 && accessLevel <3){
-            registerOrganizerIntoDatabase();
-        }else{
-            registerUserView.displayErrorToUser("Invalid level detected");
-            askForAccessLevel();
-        }
-    }
 
     private Boolean isUserNameIsValid(String userName){
         // Search through database to see if userName exist
