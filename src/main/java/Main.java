@@ -1,7 +1,7 @@
 import Controller.CustomerMenuController;
-import Controller.LogInUserController;
 import Controller.RegisterUserController;
 import Dummy.*;
+import View.SignInView;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -29,7 +29,7 @@ public class Main {
             userSelection = scanner.nextInt();
             switch (userSelection) {
                 case 1:
-                    new LogInUserController().initLogin();
+                    new SignInView().askForSignInType();
                     break;
                 case 2:
                     RegisterUserController registerAnewUser = new RegisterUserController();
@@ -58,10 +58,10 @@ public class Main {
     }
 
     public static void printMenu(){
-        System.out.println("Please enter one of the following options:");
-        System.out.println("Type '1' to login");
-        System.out.println("Type '2' to register a new user");
-        System.out.println("Type '3' to look at events");
-        System.out.println("Type '4' to quit");
+        System.out.println("\nPlease enter one of the following options:");
+        System.out.println("\tType '1' to sign in");
+        System.out.println("\tType '2' to register a new user");
+        System.out.println("\tType '3' to look at events");
+        System.out.println("\tType '4' to quit");
     }
 }

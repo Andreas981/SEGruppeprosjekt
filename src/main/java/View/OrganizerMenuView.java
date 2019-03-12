@@ -5,7 +5,7 @@ import Dummy.Database;
 import java.sql.SQLOutput;
 
 
-public class OrganizerMenu {
+public class OrganizerMenuView {
 
     public void displayPromptForLevelTwoOrganizer() {
 
