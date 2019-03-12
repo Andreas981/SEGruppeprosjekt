@@ -13,7 +13,6 @@ import java.util.Scanner;
 
 public class CustomerMenuController {
     private Scanner scanner = new Scanner(System.in);
-
     public static void displayOnGoingEvents(){
         // For use in main screen
         System.out.println("_____________________________________________________________________");
@@ -77,24 +76,12 @@ public class CustomerMenuController {
         }
 
         }
-            askForUserSelection();
-
     }
 
     //TODO SOUT IN VIEW of customerMenu
-    private void askForUserSelection() {
-        System.out.println("Please enter the event number of the performance you wish to purchase tickets to.");
-        // TODO Input validation
-        String eventNumberInput = scanner.next();
-        if(eventNumberInput.length()<4) {
-            System.out.println("Invalid selection entered");
-            enterCustomerMenu();
-        }else{
-            validateUserSelection(eventNumberInput);
-        }
-    }
 
-    private void validateUserSelection(String userInput) {
+
+    public boolean validateUserSelection(String userInput) {
         String[] eventSplit = userInput.split("");
         int[] eventNumber = new int[eventSplit.length];
         try  {
@@ -103,17 +90,12 @@ public class CustomerMenuController {
             }
         }catch (NumberFormatException e){
             System.out.println("Invalid selection entered");
-            enterCustomerMenu();
+            return false;
         }
         if(checkIfEventExist(eventNumber)){
-            // Grab the event and send to order controller
-            System.out.println("OKAY");
+            return true;
         }
-        else{
-            System.out.println("The event you have entered does not exist");
-            enterCustomerMenu();
-        }
-
+        return false;
     }
 
     // Control that that valid int selection exist in the database
