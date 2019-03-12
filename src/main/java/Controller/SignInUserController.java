@@ -2,13 +2,9 @@ package Controller;
 
 import Dummy.Database;
 
-import java.io.IOException;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class SignInUserController {
 
-    public Boolean login(int userRole, String username, String password){
+    public Boolean singIn(int userRole, String username, String password){
 
         if(userRole == 1){
             //Login organizer

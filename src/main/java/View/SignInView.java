@@ -37,7 +37,7 @@ public class SignInView {
         System.out.print("Password: ");
         String password = scanner.next();
 
-        if(signInController.login(userRole, username, password)){
+        if(signInController.singIn(userRole, username, password)){
             switch(userRole){
                 case 1:
                     System.out.println("You're logged in");
@@ -56,7 +56,7 @@ public class SignInView {
             Database.currentLoggedInCustomer = null;
         }
     }
-    
+
     private void displayPromptForNotAnOption() {
         System.out.println("Sorry, that is not an option");
     }
