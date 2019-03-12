@@ -25,8 +25,7 @@ public class MainMenuView {
                     new SignInView().askForSignInType();
                     break;
                 case 2:
-                    RegisterUserController registerAnewUser = new RegisterUserController();
-                    //registerAnewUser.startRegistrationForUser();
+                    new RegisterUserView().displayPromptForUserName();
                     displayMenu();
                     break;
                 case 3:

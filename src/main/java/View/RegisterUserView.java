@@ -101,16 +101,15 @@ public class RegisterUserView {
     }
 
     private void sendRegistrationToController() {
+        if(registerUserController.registerCustomerIntoDatabase(userFirstName,userLastName,
+                userEmail,userPhoneNumber,userName,
+                userPassword,userBirthDay)) System.out.println("User registered");
+        else{
+            System.out.println("Error could not register user");
+        }
     }
 
-    public void displayErrorToUser(String errorMessage) {
-        System.out.println(errorMessage);
-    }
-
-    public void displayUserRegistered(){
-        System.out.println("User registered successfully");
-    }
-
+    // TODO Organizer registration
     public void displayOranizationAffiloaton(){
         System.out.println("Organization affiliation?");;
     }
