@@ -1,7 +1,6 @@
 package View;
 
 import Controller.EventController;
-import Controller.LevelTwoOrganizerController;
 import Controller.LocationController;
 import Controller.RoomController;
 import Dummy.Database;

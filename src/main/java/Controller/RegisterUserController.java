@@ -2,8 +2,6 @@ package Controller;
 
 import Dummy.Database;
 import Model.Customer;
-import Model.Organizer;
-import View.RegisterUserView;
 import org.joda.time.LocalDate;
 
 public class RegisterUserController {

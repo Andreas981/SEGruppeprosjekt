@@ -1,7 +1,6 @@
 package View;
 
 import Controller.CustomerMenuController;
-import Controller.RegisterUserController;
 import Dummy.Database;
 
 import java.util.InputMismatchException;

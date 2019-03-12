@@ -2,13 +2,8 @@ package View;
 
 import Controller.RegisterUserController;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import Dummy.Database;
-import Model.Customer;
-import Model.Organizer;
-import View.RegisterUserView;
 import org.joda.time.LocalDate;
 
 public class RegisterUserView {
