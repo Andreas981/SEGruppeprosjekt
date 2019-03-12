@@ -12,8 +12,8 @@ import View.RegisterUserView;
 import org.joda.time.LocalDate;
 
 public class RegisterUserView {
-    private Scanner scanner;
-    RegisterUserController registerUserController;
+    private Scanner scanner = new Scanner(System.in);
+    RegisterUserController registerUserController = new RegisterUserController();
     private String userName;
     private String userFirstName;
     private String userLastName;
