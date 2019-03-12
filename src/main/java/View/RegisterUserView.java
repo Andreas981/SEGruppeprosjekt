@@ -21,7 +21,6 @@ public class RegisterUserView {
     private String userPhoneNumber;
     private String userPassword;
     private LocalDate userBirthDay;
-    private String organization;
     private int accessLevel;
 
     public RegisterUserView(){
@@ -61,24 +60,49 @@ public class RegisterUserView {
     public void displayPromptForUserEmail() {
         System.out.println("Please enter your email:");
         userEmail = scanner.next();
+        if(registerUserController.checkEmail(userEmail)) displayPromptForUserPhoneNumber();
+        else {
+            System.out.println("Invalid email. Please try again");
+            displayPromptForUserEmail();
+        }
 
     }
 
     public void displayPromptForUserPhoneNumber() {
         System.out.println("Please enter a valid phone number:");
         userPhoneNumber = scanner.next();
+        if(registerUserController.checkPhoneNumber(userPhoneNumber)) displayPromptForUserPassword();
+        else{
+            System.out.println("Incorrect phone number length..");
+            displayPromptForUserPhoneNumber();
+        }
     }
 
     public void displayPromptForUserPassword() {
         System.out.println("Please type in a valid password:");
         userPassword = scanner.next();
+        if(registerUserController.checkPasswordStrength(userPassword)) displayPromptForBirthdate();
+        else{
+            System.out.println("Password length too short");
+            displayPromptForUserPassword();
+        }
     }
 
     public void displayPromptForBirthdate(){
         System.out.println("Please enter a valid birth date. \n" +
                 "In format: YYYY-MM-DD");
         String birthDayEntered = scanner.next();
+        userBirthDay = registerUserController.checkDateEntered(birthDayEntered);
+        if(userBirthDay!=null) sendRegistrationToController();
+        else{
+            System.out.println("Invalid date entered");
+            displayPromptForBirthdate();
+        }
     }
+
+    private void sendRegistrationToController() {
+    }
+
     public void displayErrorToUser(String errorMessage) {
         System.out.println(errorMessage);
     }
