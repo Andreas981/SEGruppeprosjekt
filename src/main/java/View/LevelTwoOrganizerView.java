@@ -1,6 +1,6 @@
 package View;
 
-import Controller.EventController;
+import Controller.SeatedEventController;
 import Controller.LocationController;
 import Controller.RoomController;
 import Dummy.Database;
@@ -13,14 +13,13 @@ public class LevelTwoOrganizerView {
     private Scanner scanner = new Scanner(System.in);
     private LocationController locationController = new LocationController();
     private RoomController roomController = new RoomController();
-    private EventController eventController = new EventController();
+    private SeatedEventController seatedEventController = new SeatedEventController();
     private int currentLocation = -1;
     private int currentRoom = -1;
     private int currentEvent = -1;
 
 
     public void startView() {
-        Boolean signOut = false;
         System.out.println("This is your registred locations: ");
         for(int i = 0; i < Database.currentLoggedInOrganizer.getLocations().size(); i++)
             System.out.println("\t(" + i + ") " + Database.currentLoggedInOrganizer.getLocations().get(i).getName());
@@ -57,8 +56,7 @@ public class LevelTwoOrganizerView {
         }catch (InputMismatchException e){
             displayNotAnOption();
         }
-        if(!signOut)
-            startView();
+        startView();
     }
 
     private void seeLocation(){
@@ -398,7 +396,7 @@ public class LevelTwoOrganizerView {
         }
 
         if (Security.RegEx.regEx(patternForDate, date) && Security.RegEx.regEx(patternForTime, time) && ageLimit != -1){
-            eventController.addEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent);
+            seatedEventController.addSeatedEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent);
             System.out.println("Event added");
         }else{
             displayNotAnOption();
@@ -413,7 +411,7 @@ public class LevelTwoOrganizerView {
             displayNotAnOption();
         }
         if(choice > -1 && choice < Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().size()){
-            eventController.removeEvent(currentLocation, currentRoom, choice);
+            seatedEventController.removeSeatedEvent(currentLocation, currentRoom, choice);
             System.out.println("Event removed!");
         }else {
             displaySomethingWentWrong();
@@ -452,7 +450,7 @@ public class LevelTwoOrganizerView {
                 return;
             }
 
-            eventController.editEvent(currentLocation, currentRoom, event, name, date, lengthOfEvent, ageLimit);
+            seatedEventController.editSeatedEvent(currentLocation, currentRoom, event, name, date, lengthOfEvent, ageLimit);
 
             System.out.println("Event edited!");
         }else{

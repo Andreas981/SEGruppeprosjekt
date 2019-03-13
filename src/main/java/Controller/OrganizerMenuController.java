@@ -12,7 +12,6 @@ public class OrganizerMenuController {
 
 
     private void levelOneOrganizer() {
-        //TODO Menu for level one organizer
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nWhat would you like to do?");
         System.out.println("\t(0) Add an event");
