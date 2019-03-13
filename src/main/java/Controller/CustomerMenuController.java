@@ -6,8 +6,6 @@ import Model.Organizer;
 import Model.PlannedEvent;
 import Model.Room;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Scanner;
 
 

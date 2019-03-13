@@ -3,8 +3,6 @@ package Model;
 
 import org.joda.time.LocalDate;
 
-import java.util.Date;
-
 /**
  * Abstract class used to create Organizer and Customer
  */
