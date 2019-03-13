@@ -2,7 +2,6 @@ package View;
 
 import Controller.NonSeatedEventController;
 import Dummy.Database;
-import Model.NonSeatedPlannedEvent;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
