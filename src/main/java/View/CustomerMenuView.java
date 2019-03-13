@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class CustomerMenuView {
     private Scanner scanner = new Scanner(System.in);
-    CustomerMenuController customerMenuController;
+    CustomerMenuController customerMenuController = new CustomerMenuController();
     public static void displayCustomerMenu(){
 
     }

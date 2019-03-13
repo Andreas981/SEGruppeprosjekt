@@ -46,7 +46,7 @@ public class SignInView {
                     break;
                 case 2:
                     System.out.println("You're logged in");
-                    //new CustomerMenuController().enterCustomerMenu();
+                    new CustomerMenuView().promptUserForAEventSeletion();
                     break;
                 default:
                     System.out.println("Something went wrong while logging in");

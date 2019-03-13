@@ -9,10 +9,6 @@ public class TestRegisterAUser {
         RegisterUserController registerUserController = new RegisterUserController();
     }
 
-    @Test
-    public void userNameIsValid(){
-        Assert.assertEquals(true,"persen");
-    }
 
 
 }
