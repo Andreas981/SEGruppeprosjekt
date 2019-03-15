@@ -116,9 +116,6 @@ public class CustomerMenuController {
         return false;
     }
 
-
-
-
     private void selectEvent(int[] eventNumber){
         PlannedEvent plannedEvent = Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
                 .get(eventNumber[2]).getEvents()

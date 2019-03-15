@@ -16,8 +16,6 @@ public class TestEventCreation {
 
     }
 
-    // TODO Make a test that asserts fail when trying to make an object from the abstract class
-
     // TODO Test for ticketbuying
 
     // TODO Test
