@@ -76,10 +76,10 @@ public class CustomerMenuController {
         }
     }
 
-    //TODO SOUT IN VIEW of customerMenu
-
-
     public boolean validateUserSelection(String userInput) {
+        if(userInput.length()<4){
+            return false;
+        }
         String[] eventSplit = userInput.split("");
         int[] eventNumber = new int[eventSplit.length];
         try  {
@@ -100,17 +100,11 @@ public class CustomerMenuController {
     private Boolean checkIfEventExist(int[] eventNumber) {
         // TODO Migrate to real db
         // TODO Query
-        for (int i = 0; i < eventNumber.length;i++) {
-            System.out.println(eventNumber[i]);
-        }
-        if(Database.organizers.indexOf(Database.organizers.get(eventNumber[0])) != -1){
-            if (Database.organizers.get(eventNumber[0]).getLocations().indexOf(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1])) != -1) {
-                if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().indexOf(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                        .get(eventNumber[2])) != -1){
+        if(Database.organizers.contains(eventNumber[0])){
+            if (Database.organizers.get(eventNumber[0]).getLocations().contains(eventNumber[1])) {
+                if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().contains(eventNumber[2])){
                     if(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                            .get(eventNumber[2]).getEvents().indexOf(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                                    .get(eventNumber[2]).getEvents()
-                                    .get(eventNumber[3])) != -1){
+                            .get(eventNumber[2]).getEvents().contains(eventNumber[3])){
                         return true;
                     }
                     return false;
