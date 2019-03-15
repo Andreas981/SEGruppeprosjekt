@@ -34,6 +34,9 @@ public class Organizer extends User{
     public void addNonSeatedPlannedEvent(NonSeatedPlannedEvent event){
         nonSeatedPlannedEvents.add(event);
     }
+    public ArrayList<NonSeatedPlannedEvent> getNonSeatedPlannedEvents(){
+        return nonSeatedPlannedEvents;
+    }
 
     public String getOrganization() {
         return organization;

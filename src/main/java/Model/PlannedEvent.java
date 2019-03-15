@@ -37,6 +37,22 @@ public abstract class PlannedEvent {
         return dateOfEvent;
     }
 
+    public void setNameOfEvent(String nameOfEvent) {
+        this.nameOfEvent = nameOfEvent;
+    }
+
+    public void setDateOfEvent(LocalDateTime dateOfEvent) {
+        this.dateOfEvent = dateOfEvent;
+    }
+
+    public void setLengthOfEvent(int lengthOfEvent) {
+        this.lengthOfEvent = lengthOfEvent;
+    }
+
+    public void setAgeLimit(int ageLimit) {
+        this.ageLimit = ageLimit;
+    }
+
     @Override
     public String toString(){
         return nameOfEvent ;

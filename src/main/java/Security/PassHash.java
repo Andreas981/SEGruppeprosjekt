@@ -3,8 +3,6 @@ package Security;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class PassHash {
     public static String hashPassword(String password){

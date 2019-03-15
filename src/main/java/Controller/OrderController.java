@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.SeatedPlannedEvent;
 
 import java.util.Scanner;
 
