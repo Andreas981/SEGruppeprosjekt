@@ -5,4 +5,7 @@ User -> Customer:Register Customer
 Customer -> Database:Add customer account
 User <-- Database:Return customer account
 
+alt Error
+    User <-- Customer:Register failed
+end
 @enduml

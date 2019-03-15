@@ -27,6 +27,7 @@ public class User {
     public void gettingTheBirthdayOfOrganizer(){
         Assert.assertEquals("1998-06-12", organizer.getBirthday().toString());
     }
+    
     @Test
     public void gettingAccessLevelFromOrganizer(){
         Assert.assertEquals(1, organizer.getAccessLevel());

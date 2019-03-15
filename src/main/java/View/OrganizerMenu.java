@@ -2,6 +2,8 @@ package View;
 
 import Dummy.Database;
 
+import java.sql.SQLOutput;
+
 
 public class OrganizerMenu {
 
@@ -207,5 +209,9 @@ public class OrganizerMenu {
         System.out.println("\tDurance:   " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(event).getLengthOfEvent());
         System.out.println("\tAge limit: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(event).getAgeLimit());
         displayPromptForStars();
+    }
+
+    public void displayPromptForAddEventLength() {
+        System.out.println("Length of event (in houres): ");
     }
 }
