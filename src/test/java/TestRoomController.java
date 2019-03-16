@@ -1,5 +1,4 @@
 import Controller.RoomController;
-import Dummy.Database;
 import Model.Location;
 import Model.Room;
 import org.junit.Assert;
@@ -15,17 +14,15 @@ public class TestRoomController {
     @Before
     public void init() {
         roomController = new RoomController();
-        room = new Room("Rom 1", 123,false);
+        room = new Room("test romnavn", 123,false);
         location = new Location("test navn","test adresse",false);
+        location.getRooms().add(room);
     }
 
     @Test
     public void TestAddRoomInExistingLocation() {
-
-        Assert.assertEquals(Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().add
-                (room.getName(),room.getMaxParticipents(),room.getEventInProgress()));
+        /*Checks if array's size is not null/0*/
+        Assert.assertNotNull(location.getRooms().size());
 
     }
-
-
 }
