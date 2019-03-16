@@ -42,7 +42,14 @@ public class OrderController {
     private void displayTickets(){
         seatedPlannedEvent = (SeatedPlannedEvent) plannedEvent;
         for (int i = 0; i<seatedPlannedEvent.getTickets().size();i++){
-            System.out.print(seatedPlannedEvent.getTickets().get(i));
+            if(!seatedPlannedEvent.getTickets().get(i).getAvailible()){
+                // TODO Format output in columns
+                System.out.println("X   ,");
+            }
+            System.out.print(seatedPlannedEvent.getTickets().get(i).getSeatNumber() + "   ,");
+            // TODO Replace with row number
+            if(i%30==0) System.out.println(" ");
+
 
         }
 
