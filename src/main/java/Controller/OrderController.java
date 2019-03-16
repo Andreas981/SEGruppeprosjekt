@@ -47,8 +47,9 @@ public class OrderController {
             if(!seatedPlannedEvent.getTickets().get(i).getAvailable()){
                 // TODO Format output in columns
                 System.out.print("X   ,");
+            }else{
+                System.out.print(seatedPlannedEvent.getTickets().get(i).getSeatNumber() + "   ,");
             }
-            System.out.print(seatedPlannedEvent.getTickets().get(i).getSeatNumber() + "   ,");
             // TODO Replace with row number
             if(i%30==0) System.out.println(" ");
 

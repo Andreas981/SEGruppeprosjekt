@@ -1,11 +1,7 @@
 package Controller;
 
 import Dummy.Database;
-import Model.Location;
-import Model.Organizer;
-import Model.PlannedEvent;
-import Model.Room;
-
+import Model.*;
 
 
 public class CustomerMenuController {
@@ -60,11 +56,18 @@ public class CustomerMenuController {
                         PlannedEvent plannedEvent = Database.organizers.get(i).getLocations().get(j).getRooms()
                                 .get(k).getEvents()
                                 .get(m);
+                        int freeSeats = 0;
+                        for(int h = 0; h < ((SeatedPlannedEvent) plannedEvent).getTickets().size();h++){
+                            if(((SeatedPlannedEvent) plannedEvent).getTickets().get(h).getAvailable()){
+                                freeSeats++;
+                            }
+                        }
                         System.out.println("            " + plannedEvent.getNameOfEvent()
                                 + " " + plannedEvent.getDateOfEvent().toLocalDate().toString() + " \n" +
                                 "            Starting at: " + plannedEvent.getDateOfEvent().toLocalTime().getHourOfDay()
                                 + ":" +plannedEvent.getDateOfEvent().getMinuteOfHour() + " "
                                 + plannedEvent.getLengthOfEvent() +  "min runtime \n" +
+                                "            Seats available:" + freeSeats + "\n"+
                                 "            Event number: (" + (i) + (j) + (k) + (m) + ")");
 
                     }
