@@ -1,8 +1,13 @@
 package View;
 
+import Controller.OrderController;
+
 public class OrderView {
+    private OrderController orderController = new OrderController();
+
 
     public void displayPromptForSelectingAEvent(){
-        System.out.println("Select the event you wish to purchase a ticket to");
+        orderController.displayAvalibleSlots();
+        System.out.println("");
     }
 }

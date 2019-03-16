@@ -98,11 +98,16 @@ public class CustomerMenuController {
     private Boolean checkIfEventExist(int[] eventNumber) {
         // TODO Migrate to real db
         // TODO Query
-        if(Database.organizers.contains(eventNumber[0])){
-            if (Database.organizers.get(eventNumber[0]).getLocations().contains(eventNumber[1])) {
-                if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().contains(eventNumber[2])){
+
+        System.out.println(Database.organizers.size()>eventNumber[0]);
+        if(Database.organizers.size()>eventNumber[0]){
+
+            if (Database.organizers.get(eventNumber[0]).getLocations().size()>eventNumber[1]) {
+
+                if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().size()>eventNumber[2]){
+
                     if(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                            .get(eventNumber[2]).getEvents().contains(eventNumber[3])){
+                            .get(eventNumber[2]).getEvents().size()>(eventNumber[3])){
                         return true;
                     }
                     return false;
@@ -112,6 +117,7 @@ public class CustomerMenuController {
             return false;
         }
         return false;
+
     }
 
     private void selectEvent(int[] eventNumber){

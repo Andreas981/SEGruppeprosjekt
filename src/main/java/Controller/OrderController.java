@@ -1,8 +1,5 @@
 package Controller;
 
-
-import java.util.Scanner;
-
 public class OrderController {
 
 
@@ -12,5 +9,8 @@ public class OrderController {
         // Get the selected event the user wants to get tickets too.
 
 
+    }
+
+    public void displayAvalibleSlots() {
     }
 }
