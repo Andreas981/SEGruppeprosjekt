@@ -20,16 +20,10 @@ public class TestSeastedEventController {
         seatedPlannedEvent = new SeatedPlannedEvent("test navn", new LocalDateTime(16),1,18);
         database = new Database();
         room = new Room("test romnavn", 123,false);
-        
-        database.currentLoggedInOrganizer.addLocation(location);
-        database.currentLoggedInOrganizer.getLocations().get(0).addRoom(room);
-        Database.currentLoggedInOrganizer
-                .getLocations()
-                .get(0)
-                .getRooms()
-                .get(0)
-                .getEvents()
-                .add(seatedPlannedEvent);
+
+        Database.currentLoggedInOrganizer.addLocation(location);
+        Database.currentLoggedInOrganizer.getLocations().get(0).addRoom(room);
+        Database.currentLoggedInOrganizer.getLocations().get(0).getRooms().get(0).addEvent(seatedPlannedEvent);
     }
 
     @Test
