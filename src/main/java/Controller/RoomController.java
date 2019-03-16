@@ -5,8 +5,8 @@ import Model.Room;
 
 public class RoomController {
 
-    public void addRoom(int location, String name, int max) {
-        Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().add(new Room(name, max, false));
+    public void addRoom(int location, String name, int max, int rows) {
+        Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().add(new Room(name, max, false, rows));
     }
 
     public void removeRoom(int location, int room) {

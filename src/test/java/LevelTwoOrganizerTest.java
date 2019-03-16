@@ -23,7 +23,7 @@ public class LevelTwoOrganizerTest {
         organizer.getLocations().add(new Location("Location Name", "Location Address", true));
         Assert.assertEquals("Location Name", organizer.getLocations().get(0).getName());
 
-        organizer.getLocations().get(0).getRooms().add(new Room("Room Name", 100, false));
+        organizer.getLocations().get(0).getRooms().add(new Room("Room Name", 100, false, 10));
         Assert.assertEquals("Room Name", organizer.getLocations().get(0).getRooms().get(0).getName());
 
         organizer.getLocations().get(0).getRooms().get(0).addEvent(new SeatedPlannedEvent("Event Name", new LocalDateTime(2000,2,2,2,2), 12, 18));
