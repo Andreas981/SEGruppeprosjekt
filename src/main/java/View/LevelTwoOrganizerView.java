@@ -237,15 +237,17 @@ public class LevelTwoOrganizerView {
         System.out.println("\nRoom name: ");
         String name = new Scanner(System.in).nextLine();
 
-        System.out.println("Max participents: ");
         int max = -1;
+        int rows  = -1;
         try{
+            System.out.println("Max participents: ");
             max = scanner.nextInt();
+            rows = scanner.nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
         }
-        roomController.addRoom(currentLocation, name, max);
+        roomController.addRoom(currentLocation, name, max, rows);
         System.out.println("Room added!");
 
     }
