@@ -45,6 +45,8 @@ public class SeatedEventController {
                         .add(new Ticket("ID", currentEvent, 100, i));
             }
 
+                System.out.println("Size: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().size() - 1).getTickets().size());
+
     }
 
     public void removeSeatedEvent(int location, int room, int event) {

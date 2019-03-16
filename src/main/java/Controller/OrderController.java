@@ -32,7 +32,7 @@ public class OrderController {
             plannedEvent = (NonSeatedPlannedEvent) getPlannedEvent();
         }
         else if(plannedEvent instanceof SeatedPlannedEvent){
-            (SeatedPlannedEvent) plannedEvent.
+            //(SeatedPlannedEvent) plannedEvent.
         }
     }
 }
