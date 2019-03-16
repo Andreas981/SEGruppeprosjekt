@@ -5,6 +5,9 @@ import Model.NonSeatedPlannedEvent;
 import Model.PlannedEvent;
 import Model.SeatedPlannedEvent;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class OrderController {
     private int[] eventNumber;
     private PlannedEvent plannedEvent;
@@ -55,7 +58,30 @@ public class OrderController {
 
     }
 
-    public boolean checkIfPositionIsTaken(int[]...a){
+    public boolean validateUserInput(String seatSelection){
+        if(seatSelection.length()<1) return false;
+        String[] strings = seatSelection.split(",");
+
+        ArrayList<Integer> seats = new ArrayList<Integer>();
+        try{
+            for(int i = 0;i<strings.length;i++ ){
+                
+            }
+        }catch (Exception e){
+
+        }
         return false;
+    }
+
+    public boolean checkIfPositionIsTaken(ArrayList<Integer> seats){
+        for(int i = 0; i< seats.size();i++){
+            if(seatedPlannedEvent.getTickets().get((seats.get(i))).getAvailible()){
+                System.out.println("Okay");
+            }else{
+                System.out.println("Seat: " + i + " is taken");
+                return false;
+            }
+        }
+        return true;
     }
 }
