@@ -8,9 +8,12 @@ import Model.SeatedPlannedEvent;
 public class OrderController {
     private int[] eventNumber;
     private PlannedEvent plannedEvent;
+    private SeatedPlannedEvent seatedPlannedEvent;
+    private NonSeatedPlannedEvent nonSeatedPlannedEvent;
 
     public OrderController(int[] eventNumber) {
         this.eventNumber = eventNumber;
+        getEventFromDatabase(eventNumber);
     }
 
     public int[] getEventNumber() {
@@ -27,12 +30,25 @@ public class OrderController {
         return plannedEvent;
     }
 
-    public void displayAvalibleSlots() {
+    public void getAvailableSlots() {
         if( plannedEvent instanceof NonSeatedPlannedEvent){
             plannedEvent = (NonSeatedPlannedEvent) getPlannedEvent();
         }
         else if(plannedEvent instanceof SeatedPlannedEvent){
-            //(SeatedPlannedEvent) plannedEvent.
+            displayTickets();
         }
+    }
+
+    private void displayTickets(){
+        seatedPlannedEvent = (SeatedPlannedEvent) plannedEvent;
+        for (int i = 0; i<seatedPlannedEvent.getTickets().size();i++){
+            System.out.print(seatedPlannedEvent.getTickets().get(i));
+
+        }
+
+    }
+
+    public boolean checkIfPositionIsTaken(int[]...a){
+        return false;
     }
 }

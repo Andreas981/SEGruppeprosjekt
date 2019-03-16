@@ -17,7 +17,7 @@ public class TestCustomerMenuController {
 
     @Test
     public void enterInvalidEventnumber(){
-        Assert.assertFalse(customerMenuController.validateUserSelection("aaaa"));
+
     }
 
     // TODO

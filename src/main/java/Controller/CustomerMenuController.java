@@ -74,9 +74,9 @@ public class CustomerMenuController {
         }
     }
 
-    public boolean validateUserSelection(String userInput) {
+    public int[] validateUserSelection(String userInput) {
         if(userInput.length()<4){
-            return false;
+            return null;
         }
         String[] eventSplit = userInput.split("");
         int[] eventNumber = new int[eventSplit.length];
@@ -86,12 +86,12 @@ public class CustomerMenuController {
             }
         }catch (NumberFormatException e){
             System.out.println("Invalid selection entered");
-            return false;
+            return null;
         }
         if(checkIfEventExist(eventNumber)){
-            return true;
+            return eventNumber;
         }
-        return false;
+        return null;
     }
 
     // Control that that valid int selection exist in the database
