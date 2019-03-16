@@ -12,8 +12,9 @@ public class TestRegisterUserController {
     @Before
     public void init() {
         registerUserController = new RegisterUserController();
-        customer = new Customer("Per","Sandberg","per@mail.no",
-                "12312312","PerS","per123",new LocalDate(1990,6,1));
+        customer = new Customer("test name", "test lastname","test mail",
+                "test telephone number","test username", "test password",
+                new LocalDate(1990,2,2));
     }
 
     @Test
