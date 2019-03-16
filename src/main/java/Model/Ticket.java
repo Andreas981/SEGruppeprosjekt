@@ -22,4 +22,25 @@ public class Ticket {
         this.idForTicket = idForTicket;
         this.seatNumber = seatNumber;
     }
+
+
+    public String getIdForTicket() {
+        return idForTicket;
+    }
+
+    public PlannedEvent getValidForEvent() {
+        return validForEvent;
+    }
+
+    public int getPriceInNOK() {
+        return priceInNOK;
+    }
+
+    public int getSeatNumber() {
+        return seatNumber;
+    }
+
+    public Boolean getAvailible() {
+        return availible;
+    }
 }
