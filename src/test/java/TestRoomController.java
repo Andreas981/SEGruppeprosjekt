@@ -1,25 +1,30 @@
-import Controller.RegisterUserController;
-import Model.Customer;
-import org.joda.time.LocalDate;
+import Controller.RoomController;
+import Dummy.Database;
+import Model.Location;
+import Model.Room;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestRoomController {
 
-    RegisterUserController registerUserController;
-    Customer customer;
+    RoomController roomController;
+    Room room;
+    Location location;
 
     @Before
     public void init() {
-        registerUserController = new RegisterUserController();
-        customer = new Customer("Per","Sandberg","per@mail.no",
-                "12312312","PerS","per123",new LocalDate(1990,6,1));
+        roomController = new RoomController();
+        room = new Room("Rom 1", 123,false);
+        location = new Location("test navn","test adresse",false);
     }
 
     @Test
-    public void TestRegisterCustomerIntoDatabase() {
-        Assert.assertEquals(true, registerUserController.registerCustomerIntoDatabase(customer.getFirstName(),customer.getLastName(),customer.getMail(),customer.getTelephone(),customer.getUsername(),customer.getPassword(),customer.getBirthday()));
+    public void TestAddRoomInExistingLocation() {
+
+        Assert.assertEquals(Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().add
+                (room.getName(),room.getMaxParticipents(),room.getEventInProgress()));
+
     }
 
 
