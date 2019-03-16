@@ -32,6 +32,9 @@ public class Room {
         events.add(seatedPlannedEvent);
     }
 
+    public int getLastEvent(){
+        return events.size()-1;
+    }
 
     public String getName() {
         return name;
