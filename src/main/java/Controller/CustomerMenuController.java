@@ -105,12 +105,8 @@ public class CustomerMenuController {
             if (Database.organizers.get(eventNumber[0]).getLocations().size()>eventNumber[1]) {
 
                 if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().size()>eventNumber[2]){
-
-                    if(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                            .get(eventNumber[2]).getEvents().size()>(eventNumber[3])){
-                        return true;
-                    }
-                    return false;
+                    return Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
+                            .get(eventNumber[2]).getEvents().size() > (eventNumber[3]);
                 }
                 return false;
             }
