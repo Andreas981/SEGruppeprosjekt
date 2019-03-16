@@ -31,13 +31,19 @@ public class SeatedEventController {
                 .get(room)
                 .getEvents().size()-1);
 
-            for(int i = 0; i < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getMaxParticipents(); i++)
+        System.out.println("ADDING");
+
+            for(int i = 0; i < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getMaxParticipents(); i++) {
+                System.out.println("FOR");
                 Database.currentLoggedInOrganizer.getLocations()
                         .get(location)
                         .getRooms()
                         .get(room)
                         .getEvents()
-                        .get(Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().size()-1).getTickets().add(new Ticket("ID", currentEvent, 100, i));
+                        .get(Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().size() - 1)
+                        .getTickets()
+                        .add(new Ticket("ID", currentEvent, 100, i));
+            }
 
     }
 
