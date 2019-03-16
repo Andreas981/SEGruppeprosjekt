@@ -10,4 +10,7 @@ public class OrderController {
 
 
     }
+
+    public void displayAvalibleSlots() {
+    }
 }
