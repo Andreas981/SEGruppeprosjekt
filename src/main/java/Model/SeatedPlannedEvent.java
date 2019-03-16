@@ -11,14 +11,14 @@ public class SeatedPlannedEvent extends PlannedEvent {
 
     public SeatedPlannedEvent(String nameOfEvent, LocalDateTime dateOfEvent, int lengthOfEvent, int ageLimit) {
         super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
-    }
-
-    public void generateTickets(int location, int room){
-        for(int i = 0; i < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getMaxParticipents(); i++)
-            tickets.add(new Ticket("ID", this, 100, i));
+        this.tickets = new ArrayList<Ticket>();
     }
 
 // TODO Method for displaying sold tickets
+
+    public ArrayList<Ticket> getTickets(){
+        return tickets;
+    }
 
     @Override
     public String toString(){
