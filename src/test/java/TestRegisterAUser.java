@@ -6,13 +6,18 @@ import org.junit.Test;
 
 public class TestRegisterAUser {
     RegisterUserController registerUserController;
+
+    //Variabel for customer
+
     @Before
     public void init(){
         registerUserController = new RegisterUserController();
+        //Instansier customer
     }
 
     @Test
     public void testRegisterUsername(){
+        //Bruk ny customer her
         Assert.assertTrue(registerUserController.checkUsername("persen"));
     }
 
