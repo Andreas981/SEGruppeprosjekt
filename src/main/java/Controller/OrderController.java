@@ -5,7 +5,6 @@ import Model.NonSeatedPlannedEvent;
 import Model.PlannedEvent;
 import Model.SeatedPlannedEvent;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class OrderController {
@@ -45,9 +44,9 @@ public class OrderController {
     private void displayTickets(){
         seatedPlannedEvent = (SeatedPlannedEvent) plannedEvent;
         for (int i = 0; i<seatedPlannedEvent.getTickets().size();i++){
-            if(!seatedPlannedEvent.getTickets().get(i).getAvailible()){
+            if(!seatedPlannedEvent.getTickets().get(i).getAvailable()){
                 // TODO Format output in columns
-                System.out.println("X   ,");
+                System.out.print("X   ,");
             }
             System.out.print(seatedPlannedEvent.getTickets().get(i).getSeatNumber() + "   ,");
             // TODO Replace with row number
@@ -65,18 +64,27 @@ public class OrderController {
         ArrayList<Integer> seats = new ArrayList<Integer>();
         try{
             for(int i = 0;i<strings.length;i++ ){
-                
+                seats.add(Integer.parseInt(strings[i]));
             }
-        }catch (Exception e){
-
+        }catch (NumberFormatException e){
+            return false;
         }
-        return false;
+        if(checkIfPositionIsTaken(seats)){
+            System.out.println("Go to payment");
+            return true;
+        }
+        else{
+
+            return false;
+        }
+
     }
 
     public boolean checkIfPositionIsTaken(ArrayList<Integer> seats){
         for(int i = 0; i< seats.size();i++){
-            if(seatedPlannedEvent.getTickets().get((seats.get(i))).getAvailible()){
-                System.out.println("Okay");
+            if(seatedPlannedEvent.getTickets().get((seats.get(i))).getAvailable() && seatedPlannedEvent.getTickets().size()>i){
+                System.out.println("Seat is available");
+                seatedPlannedEvent.getTickets().get((seats.get(i))).setAvailable(false);
             }else{
                 System.out.println("Seat: " + i + " is taken");
                 return false;

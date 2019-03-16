@@ -13,10 +13,17 @@ public class OrderView {
     }
 
     public void displayPromptForSelectingAEvent(){
-
         orderController.getAvailableSlots();
 
         System.out.println("Enter one or more seats you wish to reserve:");
+        System.out.println("Example: 1,2,3");
+        if(orderController.validateUserInput(scanner.nextLine())){
+            System.out.println("Go to payment");
+        }else {
+            System.out.println("Invalid input");
+            displayPromptForSelectingAEvent();
+        }
+
         
     }
 }

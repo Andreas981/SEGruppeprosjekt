@@ -1,19 +1,17 @@
 package Model;
 
-import Controller.NonSeatedEventController;
-
 public class Ticket {
     private String idForTicket; // Ticket serial number used for seatedEvents
     private PlannedEvent validForEvent; // The event the ticket is valid for
     private int priceInNOK;
     private int seatNumber;
-    private Boolean availible;
+    private Boolean available;
 
     // Used for Non seated events
     public Ticket(PlannedEvent validForEvent, int priceInNOK) {
         this.validForEvent = validForEvent;
         this.priceInNOK = priceInNOK;
-        this.availible = true;
+        this.available = true;
     }
 
     // Used for Seated events
@@ -40,7 +38,11 @@ public class Ticket {
         return seatNumber;
     }
 
-    public Boolean getAvailible() {
-        return availible;
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 }
