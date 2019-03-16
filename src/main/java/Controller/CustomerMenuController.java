@@ -6,11 +6,9 @@ import Model.Organizer;
 import Model.PlannedEvent;
 import Model.Room;
 
-import java.util.Scanner;
 
 
 public class CustomerMenuController {
-    private Scanner scanner = new Scanner(System.in);
     public static void displayOnGoingEvents(){
         // For use in main screen
         System.out.println("_____________________________________________________________________");

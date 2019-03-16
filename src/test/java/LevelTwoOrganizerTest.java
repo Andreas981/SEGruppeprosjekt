@@ -19,6 +19,7 @@ public class LevelTwoOrganizerTest {
 
     @Test
     public void organizerCanAddNewEventInNewRoomToNewLocation(){
+
         organizer.getLocations().add(new Location("Location Name", "Location Address", true));
         Assert.assertEquals("Location Name", organizer.getLocations().get(0).getName());
 
