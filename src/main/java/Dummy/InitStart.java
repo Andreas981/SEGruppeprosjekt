@@ -31,24 +31,24 @@ public class InitStart {
         Database.organizers.get(0).getLocations().get(0).addRoom(new Room("D1-058", 50, true, 10));
 
         // Dummy event for HIØ Playing at Aud Max
+        Database.currentLoggedInOrganizer = Database.organizers.get(0);
         Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20, 0, 0));
         Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20, 0,0 ));
         Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20, 0,0));
         Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+                .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20, 0,0));
 
         Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20, 0,0));
         Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20, 0,0));
         Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
+                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20, 0,0));
         Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20));
-
+                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,00),200,20, 0,0));
 
 
 

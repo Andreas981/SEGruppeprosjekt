@@ -16,38 +16,11 @@ public class SeatedEventController {
                 .getRooms()
                 .get(room)
                 .getEvents()
-                .add(new SeatedPlannedEvent(name, new LocalDateTime(Integer.parseInt(dateArray[0]), Integer.parseInt(dateArray[1]), Integer.parseInt(dateArray[2]), Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1])), lengthOfEvent, ageLimit));
-
-        addTicketsToEvent(location, room);
-    }
-
-    private void addTicketsToEvent(int location, int room){
-
-        SeatedPlannedEvent currentEvent = Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(
-                Database.currentLoggedInOrganizer
-                .getLocations()
-                .get(location)
-                .getRooms()
-                .get(room)
-                .getEvents().size()-1);
-
-        System.out.println("ADDING");
-
-            for(int i = 0; i < Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getMaxParticipents(); i++) {
-                System.out.println("FOR");
-                Database.currentLoggedInOrganizer.getLocations()
-                        .get(location)
-                        .getRooms()
-                        .get(room)
-                        .getEvents()
-                        .get(Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().size() - 1)
-                        .getTickets()
-                        .add(new Ticket("ID", currentEvent, 100, i));
-            }
-
-                System.out.println("Size: " + Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().size() - 1).getTickets().size());
+                .add(new SeatedPlannedEvent(name, new LocalDateTime(Integer.parseInt(dateArray[0]), Integer.parseInt(dateArray[1]), Integer.parseInt(dateArray[2]), Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1])), lengthOfEvent, ageLimit, location, room));
 
     }
+
+
 
     public void removeSeatedEvent(int location, int room, int event) {
         Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().remove(event);
