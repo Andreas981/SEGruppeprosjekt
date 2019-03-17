@@ -8,17 +8,19 @@ import java.util.ArrayList;
  */
 
 public class Room {
-    String name;
-    int maxParticipents;
-    Boolean eventInProgress;
-    ArrayList<SeatedPlannedEvent> events;
+    private String name;
+    private int maxParticipents;
+    private Boolean eventInProgress;
+    private ArrayList<SeatedPlannedEvent> events;
+    private int amountOfRows;
     //TODO Make SeatedEvent Class
     //TODO Add accounting for event
 
-    public Room(String name, int maxParticipents, Boolean eventInProgress) {
+    public Room(String name, int maxParticipents, Boolean eventInProgress, int amountOfRows) {
         this.name = name;
         this.maxParticipents = maxParticipents;
         this.eventInProgress = eventInProgress;
+        this.amountOfRows = amountOfRows;
         this.events = new ArrayList<SeatedPlannedEvent>();
     }
 
@@ -30,6 +32,9 @@ public class Room {
         events.add(seatedPlannedEvent);
     }
 
+    public int getLastEvent(){
+        return events.size()-1;
+    }
 
     public String getName() {
         return name;

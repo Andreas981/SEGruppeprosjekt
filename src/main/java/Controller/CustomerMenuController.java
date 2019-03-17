@@ -1,11 +1,7 @@
 package Controller;
 
 import Dummy.Database;
-import Model.Location;
-import Model.Organizer;
-import Model.PlannedEvent;
-import Model.Room;
-
+import Model.*;
 
 
 public class CustomerMenuController {
@@ -60,11 +56,18 @@ public class CustomerMenuController {
                         PlannedEvent plannedEvent = Database.organizers.get(i).getLocations().get(j).getRooms()
                                 .get(k).getEvents()
                                 .get(m);
+                        int freeSeats = 0;
+                        for(int h = 0; h < ((SeatedPlannedEvent) plannedEvent).getTickets().size();h++){
+                            if(((SeatedPlannedEvent) plannedEvent).getTickets().get(h).getAvailable()){
+                                freeSeats++;
+                            }
+                        }
                         System.out.println("            " + plannedEvent.getNameOfEvent()
                                 + " " + plannedEvent.getDateOfEvent().toLocalDate().toString() + " \n" +
                                 "            Starting at: " + plannedEvent.getDateOfEvent().toLocalTime().getHourOfDay()
                                 + ":" +plannedEvent.getDateOfEvent().getMinuteOfHour() + " "
                                 + plannedEvent.getLengthOfEvent() +  "min runtime \n" +
+                                "            Seats available:" + freeSeats + "\n"+
                                 "            Event number: (" + (i) + (j) + (k) + (m) + ")");
 
                     }
@@ -74,9 +77,9 @@ public class CustomerMenuController {
         }
     }
 
-    public boolean validateUserSelection(String userInput) {
+    public int[] validateUserSelection(String userInput) {
         if(userInput.length()<4){
-            return false;
+            return null;
         }
         String[] eventSplit = userInput.split("");
         int[] eventNumber = new int[eventSplit.length];
@@ -86,37 +89,37 @@ public class CustomerMenuController {
             }
         }catch (NumberFormatException e){
             System.out.println("Invalid selection entered");
-            return false;
+            return null;
         }
         if(checkIfEventExist(eventNumber)){
-            return true;
+            return eventNumber;
         }
-        return false;
+        return null;
     }
 
     // Control that that valid int selection exist in the database
     private Boolean checkIfEventExist(int[] eventNumber) {
         // TODO Migrate to real db
         // TODO Query
-        if(Database.organizers.contains(eventNumber[0])){
-            if (Database.organizers.get(eventNumber[0]).getLocations().contains(eventNumber[1])) {
-                if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().contains(eventNumber[2])){
-                    if(Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                            .get(eventNumber[2]).getEvents().contains(eventNumber[3])){
-                        return true;
-                    }
-                    return false;
+
+        System.out.println(Database.organizers.size()>eventNumber[0]);
+        if(Database.organizers.size()>eventNumber[0]){
+
+            if (Database.organizers.get(eventNumber[0]).getLocations().size()>eventNumber[1]) {
+
+                if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().size()>eventNumber[2]){
+                    return Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
+                            .get(eventNumber[2]).getEvents().size() > (eventNumber[3]);
                 }
                 return false;
             }
             return false;
         }
         return false;
+
     }
 
     private void selectEvent(int[] eventNumber){
-        PlannedEvent plannedEvent = Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                .get(eventNumber[2]).getEvents()
-                .get(eventNumber[3]);
+
     }
 }
