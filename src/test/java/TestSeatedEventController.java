@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestSeastedEventController {
+public class TestSeatedEventController {
 
     Location location;
     SeatedPlannedEvent seatedPlannedEvent;
@@ -21,12 +21,13 @@ public class TestSeastedEventController {
 
         room.addEvent(seatedPlannedEvent);
         location.addRoom(room);
+        Database.currentLoggedInOrganizer.addLocation(location);
+
     }
 
     @Test
     public void TestAddSeatedEvent() {
         /* Checks if array's size is not null/0 */
         Assert.assertNotEquals(null,location.getRooms().get(0).getEvents().get(0));
-        Database.currentLoggedInOrganizer
     }
 }
