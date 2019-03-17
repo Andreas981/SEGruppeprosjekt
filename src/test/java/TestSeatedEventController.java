@@ -18,8 +18,8 @@ public class TestSeatedEventController {
     public void init() {
 
         location = new Location("test name","test address",false);
-        seatedPlannedEvent = new SeatedPlannedEvent("test name", new LocalDateTime(16),1,18);
-        room = new Room("test room name", 123,false);
+        room = new Room("test room name", 123,false,1);
+        seatedPlannedEvent = new SeatedPlannedEvent("test name", new LocalDateTime(16),1,18,1,1);
         organizer = new Organizer("test name","test address","test email","12312312",
                 "test username", "test password", new LocalDate(1991,1,1),"test org",1);
         room.addEvent(seatedPlannedEvent);
