@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.sql.Date;
 
 
-public class User {
+public class TestUserModel {
 
     Organizer organizer;
 
