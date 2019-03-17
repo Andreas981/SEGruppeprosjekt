@@ -1,11 +1,6 @@
-import Controller.CustomerMenuController;
-import Controller.RegisterUserController;
+import Controller.OrderController;
 import Dummy.*;
 import View.MainMenuView;
-import View.SignInView;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Main {
 
@@ -15,7 +10,6 @@ public class Main {
 
         //Initializing the dummy database
         InitStart.Init();
-
         new MainMenuView().displayMenu();
 
     }

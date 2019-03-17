@@ -1,3 +1,4 @@
+import Dummy.Database;
 import Model.Location;
 import Model.Organizer;
 import Model.Room;
@@ -15,6 +16,7 @@ public class LevelTwoOrganizerTest {
     @Before
     public void initTests(){
         organizer = new Organizer("Per", "Persen", "Mail", "wewewe", "username", "password", new LocalDate(2000,2,2), "Org", 2);
+        Database.currentLoggedInOrganizer = organizer;
     }
 
     @Test
@@ -23,10 +25,10 @@ public class LevelTwoOrganizerTest {
         organizer.getLocations().add(new Location("Location Name", "Location Address", true));
         Assert.assertEquals("Location Name", organizer.getLocations().get(0).getName());
 
-        organizer.getLocations().get(0).getRooms().add(new Room("Room Name", 100, false));
+        organizer.getLocations().get(0).getRooms().add(new Room("Room Name", 100, false, 10));
         Assert.assertEquals("Room Name", organizer.getLocations().get(0).getRooms().get(0).getName());
 
-        organizer.getLocations().get(0).getRooms().get(0).addEvent(new SeatedPlannedEvent("Event Name", new LocalDateTime(2000,2,2,2,2), 12, 18));
+        organizer.getLocations().get(0).getRooms().get(0).addEvent(new SeatedPlannedEvent("Event Name", new LocalDateTime(2000,2,2,2,2), 12, 18, 0, 0));
         Assert.assertEquals("Event Name", organizer.getLocations().get(0).getRooms().get(0).getEvents().get(0).getNameOfEvent());
 
     }
