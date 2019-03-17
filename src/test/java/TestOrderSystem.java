@@ -23,6 +23,5 @@ public class TestOrderSystem {
     @Test
     public void seatedEventContainsSeats(){
 
-
     }
 }
