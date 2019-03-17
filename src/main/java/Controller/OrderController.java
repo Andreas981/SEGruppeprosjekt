@@ -41,18 +41,18 @@ public class OrderController {
         }
     }
 
-    private void displayTickets(){
+    public void displayTickets(){
         seatedPlannedEvent = (SeatedPlannedEvent) plannedEvent;
-        for (int i = 0; i<seatedPlannedEvent.getTickets().size();i++){
+
+        for (int i = 0; i < seatedPlannedEvent.getTickets().size(); i++){
+            if( i%30 == 0 && i != 0) System.out.println(" ");
             if(!seatedPlannedEvent.getTickets().get(i).getAvailable()){
                 // TODO Format output in columns
-                System.out.print("X   ,");
+                System.out.format("%5s", "X");
             }else{
-                System.out.print(seatedPlannedEvent.getTickets().get(i).getSeatNumber() + "   ,");
+                System.out.format("%5s", seatedPlannedEvent.getTickets().get(i).getSeatNumber());
             }
             // TODO Replace with row number
-            if(i%30==0&&i!=0) System.out.println(" ");
-
 
         }
 
