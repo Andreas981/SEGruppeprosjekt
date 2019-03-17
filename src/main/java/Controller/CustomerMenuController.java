@@ -102,7 +102,6 @@ public class CustomerMenuController {
         // TODO Migrate to real db
         // TODO Query
 
-        System.out.println(Database.organizers.size()>eventNumber[0]);
         if(Database.organizers.size()>eventNumber[0]){
 
             if (Database.organizers.get(eventNumber[0]).getLocations().size()>eventNumber[1]) {
