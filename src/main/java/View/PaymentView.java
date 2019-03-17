@@ -18,11 +18,13 @@ public class PaymentView {
     public void displayAmountDue(){
         int amountToPay = paymentController.getAmountOfOrder();
         System.out.println("Amount to pay: " + amountToPay +" NOK");
-        System.out.println();
+        displayPaymentOptions();
     }
 
     public void displayPaymentOptions(){
         System.out.println("How would you like to pay?");
+        paymentController.printMenu();
+        paymentController.selectedOption(scanner.nextInt());
 
     }
 }
