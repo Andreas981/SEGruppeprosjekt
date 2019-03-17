@@ -51,7 +51,7 @@ public class OrderController {
                 System.out.print(seatedPlannedEvent.getTickets().get(i).getSeatNumber() + "   ,");
             }
             // TODO Replace with row number
-            if(i%30==0) System.out.println(" ");
+            if(i%30==0&&i!=0) System.out.println(" ");
 
 
         }
@@ -85,6 +85,7 @@ public class OrderController {
         for(int i = 0; i< seats.size();i++){
             if(seatedPlannedEvent.getTickets().get((seats.get(i))).getAvailable() && seatedPlannedEvent.getTickets().size()>i){
                 System.out.println("Seat is available");
+                // TODO Place in method when order is processed
                 seatedPlannedEvent.getTickets().get((seats.get(i))).setAvailable(false);
             }else{
                 System.out.println("Seat: " + i + " is taken");
