@@ -13,6 +13,11 @@ public class OrderController {
     private PlannedEvent plannedEvent;
     private SeatedPlannedEvent seatedPlannedEvent;
     private NonSeatedPlannedEvent nonSeatedPlannedEvent;
+
+    public Order getPlaceOrder() {
+        return placeOrder;
+    }
+
     private Order placeOrder;
 
     public OrderController(int[] eventNumber) {
@@ -36,7 +41,7 @@ public class OrderController {
 
     public void getAvailableSlots() {
         if( plannedEvent instanceof NonSeatedPlannedEvent){
-            plannedEvent = (NonSeatedPlannedEvent) getPlannedEvent();
+            plannedEvent = getPlannedEvent();
         }
         else if(plannedEvent instanceof SeatedPlannedEvent){
             displayTickets();
@@ -62,27 +67,30 @@ public class OrderController {
         if(seatSelection.length()<1) return false;
         String[] strings = seatSelection.split(",");
 
-        ArrayList<Integer> seats = new ArrayList<Integer>();
-        try{
-            for(int i = 0;i<strings.length;i++ ){
-                seats.add(Integer.parseInt(strings[i]));
-            }
-        }catch (NumberFormatException e){
+        ArrayList<Integer> seats = parseInputForSeats(strings);
+        if(seats == null){
             return false;
         }
-        if(checkIfPositionIsTaken(seats)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        setupAorder(seats);
+        return checkIfPositionIsTaken(seats);
     }
 
-    public Order setupAorder(ArrayList<Integer> slots) {
+    public ArrayList<Integer> parseInputForSeats(String[] slots){
+        ArrayList<Integer> seats = new ArrayList<Integer>();
+        try{
+            for (String slot : slots) {
+                seats.add(Integer.parseInt(slot));
+            }
+        }catch (NumberFormatException e){
+            return null;
+        }
+        return seats;
+    }
+
+    private void setupAorder(ArrayList<Integer> slots) {
         placeOrder = new Order();
         placeOrder.setPlannedEvent(seatedPlannedEvent);
         placeOrder.setSlots(slots);
-        return placeOrder;
     }
 
     private boolean checkIfPositionIsTaken(ArrayList<Integer> seats) {

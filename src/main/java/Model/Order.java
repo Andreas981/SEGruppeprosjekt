@@ -14,15 +14,16 @@ public class Order {
         return slots;
     }
 
-    public int amountDue(){
-        int amount = 0;
+    private int amountDue(){
+        System.out.println("Amount due called");
+        amountDueInNOK = 0;
         // Get ticket prize
         for (Integer slot : slots) {
             if (plannedEvent instanceof SeatedPlannedEvent) {
-                amount += ((SeatedPlannedEvent) plannedEvent).getTickets().get(slot).getPriceInNOK();
-            }
+                amountDueInNOK += ((SeatedPlannedEvent) plannedEvent).getTickets().get(slot).getPriceInNOK();
+           }
         }
-        return amount;
+        return amountDueInNOK;
     }
 
     public void setSlots(ArrayList<Integer> slots) {
@@ -38,7 +39,7 @@ public class Order {
     }
 
     public int getAmountDueInNOK() {
-        return amountDueInNOK;
+        return amountDue();
     }
 
     public void setAmountDueInNOK(int amountDueInNOK) {

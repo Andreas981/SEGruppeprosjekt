@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class OrderView {
     private OrderController orderController;
     private Scanner scanner = new Scanner(System.in);
-    private PaymentController paymentController = new PaymentController();
 
     public OrderView(int[] eventNumber) {
         this.orderController = new OrderController(eventNumber);
@@ -24,17 +23,8 @@ public class OrderView {
         String slotsInput = scanner.nextLine();
 
         if(orderController.validateUserInput(slotsInput)){
-
-            String[] slotAsText = slotsInput.split(",");
-            ArrayList<Integer> slots = new ArrayList<Integer>();
-
-            for(int i = 0; i < slotAsText.length; i++){
-                slots.add(Integer.parseInt(slotAsText[i]));
-            }
-
-            System.out.println("Go to payment");
-            paymentController.addPayment(orderController.setupAorder(slots));
-            
+            System.out.println("Order is valid");
+            new PaymentView(orderController.getPlaceOrder()).displayAmountDue();
         }else {
             System.out.println("Invalid input");
             displayPromptForSelectingAEvent();
