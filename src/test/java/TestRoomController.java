@@ -14,8 +14,8 @@ public class TestRoomController {
     @Before
     public void init() {
         roomController = new RoomController();
-        room = new Room("test romnavn", 123,false);
-        location = new Location("test navn","test adresse",false);
+        room = new Room("test room name", 123,false);
+        location = new Location("test name","test address",false);
         location.getRooms().add(room);
     }
 
