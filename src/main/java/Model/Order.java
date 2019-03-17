@@ -14,6 +14,17 @@ public class Order {
         return slots;
     }
 
+    public int amountDue(){
+        int amount = 0;
+        // Get ticket prize
+        for (Integer slot : slots) {
+            if (plannedEvent instanceof SeatedPlannedEvent) {
+                amount += ((SeatedPlannedEvent) plannedEvent).getTickets().get(slot).getPriceInNOK();
+            }
+        }
+        return amount;
+    }
+
     public void setSlots(ArrayList<Integer> slots) {
         this.slots = slots;
     }

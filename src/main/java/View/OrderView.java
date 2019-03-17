@@ -11,7 +11,7 @@ public class OrderView {
     private Scanner scanner = new Scanner(System.in);
     private PaymentController paymentController = new PaymentController();
 
-    public OrderView(int eventNumber[]) {
+    public OrderView(int[] eventNumber) {
         this.orderController = new OrderController(eventNumber);
     }
 
