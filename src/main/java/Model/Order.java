@@ -6,23 +6,31 @@ import java.util.ArrayList;
  * Model used for generating a order to buy ticket(s) for a customer
  */
 public class Order {
-    private int totalAmountInNOK;
-    private ArrayList<Ticket> amountOfTickets;
-    // TODO Discount system
-    // TODO Send to accounting
+    private ArrayList<Integer> slots;
+    private PlannedEvent plannedEvent;
+    private int amountDueInNOK;
 
-
-
-    public Order(int totalAmountInNOK, ArrayList<Ticket> amountOfTickets) {
-        this.totalAmountInNOK = totalAmountInNOK;
-        this.amountOfTickets = amountOfTickets;
+    public ArrayList<Integer> getSlots() {
+        return slots;
     }
 
-    public int getTotalAmountInNOK() {
-        return totalAmountInNOK;
+    public void setSlots(ArrayList<Integer> slots) {
+        this.slots = slots;
     }
 
-    public ArrayList<Ticket> getAmountOfTickets() {
-        return amountOfTickets;
+    public PlannedEvent getPlannedEvent() {
+        return plannedEvent;
+    }
+
+    public void setPlannedEvent(PlannedEvent plannedEvent) {
+        this.plannedEvent = plannedEvent;
+    }
+
+    public int getAmountDueInNOK() {
+        return amountDueInNOK;
+    }
+
+    public void setAmountDueInNOK(int amountDueInNOK) {
+        this.amountDueInNOK = amountDueInNOK;
     }
 }

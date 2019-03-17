@@ -2,6 +2,7 @@ package Controller;
 
 import Dummy.Database;
 import Model.NonSeatedPlannedEvent;
+import Model.Order;
 import Model.PlannedEvent;
 import Model.SeatedPlannedEvent;
 
@@ -12,6 +13,7 @@ public class OrderController {
     private PlannedEvent plannedEvent;
     private SeatedPlannedEvent seatedPlannedEvent;
     private NonSeatedPlannedEvent nonSeatedPlannedEvent;
+    private Order placeOrder;
 
     public OrderController(int[] eventNumber) {
         this.eventNumber = eventNumber;
@@ -52,8 +54,6 @@ public class OrderController {
             }
             // TODO Replace with row number
             if(i%30==0&&i!=0) System.out.println(" ");
-
-
         }
 
     }
@@ -71,27 +71,48 @@ public class OrderController {
             return false;
         }
         if(checkIfPositionIsTaken(seats)){
-            System.out.println("Go to payment");
             return true;
         }
         else{
-
             return false;
         }
-
     }
 
-    public boolean checkIfPositionIsTaken(ArrayList<Integer> seats){
-        for(int i = 0; i< seats.size();i++){
-            if(seatedPlannedEvent.getTickets().get((seats.get(i))).getAvailable() && seatedPlannedEvent.getTickets().size()>i){
-                System.out.println("Seat is available");
-                // TODO Place in method when order is processed
-                seatedPlannedEvent.getTickets().get((seats.get(i))).setAvailable(false);
-            }else{
-                System.out.println("Seat: " + i + " is taken");
+    private Order setupAorder(ArrayList<Integer> slots) {
+        placeOrder = new Order();
+        placeOrder.setPlannedEvent(seatedPlannedEvent);
+        placeOrder.setSlots(slots);
+        return placeOrder;
+    }
+
+    private boolean checkIfPositionIsTaken(ArrayList<Integer> seats) {
+        for (int i = 0; i < seats.size(); i++) {
+            if (!(seatedPlannedEvent.getTickets().size() > seats.get(i))) {
                 return false;
+            } else {
+                if (!seatedPlannedEvent.getTickets().get((seats.get(i))).getAvailable()) return false;
             }
+
         }
         return true;
+    }
+    public void setEventNumber(int[] eventNumber) {
+        this.eventNumber = eventNumber;
+    }
+
+    public void setPlannedEvent(PlannedEvent plannedEvent) {
+        this.plannedEvent = plannedEvent;
+    }
+
+    public void setSeatedPlannedEvent(SeatedPlannedEvent seatedPlannedEvent) {
+        this.seatedPlannedEvent = seatedPlannedEvent;
+    }
+
+    public void setNonSeatedPlannedEvent(NonSeatedPlannedEvent nonSeatedPlannedEvent) {
+        this.nonSeatedPlannedEvent = nonSeatedPlannedEvent;
+    }
+
+    public void setPlaceOrder(Order placeOrder) {
+        this.placeOrder = placeOrder;
     }
 }
