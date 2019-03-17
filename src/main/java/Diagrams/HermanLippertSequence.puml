@@ -1,11 +1,11 @@
 Sekvensdiagram for registering av ny "Customer" bruker
 @startuml
 
-User -> Customer:Register Customer
+TestUserModel -> Customer:Register Customer
 Customer -> Database:Add customer account
-User <-- Database:Return customer account
+TestUserModel <-- Database:Return customer account
 
 alt Error
-    User <-- Customer:Register failed
+    TestUserModel <-- Customer:Register failed
 end
 @enduml

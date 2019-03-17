@@ -17,15 +17,13 @@ public class TestSeatedEventController {
     @Before
     public void init() {
 
-        location = new Location("test name","test address",false);
-        room = new Room("test room name", 123,false,1);
-        seatedPlannedEvent = new SeatedPlannedEvent("test name", new LocalDateTime(16),1,18,1,1);
         organizer = new Organizer("test name","test address","test email","12312312",
-                "test username", "test password", new LocalDate(1991,1,1),"test org",1);
-        room.addEvent(seatedPlannedEvent);
-        location.addRoom(room);
+                "test username", "test password", new LocalDate(1991,1,1),"test org",2);
         Database.currentLoggedInOrganizer = organizer;
-        Database.currentLoggedInOrganizer.addLocation(location);
+        organizer.getLocations().add(new Location("test name","test address",false));
+        organizer.getLocations().get(0).getRooms().add(new Room("test room name", 123,false,10));
+        organizer.getLocations().get(0).getRooms().get(0).getEvents().add(new SeatedPlannedEvent("test name", new LocalDateTime(2002,2,2,12,12),1,18,0,0));
+
     }
 
     @Test
