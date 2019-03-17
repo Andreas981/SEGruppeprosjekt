@@ -78,7 +78,7 @@ public class OrderController {
         }
     }
 
-    private Order setupAorder(ArrayList<Integer> slots) {
+    public Order setupAorder(ArrayList<Integer> slots) {
         placeOrder = new Order();
         placeOrder.setPlannedEvent(seatedPlannedEvent);
         placeOrder.setSlots(slots);
