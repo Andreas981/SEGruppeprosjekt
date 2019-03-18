@@ -88,9 +88,7 @@ public class OrderController {
     }
 
     private void setupAorder(ArrayList<Integer> slots) {
-        placeOrder = new Order();
-        placeOrder.setPlannedEvent(seatedPlannedEvent);
-        placeOrder.setSlots(slots);
+        placeOrder = new Order(slots,seatedPlannedEvent);
     }
 
     private boolean checkIfPositionIsTaken(ArrayList<Integer> seats) {
@@ -104,6 +102,7 @@ public class OrderController {
         }
         return true;
     }
+
     public void setEventNumber(int[] eventNumber) {
         this.eventNumber = eventNumber;
     }

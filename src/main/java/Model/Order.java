@@ -10,6 +10,11 @@ public class Order {
     private PlannedEvent plannedEvent;
     private int amountDueInNOK;
 
+    public Order(ArrayList<Integer> slots, PlannedEvent plannedEvent) {
+        this.slots = slots;
+        this.plannedEvent = plannedEvent;
+    }
+
     public ArrayList<Integer> getSlots() {
         return slots;
     }
@@ -25,6 +30,8 @@ public class Order {
         }
         return amountDueInNOK;
     }
+
+
 
     public void setSlots(ArrayList<Integer> slots) {
         this.slots = slots;
