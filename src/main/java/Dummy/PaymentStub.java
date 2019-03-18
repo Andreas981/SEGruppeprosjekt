@@ -48,7 +48,20 @@ public class PaymentStub {
         }
     }
 
+    public Boolean debitCard(int cardNumber){
 
+
+
+        return false;
+    }
+
+    public Boolean vipps(int tlfNummer){
+        
+
+
+
+        return false;
+    }
 
     private void errorDatabaseConnectionFail(){
         System.out.println("Sorry, payment failed due to server issues.");
