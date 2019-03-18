@@ -1,3 +1,4 @@
+import Dummy.Database;
 import Model.Location;
 import Model.Organizer;
 import Model.Room;
@@ -15,6 +16,7 @@ public class LevelTwoOrganizerTest {
     @Before
     public void initTests(){
         organizer = new Organizer("Per", "Persen", "Mail", "wewewe", "username", "password", new LocalDate(2000,2,2), "Org", 2);
+        Database.currentLoggedInOrganizer = organizer;
     }
 
     @Test
