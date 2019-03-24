@@ -29,7 +29,7 @@ public class TestEventCreation {
     }
 
     @Test
-    public void gettingSeatNumberForAticketInEvent(){
+    public void testGettingSeatNumberForAticketInEvent(){
         System.out.println(organizer.getLocations().get(0).getRooms().get(0).getEvents().get(0).getTickets().size());
         Assert.assertEquals(3, organizer.getLocations().get(0).getRooms().get(0).getEvents().get(0).getTickets().get(3).getSeatNumber());
     }

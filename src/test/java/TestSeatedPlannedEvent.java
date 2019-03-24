@@ -11,7 +11,7 @@ public class TestSeatedPlannedEvent {
     // TODO Test case for viewing sold tickets
 
     @Test
-    public void createAseatedEvent(){
+    public void testCreateAseatedEvent(){
         SeatedPlannedEvent seatedPlannedEvent = new SeatedPlannedEvent("Example seated event",new LocalDateTime(2019,3,2,22,00),200,20,0,0);
         Assert.assertEquals(seatedPlannedEvent,seatedPlannedEvent);
     }

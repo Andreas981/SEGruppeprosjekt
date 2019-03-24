@@ -16,23 +16,23 @@ public class TestUserModel {
         organizer = new Organizer("Andreas", "Mikalsen", "andremi@hiof.no", "97781816", "andremi","abc123", new LocalDate(1998,6,1), "HiØ", 1);
     }
     @Test
-    public void gettingFullNameOfOrganizer(){
+    public void testGettingFullNameOfOrganizer(){
         Assert.assertEquals("Andreas Mikalsen", organizer.getFullName());
     }
     @Test
-    public void gettingWringNameFromOrganizer(){
+    public void testGettingWringNameFromOrganizer(){
         Assert.assertNotEquals("HAHAHA", organizer.getFullName());
     }
     @Test
-    public void gettingAccessLevelFromOrganizer(){
+    public void testGettingAccessLevelFromOrganizer(){
         Assert.assertEquals(1, organizer.getAccessLevel());
     }
     @Test
-    public void gettingUserNameFromOrganizer(){
+    public void testGettingUserNameFromOrganizer(){
         Assert.assertEquals("andremi", organizer.getUsername());
     }
     @Test
-    public void gettingMailAddressFromOrganizer(){
+    public void testGettingMailAddressFromOrganizer(){
         Assert.assertEquals("andremi@hiof.no", organizer.getMail());
     }
 
