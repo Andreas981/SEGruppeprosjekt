@@ -20,7 +20,7 @@ public class TestRoomController {
     }
 
     @Test
-    public void TestAddRoomInExistingLocation() {
+    public void testAddRoomInExistingLocation() {
         /*Checks if array's size is not null/0*/
         Assert.assertNotNull(location.getRooms().size());
 

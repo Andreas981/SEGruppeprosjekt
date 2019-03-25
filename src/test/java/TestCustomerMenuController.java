@@ -10,13 +10,13 @@ public class TestCustomerMenuController {
     CustomerMenuController customerMenuController;
 
     @Before
-    public void createController(){
+    public void testCreateController(){
         customerMenuController = new CustomerMenuController();
         InitStart.Init();
     }
 
     @Test
-    public void enterInvalidEventnumber(){
+    public void testEnterInvalidEventnumber(){
 
     }
 
@@ -24,7 +24,7 @@ public class TestCustomerMenuController {
     // Method for testing on dummy data
 
     @Test
-    public void enterValidEventNumber(){
+    public void testEnterValidEventNumber(){
         //Assert.assertTrue(customerMenuController.validateUserSelection("0013"));
     }
 }

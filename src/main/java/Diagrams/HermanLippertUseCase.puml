@@ -10,9 +10,11 @@ newpage
 Organizer -->(Create Events<seated and nonseated>)
 Organizer -->(Delete Events<seated and nonseated>)
 Organizer -->(Edit Events<seated and nonseated>)
+
 Organizer -->(Create Location)
 Organizer -->(Delete Location)
 Organizer -->(Edit Location)
+
 Organizer -->(Create Rooms)
 Organizer -->(Delete Rooms)
 Organizer -->(Edit Rooms)

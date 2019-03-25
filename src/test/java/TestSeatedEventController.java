@@ -27,7 +27,7 @@ public class TestSeatedEventController {
     }
 
     @Test
-    public void TestAddSeatedEvent() {
+    public void testAddSeatedEvent() {
         /* Checks if array's size is not null/0 */
         Assert.assertNotEquals(null,Database.currentLoggedInOrganizer.getLocations().get(0).getRooms().get(0).getEvents().get(0));
     }

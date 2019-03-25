@@ -18,7 +18,7 @@ public class TestRegisterUserController {
     }
 
     @Test
-    public void TestRegisterCustomerIntoDatabase() {
+    public void testRegisterCustomerIntoDatabase() {
         Assert.assertEquals(true, registerUserController.registerCustomerIntoDatabase(customer.getFirstName(),customer.getLastName(),customer.getMail(),customer.getTelephone(),customer.getUsername(),customer.getPassword(),customer.getBirthday()));
     }
 }
