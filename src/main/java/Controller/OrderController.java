@@ -30,6 +30,9 @@ public class OrderController {
     }
 
     public void getEventFromDatabase(int[] eventNumber){
+        if(eventNumber.length<3){
+            plannedEvent = Database.organizers.get(eventNumber[0]).getNonSeatedPlannedEvents().get(eventNumber[1]);
+        }else
          plannedEvent = Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
                 .get(eventNumber[2]).getEvents()
                 .get(eventNumber[3]);
@@ -41,9 +44,11 @@ public class OrderController {
 
     public void getAvailableSlots() {
         if( plannedEvent instanceof NonSeatedPlannedEvent){
-            plannedEvent = getPlannedEvent();
+
+            System.out.println("This is a non seated event");
         }
         else if(plannedEvent instanceof SeatedPlannedEvent){
+            System.out.println("This is a seated event");
             displayTickets();
         }
     }

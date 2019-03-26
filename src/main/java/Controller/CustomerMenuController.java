@@ -12,7 +12,16 @@ public class CustomerMenuController {
             System.out.println("*********************************************************************");
             System.out.println("Arranger: " + organizer.getOrganization());
             // TODO Add listing of nonSeated events
-            // for(Event nonSeated : organizer.a)
+
+
+            for(NonSeatedPlannedEvent nonSeatedPlannedEvent : organizer.getNonSeatedPlannedEvents()) {
+                System.out.println("Outdoor event");
+                System.out.println(nonSeatedPlannedEvent.getNameOfEvent() + " Age Limit: " + nonSeatedPlannedEvent.getAgeLimit() +"+"
+                        +"\n" + "Meet up: " + nonSeatedPlannedEvent.getMeetUp());
+
+                System.out.println("_____________________________________________________________________");
+            }
+
             for(Location location : organizer.getLocations()){
                 System.out.println("    Playing at: " + location.getName());
                 for(Room aRoom : location.getRooms()){
@@ -42,6 +51,15 @@ public class CustomerMenuController {
         for(int i = 0;i<Database.organizers.size();i++) {
             System.out.println("*********************************************************************");
             System.out.println("Arranger name: " + Database.organizers.get(i).getOrganization());
+            for(int nonS = 0; nonS < Database.organizers.get(i).getNonSeatedPlannedEvents().size();nonS++ ) {
+                System.out.println("Outdoor event");
+                NonSeatedPlannedEvent aEvent = Database.organizers.get(i).getNonSeatedPlannedEvents().get(nonS);
+                System.out.println(aEvent.getNameOfEvent() + " Age Limit: " + aEvent.getAgeLimit() +"+"
+                        +"\n" + "Meet up: " + aEvent.getMeetUp());
+                System.out.println("Event number: (" + (i) + (nonS) +")");
+
+                System.out.println("_____________________________________________________________________");
+            }
 
             for (int j = 0; j < Database.organizers.get(i).getLocations().size();j++) { ;
                 System.out.println("Playing at: " + Database.organizers.get(i)
@@ -78,7 +96,7 @@ public class CustomerMenuController {
     }
 
     public int[] validateUserSelection(String userInput) {
-        if(userInput.length()<4){
+        if(userInput.length()<1){
             return null;
         }
         String[] eventSplit = userInput.split("");
@@ -103,20 +121,24 @@ public class CustomerMenuController {
         // TODO Query
 
         System.out.println(Database.organizers.size()>eventNumber[0]);
-        if(Database.organizers.size()>eventNumber[0]){
+        if(Database.organizers.size()>eventNumber[0]) {
+            // Check if the event number is for a seated XXXX or Nonseated Event XX
+            if (eventNumber.length < 3) {
+                return Database.organizers.get(eventNumber[0]).getNonSeatedPlannedEvents().size() > eventNumber[1];
+            } else {
+                if (Database.organizers.get(eventNumber[0]).getLocations().size() > eventNumber[1]) {
 
-            if (Database.organizers.get(eventNumber[0]).getLocations().size()>eventNumber[1]) {
-
-                if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().size()>eventNumber[2]){
-                    return Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
-                            .get(eventNumber[2]).getEvents().size() > (eventNumber[3]);
+                    if (Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms().size() > eventNumber[2]) {
+                        return Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
+                                .get(eventNumber[2]).getEvents().size() > (eventNumber[3]);
+                    }
+                    return false;
                 }
                 return false;
             }
-            return false;
+
         }
         return false;
-
     }
 
     private void selectEvent(int[] eventNumber){
