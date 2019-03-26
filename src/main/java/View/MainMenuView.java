@@ -1,6 +1,6 @@
 package View;
 
-import Controller.CustomerMenuController;
+import Controller.CustomerEventSelectionController;
 import Dummy.Database;
 
 import java.util.InputMismatchException;
@@ -28,7 +28,7 @@ public class MainMenuView {
                     displayMenu();
                     break;
                 case 3:
-                    CustomerMenuController.displayOnGoingEvents();
+                    CustomerEventSelectionController.displayOnGoingEvents();
                     displayMenu();
                     break;
                 case 4:

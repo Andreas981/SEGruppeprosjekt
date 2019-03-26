@@ -16,7 +16,7 @@ public class NonSeatedPlannedEvent extends PlannedEvent {
 
     // TODO Modified constructor for different events:
 
-    public NonSeatedPlannedEvent(String nameOfEvent, LocalDateTime dateOfEvent, int lengthOfEvent, int ageLimit, int freeSpace, String meetUp, Boolean freeEvent) {
+    public NonSeatedPlannedEvent(String nameOfEvent, LocalDateTime dateOfEvent, int lengthOfEvent, int ageLimit, int freeSpace, String meetUp, Boolean freeEvent, int price) {
         super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
         this.freeSpace = freeSpace;
         this.meetUp = meetUp;
@@ -24,12 +24,12 @@ public class NonSeatedPlannedEvent extends PlannedEvent {
         participents = new ArrayList<Customer>();
         specialNotices = new ArrayList<String>();
 
-        addTicketsToEvent();
+        addTicketsToEvent(price);
     }
 
-    private void addTicketsToEvent(){
+    private void addTicketsToEvent(int price){
         for(int i = 0; i < freeSpace; i++) {
-            tickets.add(new Ticket("ID", this, 100, i));
+            tickets.add(new Ticket("ID", this, price, i));
         }
 
     }

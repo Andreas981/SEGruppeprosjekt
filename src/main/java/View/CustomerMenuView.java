@@ -1,19 +1,19 @@
 package View;
 
-import Controller.CustomerMenuController;
+import Controller.CustomerEventSelectionController;
 
 import java.util.Scanner;
 
 public class CustomerMenuView {
     private Scanner scanner = new Scanner(System.in);
-    CustomerMenuController customerMenuController = new CustomerMenuController();
+    CustomerEventSelectionController customerEventSelectionController = new CustomerEventSelectionController();
 
     public void promptUserForAEventSeletion(){
-        customerMenuController.enterCustomerMenu();
+        customerEventSelectionController.enterCustomerMenu();
         System.out.println("Please enter the event number of the performance you wish to purchase tickets to.");
         String eventNumberInput = scanner.next();
-        if(customerMenuController.validateUserSelection(eventNumberInput)!=null){
-            new OrderView(customerMenuController.validateUserSelection(eventNumberInput)).displayPromptForSelectingAEvent();
+        if(customerEventSelectionController.validateUserSelection(eventNumberInput)!=null){
+            new OrderView(customerEventSelectionController.validateUserSelection(eventNumberInput)).displayPromptForSelectingAEvent();
             System.out.println("Success");
             }else{
             System.out.println("Invalid selection entered");

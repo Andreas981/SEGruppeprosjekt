@@ -12,7 +12,7 @@ public class TestSeatedPlannedEvent {
 
     @Test
     public void createAseatedEvent(){
-        SeatedPlannedEvent seatedPlannedEvent = new SeatedPlannedEvent("Example seated event",new LocalDateTime(2019,3,2,22,00),200,20,0,0);
+        SeatedPlannedEvent seatedPlannedEvent = new SeatedPlannedEvent("Example seated event",new LocalDateTime(2019,3,2,22,00),200,20,0,0, 100);
         Assert.assertEquals(seatedPlannedEvent,seatedPlannedEvent);
     }
 }

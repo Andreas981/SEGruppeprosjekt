@@ -4,7 +4,7 @@ import Dummy.Database;
 import Model.*;
 
 
-public class CustomerMenuController {
+public class CustomerEventSelectionController {
     public static void displayOnGoingEvents(){
         // For use in main screen
         System.out.println("_____________________________________________________________________");
