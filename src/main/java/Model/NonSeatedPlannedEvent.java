@@ -1,5 +1,6 @@
 package Model;
 
+import Dummy.Database;
 import org.joda.time.LocalDateTime;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class NonSeatedPlannedEvent extends PlannedEvent {
     private Boolean freeEvent;
     private ArrayList<Customer> participents;
     private ArrayList<String> specialNotices;
+    private ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 
     // TODO Modified constructor for different events:
 
@@ -21,6 +23,15 @@ public class NonSeatedPlannedEvent extends PlannedEvent {
         this.freeEvent = freeEvent;
         participents = new ArrayList<Customer>();
         specialNotices = new ArrayList<String>();
+
+        addTicketsToEvent();
+    }
+
+    private void addTicketsToEvent(){
+        for(int i = 0; i < freeSpace; i++) {
+            tickets.add(new Ticket("ID", this, 100, i));
+        }
+
     }
 
     public void addParticipent(Customer customer){
