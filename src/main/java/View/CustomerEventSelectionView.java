@@ -4,7 +4,7 @@ import Controller.CustomerMenuController;
 
 import java.util.Scanner;
 
-public class CustomerMenuView {
+public class CustomerEventSelectionView {
     private Scanner scanner = new Scanner(System.in);
     CustomerMenuController customerMenuController = new CustomerMenuController();
 
