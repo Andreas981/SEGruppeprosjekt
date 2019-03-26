@@ -44,16 +44,23 @@ public class OrderController {
 
     public void getAvailableSlots() {
         if( plannedEvent instanceof NonSeatedPlannedEvent){
-
-            System.out.println("This is a non seated event");
+            displayAvalibleSlots((NonSeatedPlannedEvent) plannedEvent);
         }
         else if(plannedEvent instanceof SeatedPlannedEvent){
-            System.out.println("This is a seated event");
             displayTickets();
         }
     }
 
+    private void displayAvalibleSlots(NonSeatedPlannedEvent plannedEvent) {
+        System.out.println(plannedEvent.getFreeSpace());
+        System.out.println("Enter how many reservations you want:");
+        System.out.println("Example: 1 or 5");
+
+    }
+
     private void displayTickets(){
+        System.out.println("Enter how many seats you want:");
+        System.out.println("Example: 1,2,3");
         seatedPlannedEvent = (SeatedPlannedEvent) plannedEvent;
         for (int i = 0; i<seatedPlannedEvent.getTickets().size();i++){
             if(!seatedPlannedEvent.getTickets().get(i).getAvailable()){
@@ -68,16 +75,19 @@ public class OrderController {
 
     }
 
-    public boolean validateUserInput(String seatSelection){
-        if(seatSelection.length()<1) return false;
-        String[] strings = seatSelection.split(",");
+    public boolean validateUserInput(String reservation){
+        if(reservation.length()<1) return false;
 
-        ArrayList<Integer> seats = parseInputForSeats(strings);
-        if(seats == null){
+        String[] strings = reservation.split(",");
+
+        ArrayList<Integer> slots = parseInputForSeats(strings);
+        if(slots == null){
             return false;
         }
-        setupAorder(seats);
-        return checkIfPositionIsTaken(seats);
+        setupAorder(slots);
+        // If the event selected is a NonSeatedPlannedEvent, we don't need to check seats
+        if(getPlannedEvent() instanceof  NonSeatedPlannedEvent) return true;
+        return checkIfPositionIsTaken(slots);
     }
 
     public ArrayList<Integer> parseInputForSeats(String[] slots){
@@ -93,7 +103,7 @@ public class OrderController {
     }
 
     private void setupAorder(ArrayList<Integer> slots) {
-        placeOrder = new Order(slots,seatedPlannedEvent);
+        placeOrder = new Order(slots,plannedEvent);
     }
 
     private boolean checkIfPositionIsTaken(ArrayList<Integer> seats) {

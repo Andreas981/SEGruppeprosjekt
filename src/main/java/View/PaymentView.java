@@ -32,7 +32,8 @@ public class PaymentView {
         if(paymentOK){
             // TODO Reserve seats, send ticket to user
             System.out.println("Purchase ok");
-            Database.currentLoggedInCustomer.setCustomerTickets(paymentController.reserveSeats());
+            Database.currentLoggedInCustomer.setCustomerTickets(paymentController.reserveSlots());
+            // Debug output for displaying tickets
             for (int i = 0; i< Database.currentLoggedInCustomer.getCustomerTickets().size();i++){
                 System.out.println(Database.currentLoggedInCustomer.getCustomerTickets().get(i));
             }

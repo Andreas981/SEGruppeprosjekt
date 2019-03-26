@@ -26,7 +26,10 @@ public class Order {
         for (Integer slot : slots) {
             if (plannedEvent instanceof SeatedPlannedEvent) {
                 amountDueInNOK += ((SeatedPlannedEvent) plannedEvent).getTickets().get(slot).getPriceInNOK();
-           }
+           }else{
+                // TODO Implement price
+                amountDueInNOK = 100;
+            }
         }
         return amountDueInNOK;
     }
