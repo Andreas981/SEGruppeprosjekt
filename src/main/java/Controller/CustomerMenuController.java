@@ -56,6 +56,7 @@ public class CustomerMenuController {
                 NonSeatedPlannedEvent aEvent = Database.organizers.get(i).getNonSeatedPlannedEvents().get(nonS);
                 System.out.println(aEvent.getNameOfEvent() + " Age Limit: " + aEvent.getAgeLimit() +"+"
                         +"\n" + "Meet up: " + aEvent.getMeetUp());
+                System.out.println((aEvent.getFreeSpace() > 0 ? aEvent.getFreeSpace() : "Sold out" ));
                 System.out.println("Event number: (" + (i) + (nonS) +")");
 
                 System.out.println("_____________________________________________________________________");
@@ -85,7 +86,7 @@ public class CustomerMenuController {
                                 "            Starting at: " + plannedEvent.getDateOfEvent().toLocalTime().getHourOfDay()
                                 + ":" +plannedEvent.getDateOfEvent().getMinuteOfHour() + " "
                                 + plannedEvent.getLengthOfEvent() +  "min runtime \n" +
-                                "            Seats available:" + freeSeats + "\n"+
+                                "            Seats available:" +  (freeSeats > 0 ? ((SeatedPlannedEvent) plannedEvent).getTickets().size() : "Sold out" ) + "\n"+
                                 "            Event number: (" + (i) + (j) + (k) + (m) + ")");
 
                     }
@@ -124,7 +125,10 @@ public class CustomerMenuController {
         if(Database.organizers.size()>eventNumber[0]) {
             // Check if the event number is for a seated XXXX or Nonseated Event XX
             if (eventNumber.length < 3) {
-                return Database.organizers.get(eventNumber[0]).getNonSeatedPlannedEvents().size() > eventNumber[1];
+                if(Database.organizers.get(eventNumber[0]).getNonSeatedPlannedEvents().size() > eventNumber[1])
+                {   NonSeatedPlannedEvent ns = Database.organizers.get(eventNumber[0]).getNonSeatedPlannedEvents().get(eventNumber[1]);
+                    return checkSlots(ns);
+                }
             } else {
                 if (Database.organizers.get(eventNumber[0]).getLocations().size() > eventNumber[1]) {
 
@@ -139,6 +143,12 @@ public class CustomerMenuController {
 
         }
         return false;
+    }
+
+    // Check that there is still free slots for the event the user wants to but tickets to:
+    private boolean checkSlots(NonSeatedPlannedEvent nonSeatedPlannedEvent) {
+
+        return (nonSeatedPlannedEvent.getFreeSpace()>0);
     }
 
     private void selectEvent(int[] eventNumber){

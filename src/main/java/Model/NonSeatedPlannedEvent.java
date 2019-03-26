@@ -34,6 +34,14 @@ public class NonSeatedPlannedEvent extends PlannedEvent {
 
     }
 
+    public ArrayList<String> getSpecialNotices() {
+        return specialNotices;
+    }
+
+    public ArrayList<Ticket> getTickets() {
+        return tickets;
+    }
+
     public void addParticipent(Customer customer){
         participents.add(customer);
     }

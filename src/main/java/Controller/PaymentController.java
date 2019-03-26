@@ -30,8 +30,12 @@ public class PaymentController {
             }
         }else{
             NonSeatedPlannedEvent ns = (NonSeatedPlannedEvent) order.getPlannedEvent();
+            for(int i = 0; i< order.getSlots().get(0);i++){
+                tickets.add(ns.getTickets().get(0));
+            }
             ns.setFreeSpace(ns.getFreeSpace() - order.getSlots().get(0));
-            // TODO Ticket support
+
+
         }
         return tickets;
     }

@@ -28,7 +28,7 @@ public class Order {
                 amountDueInNOK += ((SeatedPlannedEvent) plannedEvent).getTickets().get(slot).getPriceInNOK();
            }else{
                 // TODO Implement price
-                amountDueInNOK = 100;
+                amountDueInNOK = ((NonSeatedPlannedEvent) plannedEvent).getTickets().get(0).getPriceInNOK() * slot;
             }
         }
         return amountDueInNOK;

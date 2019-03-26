@@ -84,6 +84,12 @@ public class OrderController {
         if(slots == null){
             return false;
         }
+        if(getPlannedEvent() instanceof  NonSeatedPlannedEvent){
+            // Check that the amount of slots are valid
+            if(((NonSeatedPlannedEvent) getPlannedEvent()).getFreeSpace()<slots.get(0)|| slots.get(0)<1){
+                return false;
+            }
+        }
         setupAorder(slots);
         // If the event selected is a NonSeatedPlannedEvent, we don't need to check seats
         if(getPlannedEvent() instanceof  NonSeatedPlannedEvent) return true;
