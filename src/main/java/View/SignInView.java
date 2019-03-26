@@ -47,7 +47,7 @@ public class SignInView {
                 case 2:
                     System.out.println("You're logged in");
                     System.out.println(Database.currentLoggedInCustomer.getFirstName());
-                    new CustomerEventSelectionView().promptUserForAEventSeletion();
+                    new CustomerMenuView().displayOptions();
                     break;
                 default:
                     System.out.println("Something went wrong while logging in");
