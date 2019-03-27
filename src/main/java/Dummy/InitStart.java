@@ -32,7 +32,7 @@ public class InitStart {
 
         // Dummy event for HIØ Playing at Aud Max
         Database.currentLoggedInOrganizer = Database.organizers.get(0);
-        Database.organizers.get(0).addNonSeatedPlannedEvent(new NonSeatedPlannedEvent("NonSeatedEvent", new LocalDateTime(2019, 3, 2, 22, 0), 90, 18, 200, "HIOF", false, 2));
+        Database.organizers.get(0).addNonSeatedPlannedEvent(new NonSeatedPlannedEvent("Sopptur", new LocalDateTime(2019, 3, 2, 22, 0), 90, 18, 200, "HIOF", false, 2));
         Database.organizers.get(0).getLocations().get(0).getRooms()
                 .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog", new LocalDateTime(2019, 3, 2, 22, 0), 200, 20, 0, 0, 100));
         Database.organizers.get(0).getLocations().get(0).getRooms()

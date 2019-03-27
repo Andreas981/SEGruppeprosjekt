@@ -32,6 +32,7 @@ public class OrderController {
     public void getEventFromDatabase(int[] eventNumber){
         if(eventNumber.length<3){
             plannedEvent = Database.organizers.get(eventNumber[0]).getNonSeatedPlannedEvents().get(eventNumber[1]);
+
         }else
          plannedEvent = Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
                 .get(eventNumber[2]).getEvents()
@@ -55,7 +56,6 @@ public class OrderController {
         System.out.println(plannedEvent.getFreeSpace());
         System.out.println("Enter how many reservations you want:");
         System.out.println("Example: 1 or 5");
-
     }
 
     private void displayTickets(){
@@ -67,7 +67,7 @@ public class OrderController {
                 // TODO Format output in columns
                 System.out.print("X   ,");
             }else{
-                System.out.print(seatedPlannedEvent.getTickets().get(i).getSeatNumber() + "   ,");
+                System.out.print((seatedPlannedEvent.getTickets().get(i).getSeatNumber())+ "   ,");
             }
             // TODO Replace with row number
             if(i%30==0&&i!=0) System.out.println(" ");
@@ -75,12 +75,16 @@ public class OrderController {
 
     }
 
+    private boolean checkSlots(NonSeatedPlannedEvent nonSeatedPlannedEvent) {
+        return (nonSeatedPlannedEvent.getFreeSpace()>0);
+    }
+
     public boolean validateUserInput(String reservation){
         if(reservation.length()<1) return false;
 
         String[] strings = reservation.split(",");
 
-        ArrayList<Integer> slots = parseInputForSeats(strings);
+        ArrayList<Integer> slots = parseInputForSlots(strings);
         if(slots == null){
             return false;
         }
@@ -89,6 +93,8 @@ public class OrderController {
             if(((NonSeatedPlannedEvent) getPlannedEvent()).getFreeSpace()<slots.get(0)|| slots.get(0)<1){
                 return false;
             }
+            // If the user has entered a number for a sold out event
+            if(!checkSlots((NonSeatedPlannedEvent)getPlannedEvent()));
         }
         setupAorder(slots);
         // If the event selected is a NonSeatedPlannedEvent, we don't need to check seats
@@ -96,7 +102,7 @@ public class OrderController {
         return checkIfPositionIsTaken(slots);
     }
 
-    public ArrayList<Integer> parseInputForSeats(String[] slots){
+    public ArrayList<Integer> parseInputForSlots(String[] slots){
         ArrayList<Integer> seats = new ArrayList<Integer>();
         try{
             for (String slot : slots) {
@@ -114,7 +120,7 @@ public class OrderController {
 
     private boolean checkIfPositionIsTaken(ArrayList<Integer> seats) {
         for (int i = 0; i < seats.size(); i++) {
-            if (!(seatedPlannedEvent.getTickets().size() > seats.get(i))) {
+            if (!(seatedPlannedEvent.getTickets().size() > seats.get(i)-1)) {
                 return false;
             } else {
                 if (!seatedPlannedEvent.getTickets().get((seats.get(i))).getAvailable()) return false;

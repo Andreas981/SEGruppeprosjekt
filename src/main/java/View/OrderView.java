@@ -1,9 +1,6 @@
 package View;
 
 import Controller.OrderController;
-import Controller.PaymentController;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class OrderView {
@@ -17,9 +14,6 @@ public class OrderView {
     public void displayPromptForSelectingAEvent(){
         orderController.getAvailableSlots();
 
-
-
-
         String slotsInput = scanner.nextLine();
 
         if(orderController.validateUserInput(slotsInput)){
@@ -27,9 +21,9 @@ public class OrderView {
             new PaymentView(orderController.getPlaceOrder()).displayAmountDue();
         }else {
             System.out.println("Invalid input");
-            displayPromptForSelectingAEvent();
         }
 
         
     }
+
 }

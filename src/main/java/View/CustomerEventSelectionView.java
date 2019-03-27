@@ -10,11 +10,11 @@ public class CustomerEventSelectionView {
 
     public void promptUserForAEventSeletion(){
         customerEventSelectionController.enterCustomerMenu();
-        System.out.println("Please enter the event number of the performance you wish to purchase tickets to.");
+        System.out.println("Please enter the event number of the Event you wish to purchase tickets to.");
         String eventNumberInput = scanner.next();
         if(customerEventSelectionController.validateUserSelection(eventNumberInput)!=null){
             new OrderView(customerEventSelectionController.validateUserSelection(eventNumberInput)).displayPromptForSelectingAEvent();
-            System.out.println("Success");
+
             }else{
             System.out.println("Invalid selection entered");
             }

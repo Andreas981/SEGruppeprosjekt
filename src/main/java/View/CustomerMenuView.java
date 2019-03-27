@@ -20,7 +20,7 @@ public class CustomerMenuView {
         try {
             selection = scanner.next();
         } catch (NumberFormatException n) {
-
+            n.getCause();
         }
         if (selection.equals("1")) {
             new CustomerEventSelectionView().promptUserForAEventSeletion();
@@ -40,34 +40,40 @@ public class CustomerMenuView {
                 orderController = new OrderController(event);
                 // Validate tickets
                     boolean validTickets = false;
-                    for (int i = 0; i < Database.currentLoggedInCustomer.getCustomerTickets().size(); i++) {
-                        if (orderController.getPlannedEvent() instanceof  NonSeatedPlannedEvent) {
-                            if (((NonSeatedPlannedEvent) orderController.getPlannedEvent()).getTickets().contains(Database.currentLoggedInCustomer.getCustomerTickets().get(i))) {
-                                validTickets = true;
-                            }
-                        }
-                        if(orderController.getPlannedEvent() instanceof  SeatedPlannedEvent){
-                            if (((SeatedPlannedEvent) orderController.getPlannedEvent()).getTickets().contains(Database.currentLoggedInCustomer.getCustomerTickets().get(i))) {
-                                validTickets = true;
-                            }
-
-
-                        }
-                        System.out.println("You have " + (validTickets ? "valid " :" no valid ") +  "tickets for" + orderController.getPlannedEvent().getNameOfEvent());
+                    if (Database.currentLoggedInCustomer.getCustomerTickets().size()<1) {
+                        System.out.println("You don't have any tickets");
                         displayOptions();
+                    }else{
+                        System.out.println();
+                        for (int i = 0; i < Database.currentLoggedInCustomer.getCustomerTickets().size(); i++) {
+                            if (orderController.getPlannedEvent() instanceof  NonSeatedPlannedEvent) {
+                                if (((NonSeatedPlannedEvent) orderController.getPlannedEvent()).getTickets().contains(Database.currentLoggedInCustomer.getCustomerTickets().get(i))) {
+                                    validTickets = true;
+                                }
+                            }
+                            else if(orderController.getPlannedEvent() instanceof  SeatedPlannedEvent){
+                                if (((SeatedPlannedEvent) orderController.getPlannedEvent()).getTickets().contains(Database.currentLoggedInCustomer.getCustomerTickets().get(i))) {
+                                    validTickets = true;
+                                }
+
+                            }
 
                     }
-
+                        System.out.println("You have " + (validTickets ? "valid " :" no valid ") +  "tickets for " + orderController.getPlannedEvent().getNameOfEvent());
+                        displayOptions();
+                    }
             } else {
                 displayOptions();
             }
-        }else if(selection.equals("4")) return;
+        }else if(selection.equals("4")){}else{
+            displayOptions();
+        }
     }
 
     private void printMenu() {
-        System.out.println("Enter 1 to look at available events + \n" +
+        System.out.println("Enter 1 to buy a ticket for available events  \n" +
                 "Enter 2 to display tickets in your inventory \n" +
-                "Enter 3 to use a ticket at an event \n" +
+                "Enter 3 to validate tickets for a event \n" +
                 "Enter 4 to log out");
     }
 

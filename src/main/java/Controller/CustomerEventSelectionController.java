@@ -118,16 +118,12 @@ public class CustomerEventSelectionController {
 
     // Control that that valid int selection exist in the database
     private Boolean checkIfEventExist(int[] eventNumber) {
-        // TODO Migrate to real db
-        // TODO Query
-
-        System.out.println(Database.organizers.size()>eventNumber[0]);
         if(Database.organizers.size()>eventNumber[0]) {
             // Check if the event number is for a seated XXXX or Nonseated Event XX
             if (eventNumber.length < 3) {
                 if(Database.organizers.get(eventNumber[0]).getNonSeatedPlannedEvents().size() > eventNumber[1])
                 {   NonSeatedPlannedEvent ns = Database.organizers.get(eventNumber[0]).getNonSeatedPlannedEvents().get(eventNumber[1]);
-                    return checkSlots(ns);
+                    return true;
                 }
             } else {
                 if (Database.organizers.get(eventNumber[0]).getLocations().size() > eventNumber[1]) {
@@ -147,11 +143,7 @@ public class CustomerEventSelectionController {
 
     // Check that there is still free slots for the event the user wants to but tickets to:
     private boolean checkSlots(NonSeatedPlannedEvent nonSeatedPlannedEvent) {
-
         return (nonSeatedPlannedEvent.getFreeSpace()>0);
     }
 
-    private void selectEvent(int[] eventNumber){
-
-    }
 }

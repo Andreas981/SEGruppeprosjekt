@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class PaymentView {
     private Order order;
     private PaymentController paymentController;
-    Scanner scanner = new Scanner(System.in);
-    boolean paymentOK = false;
+    private Scanner scanner;
+    private boolean paymentOK;
 
     public PaymentView(Order order) {
         this.order = order;
@@ -28,10 +28,9 @@ public class PaymentView {
     public void displayPaymentOptions(){
         System.out.println("How would you like to pay?");
         printMenu();
+        scanner = new Scanner(System.in);
         selectedOption(scanner.nextInt());
         if(paymentOK){
-            // TODO Reserve seats, send ticket to user
-            System.out.println("Purchase ok");
             if(paymentController.reserveSlots()){
                 System.out.println("Tickets added to your account");
             }else{
@@ -43,9 +42,8 @@ public class PaymentView {
         }
     }
 
-    // TODO Refactor SOLID
     public void selectedOption(int userSelection) {
-
+        paymentOK = false;
         try {
             switch (userSelection) {
                 case 1:
@@ -54,7 +52,7 @@ public class PaymentView {
                     break;
                 case 2:
                     System.out.println("Debit card selected");
-                    System.out.println("Enter card number:");
+                    System.out.println("Enter a 4 digit card number:");
                     paymentOK = new PaymentStub().debitCard(scanner.nextInt());
                     break;
                 case 3:
@@ -63,11 +61,11 @@ public class PaymentView {
                     break;
                 case 4:
                     System.out.println("Goodbye");
-                    return;
+                    break;
                 default:
                     System.out.println("I did not get that...");
                     printMenu();
-                    return;
+                    break;
             }
         } catch (InputMismatchException e) {
             System.out.println("Sorry, that is not an option");
