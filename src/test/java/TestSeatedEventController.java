@@ -22,7 +22,7 @@ public class TestSeatedEventController {
         Database.currentLoggedInOrganizer = organizer;
         organizer.getLocations().add(new Location("test name","test address",false));
         organizer.getLocations().get(0).getRooms().add(new Room("test room name", 123,false,10));
-        organizer.getLocations().get(0).getRooms().get(0).getEvents().add(new SeatedPlannedEvent("test name", new LocalDateTime(2002,2,2,12,12),1,18,0,0));
+        organizer.getLocations().get(0).getRooms().get(0).getEvents().add(new SeatedPlannedEvent("test name", new LocalDateTime(2002,2,2,12,12),1,18,0,0, 100));
 
     }
 

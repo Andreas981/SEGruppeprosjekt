@@ -19,7 +19,7 @@ public class TestNonSeatedEventController {
                 "test org",2);
         nonSeatedPlannedEvent = new NonSeatedPlannedEvent("test name",
                 new LocalDateTime(1,2,3,4,5),1, 18,2,
-                "test address",true);
+                "test address",true, 100);
         Database.currentLoggedInOrganizer = organizer;
         Database.currentLoggedInOrganizer.addNonSeatedPlannedEvent(nonSeatedPlannedEvent);
     }
