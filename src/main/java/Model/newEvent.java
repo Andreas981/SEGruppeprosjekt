@@ -104,7 +104,14 @@ public class newEvent extends PlannedEvent{
 
     // TODO: Add metohd for generating event number
     private void generateEventNumber() {
+        /*
 
+        First number of hashed organizer name
+        First number of price
+        First number of hashed address
+        Original placement in pool
+
+         */
     }
 
 
