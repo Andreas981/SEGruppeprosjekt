@@ -35,8 +35,6 @@ public class newEvent extends PlannedEvent{
         this.location = location;
         this.price = price;
 
-        this.room.getEvents().add(this);
-
         setupTickets();
 
     }
