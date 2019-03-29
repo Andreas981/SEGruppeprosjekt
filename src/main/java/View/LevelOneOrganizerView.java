@@ -66,15 +66,30 @@ public class LevelOneOrganizerView {
             displayForNotAnOption();
             return;
         }
+        System.out.println("Price (in nok): ");
+        int price = -1;
+        try{
+            price = scanner.nextInt();
+        }catch (InputMismatchException e){
+            displayForNotAnOption();
+            return;
+        }
+
         System.out.println("Amount of free space:");
-        int freeSpace = scanner.nextInt();
+        int freeSpace = -1;
+        try{
+            freeSpace = scanner.nextInt();
+        }catch (InputMismatchException e){
+            displayForNotAnOption();
+            return;
+        }
         System.out.println("Address of the event:");
         String address = new Scanner(System.in).nextLine();
         System.out.println("Is it a free event? (yes/no):");
         String freeEvent = scanner.next();
 
         if (Security.RegEx.regEx(patternForDate, date) && Security.RegEx.regEx(patternForTime, time) && ageLimit != -1){
-            eventController.addNonSeatedEvent(name, date, time, lengthOfEvent, ageLimit, freeSpace, address, freeEvent);
+            eventController.addNonSeatedEvent(name, date, time, lengthOfEvent, ageLimit, freeSpace, address, freeEvent, price);
             System.out.println("Event added");
         }else{
             displayForNotAnOption();

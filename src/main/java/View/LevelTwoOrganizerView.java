@@ -388,9 +388,12 @@ public class LevelTwoOrganizerView {
         String time = new Scanner(System.in).next();
         int ageLimit = -1;
         int lengthOfEvent = -1;
+        int price = -1;
         try {
             System.out.println("Age limit");
             ageLimit = new Scanner(System.in).nextInt();
+            System.out.println("Price (in nok): ");
+            price = scanner.nextInt();
 
         } catch (InputMismatchException e) {
             displayNotAnOption();
@@ -398,7 +401,7 @@ public class LevelTwoOrganizerView {
         }
 
         if (Security.RegEx.regEx(patternForDate, date) && Security.RegEx.regEx(patternForTime, time) && ageLimit != -1){
-            seatedEventController.addSeatedEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent);
+            seatedEventController.addSeatedEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
             System.out.println("Event added");
         }else{
             displayNotAnOption();

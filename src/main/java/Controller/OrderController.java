@@ -2,6 +2,7 @@ package Controller;
 
 import Dummy.Database;
 import Model.NonSeatedPlannedEvent;
+import Model.Order;
 import Model.PlannedEvent;
 import Model.SeatedPlannedEvent;
 
@@ -13,6 +14,12 @@ public class OrderController {
     private SeatedPlannedEvent seatedPlannedEvent;
     private NonSeatedPlannedEvent nonSeatedPlannedEvent;
 
+    public Order getPlaceOrder() {
+        return placeOrder;
+    }
+
+    private Order placeOrder;
+
     public OrderController(int[] eventNumber) {
         this.eventNumber = eventNumber;
         getEventFromDatabase(eventNumber);
@@ -23,6 +30,10 @@ public class OrderController {
     }
 
     public void getEventFromDatabase(int[] eventNumber){
+        if(eventNumber.length<3){
+            plannedEvent = Database.organizers.get(eventNumber[0]).getNonSeatedPlannedEvents().get(eventNumber[1]);
+
+        }else
          plannedEvent = Database.organizers.get(eventNumber[0]).getLocations().get(eventNumber[1]).getRooms()
                 .get(eventNumber[2]).getEvents()
                 .get(eventNumber[3]);
@@ -34,14 +45,22 @@ public class OrderController {
 
     public void getAvailableSlots() {
         if( plannedEvent instanceof NonSeatedPlannedEvent){
-            plannedEvent = (NonSeatedPlannedEvent) getPlannedEvent();
+            displayAvalibleSlots((NonSeatedPlannedEvent) plannedEvent);
         }
         else if(plannedEvent instanceof SeatedPlannedEvent){
             displayTickets();
         }
     }
 
-    public void displayTickets(){
+    private void displayAvalibleSlots(NonSeatedPlannedEvent plannedEvent) {
+        System.out.println(plannedEvent.getFreeSpace());
+        System.out.println("Enter how many reservations you want:");
+        System.out.println("Example: 1 or 5");
+    }
+
+    private void displayTickets(){
+        System.out.println("Enter how many seats you want:");
+        System.out.println("Example: 1,2,3");
         seatedPlannedEvent = (SeatedPlannedEvent) plannedEvent;
 
         for (int i = 0; i < seatedPlannedEvent.getTickets().size(); i++){
@@ -50,48 +69,86 @@ public class OrderController {
                 // TODO Format output in columns
                 System.out.format("%5s", "X");
             }else{
-                System.out.format("%5s", seatedPlannedEvent.getTickets().get(i).getSeatNumber());
+                System.out.print((seatedPlannedEvent.getTickets().get(i).getSeatNumber())+ "   ,");
             }
             // TODO Replace with row number
-
+            if(i%30==0&&i!=0) System.out.println(" ");
         }
 
     }
 
-    public boolean validateUserInput(String seatSelection){
-        if(seatSelection.length()<1) return false;
-        String[] strings = seatSelection.split(",");
-
-        ArrayList<Integer> seats = new ArrayList<Integer>();
-        try{
-            for(int i = 0;i<strings.length;i++ ){
-                seats.add(Integer.parseInt(strings[i]));
-            }
-        }catch (NumberFormatException e){
-            return false;
-        }
-        if(checkIfPositionIsTaken(seats)){
-            System.out.println("Go to payment");
-            return true;
-        }
-        else{
-
-            return false;
-        }
-
+    private boolean checkSlots(NonSeatedPlannedEvent nonSeatedPlannedEvent) {
+        return (nonSeatedPlannedEvent.getFreeSpace()>0);
     }
 
-    public boolean checkIfPositionIsTaken(ArrayList<Integer> seats){
-        for(int i = 0; i< seats.size();i++){
-            if(seatedPlannedEvent.getTickets().get((seats.get(i))).getAvailable() && seatedPlannedEvent.getTickets().size()>i){
-                System.out.println("Seat is available");
-                // TODO Place in method when order is processed
-                seatedPlannedEvent.getTickets().get((seats.get(i))).setAvailable(false);
-            }else{
-                System.out.println("Seat: " + i + " is taken");
+    public boolean validateUserInput(String reservation){
+        if(reservation.length()<1) return false;
+
+        String[] strings = reservation.split(",");
+
+        ArrayList<Integer> slots = parseInputForSlots(strings);
+        if(slots == null){
+            return false;
+        }
+        if(getPlannedEvent() instanceof  NonSeatedPlannedEvent){
+            // Check that the amount of slots are valid
+            if(((NonSeatedPlannedEvent) getPlannedEvent()).getFreeSpace()<slots.get(0)|| slots.get(0)<1){
                 return false;
             }
+            // If the user has entered a number for a sold out event
+            if(!checkSlots((NonSeatedPlannedEvent)getPlannedEvent()));
+        }
+        setupAorder(slots);
+        // If the event selected is a NonSeatedPlannedEvent, we don't need to check seats
+        if(getPlannedEvent() instanceof  NonSeatedPlannedEvent) return true;
+        return checkIfPositionIsTaken(slots);
+    }
+
+    public ArrayList<Integer> parseInputForSlots(String[] slots){
+        ArrayList<Integer> seats = new ArrayList<Integer>();
+        try{
+            for (String slot : slots) {
+                seats.add(Integer.parseInt(slot));
+            }
+        }catch (NumberFormatException e){
+            return null;
+        }
+        return seats;
+    }
+
+    private void setupAorder(ArrayList<Integer> slots) {
+        placeOrder = new Order(slots,plannedEvent);
+    }
+
+    private boolean checkIfPositionIsTaken(ArrayList<Integer> seats) {
+        for (int i = 0; i < seats.size(); i++) {
+            if (!(seatedPlannedEvent.getTickets().size() > seats.get(i)-1)) {
+                return false;
+            } else {
+                if (!seatedPlannedEvent.getTickets().get((seats.get(i))).getAvailable()) return false;
+            }
+
         }
         return true;
+    }
+
+    public void setEventNumber(int[] eventNumber) {
+        this.eventNumber = eventNumber;
+    }
+
+    public void setPlannedEvent(PlannedEvent plannedEvent) {
+        this.plannedEvent = plannedEvent;
+    }
+
+    public void setSeatedPlannedEvent(SeatedPlannedEvent seatedPlannedEvent) {
+        this.seatedPlannedEvent = seatedPlannedEvent;
+    }
+
+    public void setNonSeatedPlannedEvent(NonSeatedPlannedEvent nonSeatedPlannedEvent) {
+        this.nonSeatedPlannedEvent = nonSeatedPlannedEvent;
+    }
+
+    public void setPlaceOrder(Order placeOrder) {
+        this.placeOrder = placeOrder;
     }
 }

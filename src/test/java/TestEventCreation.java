@@ -25,7 +25,7 @@ public class TestEventCreation {
         organizer.getLocations().add(new Location("Location Name", "Location Address", true));
         organizer.getLocations().get(0).getRooms().add(new Room("Room Name", 100, false, 10));
 
-        seatedEventController.addSeatedEvent(0,0, "NAme", "2002-02-02", "12-12", 12, 12);
+        seatedEventController.addSeatedEvent(0,0, "NAme", "2002-02-02", "12-12", 12, 12, 100);
     }
 
     @Test

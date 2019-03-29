@@ -16,12 +16,6 @@ public class TestRegisterAUser {
     }
 
     @Test
-    public void testRegisterUsername(){
-        //Bruk ny customer her
-        Assert.assertFalse(registerUserController.checkUsername("per"));
-    }
-
-    @Test
     public void testEnterblankUsername(){
         Assert.assertFalse(registerUserController.checkUsername(""));
     }

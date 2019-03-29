@@ -7,7 +7,7 @@ import org.joda.time.LocalDateTime;
 
 public class SeatedEventController {
 
-    public void addSeatedEvent(int location, int room, String name, String date, String time, int ageLimit, int lengthOfEvent) {
+    public void addSeatedEvent(int location, int room, String name, String date, String time, int ageLimit, int lengthOfEvent, int price) {
         String[] dateArray = date.split("-");
         String[] timeArray = time.split("-");
         Database.currentLoggedInOrganizer
@@ -16,7 +16,7 @@ public class SeatedEventController {
                 .getRooms()
                 .get(room)
                 .getEvents()
-                .add(new SeatedPlannedEvent(name, new LocalDateTime(Integer.parseInt(dateArray[0]), Integer.parseInt(dateArray[1]), Integer.parseInt(dateArray[2]), Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1])), lengthOfEvent, ageLimit, location, room));
+                .add(new SeatedPlannedEvent(name, new LocalDateTime(Integer.parseInt(dateArray[0]), Integer.parseInt(dateArray[1]), Integer.parseInt(dateArray[2]), Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1])), lengthOfEvent, ageLimit, location, room, price));
 
     }
 
