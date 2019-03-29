@@ -6,26 +6,35 @@ import java.util.ArrayList;
 
 public class newEvent extends PlannedEvent{
 
-    private int freeSpace;
+    private int amountOfFreeSpace;
     private String address;
     private Boolean freeEvent;
     private ArrayList<Customer> participents;
-    private ArrayList<String> specialNotices;
+    private ArrayList<String> specialNotices = new ArrayList<String>();
     private ArrayList<Ticket> tickets = new ArrayList<Ticket>();
-    private int soldtickets;
+    private int soldtickets = 0;
     private int price;
+    private int eventNumber;
 
-    private Room room = null;
-    private Location location = null;
+    private Room room;
+    private Location location;
     private Organizer organizer;
 
-    public newEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer){
+    //Free PlannedSeatedEvent
+    public newEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, Room room, Location location){
+
         super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
         this.address = address;
         this.organizer = organizer;
+        this.room = room;
+        this.location = location;
+        this.price = 0;
+        this.freeEvent = true;
 
+        generateEventNumber();
+        setupTickets();
     }
-    //SeatedEvent
+    //PlannedSeatedEvent
     public newEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, int price, Room room, Location location){
 
         super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
@@ -34,23 +43,44 @@ public class newEvent extends PlannedEvent{
         this.room = room;
         this.location = location;
         this.price = price;
+        this.freeEvent = true;
 
+        generateEventNumber();
+        setupTickets();
+
+    }
+    //Free NonSeatedPlannedEvent
+    public newEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, int amountOfFreeSpace){
+
+        super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
+        this.address = address;
+        this.organizer = organizer;
+        this.price = 0;
+        this.amountOfFreeSpace = amountOfFreeSpace;
+        this.participents = new ArrayList<Customer>();
+        this.room = null;
+        this.location = null;
+
+        generateEventNumber();
         setupTickets();
 
     }
     //NonSeatedPlannedEvent
-    public newEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, int price){
+    public newEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, int price, int amountOfFreeSpace){
 
         super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
         this.address = address;
         this.organizer = organizer;
         this.price = price;
+        this.amountOfFreeSpace = amountOfFreeSpace;
         this.participents = new ArrayList<Customer>();
+        this.room = null;
+        this.location = null;
 
+        generateEventNumber();
         setupTickets();
 
     }
-
     private void setupTickets(){
         if(isRoomNull()){
             tickets.clear();
@@ -59,7 +89,7 @@ public class newEvent extends PlannedEvent{
             }
         }else{
             tickets.clear();
-            for(int i = 0; i < freeSpace; i++){
+            for(int i = 0; i < amountOfFreeSpace; i++){
                 tickets.add(new Ticket("ID", this, price, i));
             }
         }
@@ -68,9 +98,90 @@ public class newEvent extends PlannedEvent{
     private Boolean isRoomNull(){
         return (room == null);
     }
+    private Boolean isLocationNull(){
+        return (location == null);
+    }
 
+    // TODO: Add metohd for generating event number
+    private void generateEventNumber() {
 
+    }
 
+    public void addParticipent(Customer cusotmer){
+        participents.add(cusotmer);
+    }
 
+    public void addSpecialNotice(String notice){
+        specialNotices.add(notice);
+    }
 
+    public int getAmountOfFreeSpace() {
+        return amountOfFreeSpace;
+    }
+    public void setAmountOfFreeSpace(int amountOfFreeSpace) {
+        this.amountOfFreeSpace = amountOfFreeSpace;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public Boolean getFreeEvent() {
+        return freeEvent;
+    }
+    public void setFreeEvent(Boolean freeEvent) {
+        this.freeEvent = freeEvent;
+    }
+    public ArrayList<Customer> getParticipents() {
+        return participents;
+    }
+    public ArrayList<String> getSpecialNotices() {
+        return specialNotices;
+    }
+        public void setSpecialNotices(ArrayList<String> specialNotices) {
+        this.specialNotices = specialNotices;
+    }
+    public ArrayList<Ticket> getTickets() {
+        return tickets;
+    }
+        public void setTickets(ArrayList<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+    public int getSoldtickets() {
+        return soldtickets;
+    }
+    public void setSoldtickets(int soldtickets) {
+        this.soldtickets = soldtickets;
+    }
+    public int getPrice() {
+        return price;
+    }
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    public int getEventNumber() {
+        return eventNumber;
+    }
+    public void setEventNumber(int eventNumber) {
+        this.eventNumber = eventNumber;
+    }
+    public Room getRoom() {
+        return room;
+    }
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+    public Location getLocation() {
+        return location;
+    }
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+    public Organizer getOrganizer() {
+        return organizer;
+    }
+    public void setOrganizer(Organizer organizer) {
+        this.organizer = organizer;
+    }
 }
