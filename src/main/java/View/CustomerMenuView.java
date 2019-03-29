@@ -32,6 +32,7 @@ public class CustomerMenuView {
             }
             displayOptions();
         } else if (selection.equals("3")) {
+            // TODO Refactor this to new object model
             new CustomerEventSelectionController().enterCustomerMenu();
             System.out.println("Please enter the event number");
             selection = scanner.next();
