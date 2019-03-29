@@ -7,6 +7,8 @@ import Model.*;
 public class CustomerEventSelectionController {
     public static void displayOnGoingEvents(){
         // For use in main screen
+
+        // TODO Refactor to eventlist
         System.out.println("_____________________________________________________________________");
         for (Organizer organizer : Database.organizers){
             System.out.println("*********************************************************************");
@@ -47,6 +49,7 @@ public class CustomerEventSelectionController {
 
     // Used by a logged in user
     public void enterCustomerMenu() {
+        // TODO Refactor to eventlist
         System.out.println("_____________________________________________________________________");
         for(int i = 0;i<Database.organizers.size();i++) {
             System.out.println("*********************************************************************");

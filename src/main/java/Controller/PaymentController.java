@@ -21,6 +21,7 @@ public class PaymentController {
         return amount;
     }
 
+    // TODO Simplify method to new object
     public boolean reserveSlots(){
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
         if(order.getPlannedEvent() instanceof SeatedPlannedEvent) {
