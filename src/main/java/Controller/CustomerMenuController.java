@@ -11,7 +11,7 @@ public class CustomerMenuController {
 
             System.out.println("*********************************************************************");
 
-             for(newEvent upcomingEvent : Database.EventPool){
+             for(UpcomingEvent upcomingEvent : Database.EventPool){
 
                 System.out.println("    Playing at: " + upcomingEvent.getAddress());
                 if(!upcomingEvent.getFreeEvent()){
