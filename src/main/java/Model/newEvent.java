@@ -35,6 +35,8 @@ public class newEvent extends PlannedEvent{
         this.location = location;
         this.price = price;
 
+        this.room.getEvents().add(this);
+
         setupTickets();
 
     }
@@ -52,7 +54,7 @@ public class newEvent extends PlannedEvent{
     }
 
     private void setupTickets(){
-        if(!isRoomNull()){
+        if(isRoomNull()){
             tickets.clear();
             for(int i = 0; i < room.getMaxParticipents(); i++){
                 tickets.add(new Ticket("ID", this, price, i));
