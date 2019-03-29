@@ -14,7 +14,7 @@ public class newEvent extends PlannedEvent{
     private ArrayList<Ticket> tickets = new ArrayList<Ticket>();
     private int soldtickets = 0;
     private int price;
-    private int eventNumber;
+    private int eventNumber = 0;
 
     private Room room;
     private Location location;
