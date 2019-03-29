@@ -107,12 +107,15 @@ public class newEvent extends PlannedEvent{
 
     }
 
-    public void addParticipent(Customer cusotmer){
-        participents.add(cusotmer);
-    }
 
+    public void addParticipent(Customer participent){
+        participents.add(participent);
+    }
     public void addSpecialNotice(String notice){
         specialNotices.add(notice);
+    }
+    public void removeSpecialNotice(int noticeIndex){
+        specialNotices.remove(noticeIndex);
     }
 
     public int getAmountOfFreeSpace() {
@@ -139,14 +142,8 @@ public class newEvent extends PlannedEvent{
     public ArrayList<String> getSpecialNotices() {
         return specialNotices;
     }
-        public void setSpecialNotices(ArrayList<String> specialNotices) {
-        this.specialNotices = specialNotices;
-    }
     public ArrayList<Ticket> getTickets() {
         return tickets;
-    }
-        public void setTickets(ArrayList<Ticket> tickets) {
-        this.tickets = tickets;
     }
     public int getSoldtickets() {
         return soldtickets;
@@ -183,5 +180,12 @@ public class newEvent extends PlannedEvent{
     }
     public void setOrganizer(Organizer organizer) {
         this.organizer = organizer;
+    }
+
+    @Override
+    public String toString(){
+        return getNameOfEvent() + "\n"
+                + "\t Adress: " + getAddress()
+                + "\t Price: " + price;
     }
 }
