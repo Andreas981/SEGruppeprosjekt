@@ -4,7 +4,7 @@ import org.joda.time.LocalDateTime;
 
 import java.util.ArrayList;
 
-public class newEvent extends PlannedEvent{
+public class UpcomingEvent extends PlannedEvent{
 
     private int amountOfFreeSpace;
     private String address;
@@ -21,7 +21,7 @@ public class newEvent extends PlannedEvent{
     private Organizer organizer;
 
     //Free PlannedSeatedEvent
-    public newEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, Room room, Location location){
+    public UpcomingEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, Room room, Location location){
 
         super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
         this.address = address;
@@ -35,7 +35,7 @@ public class newEvent extends PlannedEvent{
         setupTickets();
     }
     //PlannedSeatedEvent
-    public newEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, int price, Room room, Location location){
+    public UpcomingEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, int price, Room room, Location location){
 
         super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
         this.address = address;
@@ -50,7 +50,7 @@ public class newEvent extends PlannedEvent{
 
     }
     //Free NonSeatedPlannedEvent
-    public newEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, int amountOfFreeSpace){
+    public UpcomingEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, int amountOfFreeSpace){
 
         super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
         this.address = address;
@@ -66,7 +66,7 @@ public class newEvent extends PlannedEvent{
 
     }
     //NonSeatedPlannedEvent
-    public newEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, int price, int amountOfFreeSpace){
+    public UpcomingEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, int price, int amountOfFreeSpace){
 
         super(nameOfEvent, dateOfEvent, lengthOfEvent, ageLimit);
         this.address = address;
