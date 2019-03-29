@@ -7,9 +7,11 @@ import java.util.ArrayList;
  */
 public class Order {
     private ArrayList<Integer> slots;
+    //TODO Handle new object sort
     private PlannedEvent plannedEvent;
     private int amountDueInNOK;
 
+    //TODO Change constructor
     public Order(ArrayList<Integer> slots, PlannedEvent plannedEvent) {
         this.slots = slots;
         this.plannedEvent = plannedEvent;
@@ -24,10 +26,11 @@ public class Order {
         amountDueInNOK = 0;
         // Get ticket prize
         for (Integer slot : slots) {
+            // TODO Remove casting
             if (plannedEvent instanceof SeatedPlannedEvent) {
                 amountDueInNOK += ((SeatedPlannedEvent) plannedEvent).getTickets().get(slot).getPriceInNOK();
            }else{
-                // TODO Implement price
+
                 amountDueInNOK = ((NonSeatedPlannedEvent) plannedEvent).getTickets().get(0).getPriceInNOK() * slot;
             }
         }
