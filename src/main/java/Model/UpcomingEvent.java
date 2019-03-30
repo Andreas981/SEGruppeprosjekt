@@ -6,19 +6,19 @@ import java.util.ArrayList;
 
 public class UpcomingEvent extends PlannedEvent{
 
-    private int amountOfFreeSpace;
-    private String address;
-    private Boolean freeEvent;
-    private ArrayList<Customer> participents;
-    private ArrayList<String> specialNotices = new ArrayList<String>();
-    private ArrayList<Ticket> tickets = new ArrayList<Ticket>();
-    private int soldtickets = 0;
-    private int price;
-    private int eventNumber = 0;
+    private int amountOfFreeSpace; //NonSeated
+    private String address; //NonSeated
+    private Boolean freeEvent; //PlannedEvent
+    private ArrayList<Customer> participents; //NonSeated
+    private ArrayList<String> specialNotices = new ArrayList<String>(); //PlannedEvent
+    private ArrayList<Ticket> tickets = new ArrayList<Ticket>(); //PlannedEvent
+    private int soldtickets = 0; //PlannedEvent
+    private int price; //PlannedEvent
+    private String eventNumber = "0"; //PlannedEvent
 
-    private Room room;
-    private Location location;
-    private Organizer organizer;
+    private Room room; //SeatedEvent
+    private Location location; //SeatedEvent
+    private Organizer organizer; //PlannedEvent
 
     //Free PlannedSeatedEvent
     public UpcomingEvent(String nameOfEvent, LocalDateTime dateOfEvent, int ageLimit, int lengthOfEvent, String address, Organizer organizer, Room room, Location location){
@@ -85,12 +85,12 @@ public class UpcomingEvent extends PlannedEvent{
         if(isRoomNull()){
             tickets.clear();
             for(int i = 0; i < room.getMaxParticipents(); i++){
-                tickets.add(new Ticket("ID", this, price, i));
+                tickets.add(new Ticket(String.valueOf(eventNumber) + i, this, price, i));
             }
         }else{
             tickets.clear();
             for(int i = 0; i < amountOfFreeSpace; i++){
-                tickets.add(new Ticket("ID", this, price, i));
+                tickets.add(new Ticket(String.valueOf(eventNumber) + i, this, price, i));
             }
         }
     }
@@ -164,10 +164,10 @@ public class UpcomingEvent extends PlannedEvent{
     public void setPrice(int price) {
         this.price = price;
     }
-    public int getEventNumber() {
+    public String getEventNumber() {
         return eventNumber;
     }
-    public void setEventNumber(int eventNumber) {
+    public void setEventNumber(String eventNumber) {
         this.eventNumber = eventNumber;
     }
     public Room getRoom() {
