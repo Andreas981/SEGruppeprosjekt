@@ -33,13 +33,14 @@ public class InitStart {
         // Dummy event for HIØ Playing at Aud Max
         Database.currentLoggedInOrganizer = Database.organizers.get(0);
         Database.organizers.get(0).addNonSeatedPlannedEvent(new NonSeatedPlannedEvent("Sopptur", new LocalDateTime(2019, 3, 2, 22, 0), 90, 18, 200, "HIOF", false, 2));
+        /*
         Database.organizers.get(0).getLocations().get(0).getRooms()
                 .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog", new LocalDateTime(2019, 3, 2, 22, 0), 200, 20, 0, 0, 100));
         Database.organizers.get(0).getLocations().get(0).getRooms()
                 .get(0).addEvent(new SeatedPlannedEvent("Forelesning i OOP", new LocalDateTime(2019, 3, 2, 22, 0), 200, 20, 0, 0, 100));
-
-        Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Datasikkerhet", new LocalDateTime(2019, 3, 2, 22, 0), 200, 20, 0, 0, 100));
+        */
+        Database.EventPool.add(new UpcomingEvent("Forelesning i OOP", new LocalDateTime(2019, 3, 2, 22, 0), 18, 60, "Hiof", Database.currentLoggedInOrganizer, 100,Database.organizers.get(0).getLocations().get(0).getRooms().get(0),Database.organizers.get(0).getLocations().get(0)));
+        Database.EventPool.add(new UpcomingEvent("Forelesning i ITF", new LocalDateTime(2019, 3, 2, 23, 0), 18, 20, "Hiof", Database.currentLoggedInOrganizer,Database.organizers.get(0).getLocations().get(0).getRooms().get(0),Database.organizers.get(0).getLocations().get(0)));
 
     }
 }

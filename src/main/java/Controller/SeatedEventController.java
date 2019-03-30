@@ -2,6 +2,7 @@ package Controller;
 
 import Dummy.Database;
 import Model.SeatedPlannedEvent;
+import Model.UpcomingEvent;
 import Model.Ticket;
 import org.joda.time.LocalDateTime;
 
@@ -19,6 +20,9 @@ public class SeatedEventController {
                 .add(new SeatedPlannedEvent(name, new LocalDateTime(Integer.parseInt(dateArray[0]), Integer.parseInt(dateArray[1]), Integer.parseInt(dateArray[2]), Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1])), lengthOfEvent, ageLimit, location, room, price));
 
     }
+
+    // TODO Add constructor for manual adding a upcoming event
+
 
 
 

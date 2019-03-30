@@ -10,17 +10,13 @@ public class CustomerMenuController {
         System.out.println("_____________________________________________________________________");
 
             System.out.println("*********************************************************************");
-
              for(UpcomingEvent upcomingEvent : Database.EventPool){
-
                 System.out.println("    Playing at: " + upcomingEvent.getAddress());
                 if(!upcomingEvent.getFreeEvent()){
-
+                    // Display prive
                 }
                  System.out.println( upcomingEvent.getTickets().size());
                  System.out.println();
-
-                
              }
 
         System.out.println("_____________________________________________________________________");
@@ -30,47 +26,16 @@ public class CustomerMenuController {
     // Used by a logged in user
     public void enterCustomerMenu() {
         System.out.println("_____________________________________________________________________");
-        for(int i = 0;i<Database.organizers.size();i++) {
-            System.out.println("*********************************************************************");
-            System.out.println("Arranger name: " + Database.organizers.get(i).getOrganization());
-
-            for (int j = 0; j < Database.organizers.get(i).getLocations().size();j++) { ;
-                System.out.println("Playing at: " + Database.organizers.get(i)
-                        .getLocations().get(j).getName());
-                for(int k = 0; k < Database.organizers.get(i).getLocations().get(j).getRooms().size();k++){
-                    System.out.println("        _______________________________________________________");
-                    System.out.println("        In room: " + Database.organizers.get(i).getLocations()
-                            .get(j).getRooms().get(k).getName());
-                    for(int m = 0; m<Database.organizers.get(i).getLocations().get(j)
-                            .getRooms().get(k).getEvents().size();m++){
-                        System.out.println("            _________________________________________________");
-                        PlannedEvent plannedEvent = Database.organizers.get(i).getLocations().get(j).getRooms()
-                                .get(k).getEvents()
-                                .get(m);
-                        int freeSeats = 0;
-                        for(int h = 0; h < ((SeatedPlannedEvent) plannedEvent).getTickets().size();h++){
-                            if(((SeatedPlannedEvent) plannedEvent).getTickets().get(h).getAvailable()){
-                                freeSeats++;
-                            }
-                        }
-                        System.out.println("            " + plannedEvent.getNameOfEvent()
-                                + " " + plannedEvent.getDateOfEvent().toLocalDate().toString() + " \n" +
-                                "            Starting at: " + plannedEvent.getDateOfEvent().toLocalTime().getHourOfDay()
-                                + ":" +plannedEvent.getDateOfEvent().getMinuteOfHour() + " "
-                                + plannedEvent.getLengthOfEvent() +  "min runtime \n" +
-                                "            Seats available:" + freeSeats + "\n"+
-                                "            Event number: (" + (i) + (j) + (k) + (m) + ")");
-
-                    }
-            }
+        for(UpcomingEvent upcomingEvent : Database.EventPool) {
+            System.out.println(upcomingEvent.getNameOfEvent());
+            System.out.println("    Playing at: " + upcomingEvent.getAddress());
         }
 
-        }
     }
 
-    public int[] validateUserSelection(String userInput) {
-        if(userInput.length()<4){
-            return null;
+    public boolean validateUserSelection(String userInput) {
+        if(userInput.length()<1){
+            return false;
         }
         String[] eventSplit = userInput.split("");
         int[] eventNumber = new int[eventSplit.length];
@@ -80,18 +45,16 @@ public class CustomerMenuController {
             }
         }catch (NumberFormatException e){
             System.out.println("Invalid selection entered");
-            return null;
+            return false;
         }
         if(checkIfEventExist(eventNumber)){
-            return eventNumber;
+            return true;
         }
         return null;
     }
 
     // Control that that valid int selection exist in the database
     private Boolean checkIfEventExist(int[] eventNumber) {
-        // TODO Migrate to real db
-        // TODO Query
 
         if(Database.organizers.size()>eventNumber[0]){
 

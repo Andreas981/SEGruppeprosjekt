@@ -43,7 +43,7 @@ public class UpcomingEvent extends PlannedEvent{
         this.room = room;
         this.location = location;
         this.price = price;
-        this.freeEvent = true;
+        this.freeEvent = false;
 
         generateEventNumber();
         setupTickets();
