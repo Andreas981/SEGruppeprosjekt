@@ -403,12 +403,34 @@ public class LevelTwoOrganizerView {
         }
 
         if (Security.RegEx.regEx(patternForDate, date) && Security.RegEx.regEx(patternForTime, time) && ageLimit != -1){
+            if(price < 1){
+                wrongPriceInEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
+                return;
+            }
             seatedEventController.addSeatedEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
             System.out.println("Event added");
         }else{
             displayNotAnOption();
         }
     }
+
+    private void wrongPriceInEvent(int currentLocation, int currentRoom, String name, String date, String time, int ageLimit, int lengthOfEvent, int price) {
+        System.out.println("The price was not legal");
+        System.out.println("Please enter a new one:");
+        price = -1;
+        try{
+            price = new Scanner(System.in).nextInt();
+        }catch (InputMismatchException e){
+            displayNotAnOption();
+        }
+        if (price < 1){
+            wrongPriceInEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
+        }else{
+            seatedEventController.addSeatedEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
+            System.out.println("Event added");
+        }
+    }
+
     private void removeEvent() {
         System.out.println("Which event do you want to remove?");
         int choice = -1;
