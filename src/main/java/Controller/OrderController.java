@@ -87,7 +87,8 @@ public class OrderController {
         String[] strings = reservation.split(",");
 
         ArrayList<Integer> slots = parseInputForSlots(strings);
-        if(slots == null){
+        // If there was no numbers extracted from the input:
+        if(slots == null|| slots.size()<1){
             return false;
         }
         if(getPlannedEvent() instanceof  NonSeatedPlannedEvent){
