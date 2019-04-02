@@ -7,7 +7,7 @@ public class TestControllerCustomerEventSelectionController {
     CustomerEventSelectionController customerEventSelectionController;
 
     @Before
-    public void createController(){
+    public void initTests(){
         customerEventSelectionController = new CustomerEventSelectionController();
         InitStart.Init();
     }
@@ -16,9 +16,6 @@ public class TestControllerCustomerEventSelectionController {
     public void enterInvalidEventnumber(){
 
     }
-
-    // TODO
-    // Method for testing on dummy data
 
     @Test
     public void enterValidEventNumber(){
