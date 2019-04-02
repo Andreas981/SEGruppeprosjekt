@@ -28,7 +28,7 @@ public class LevelTwoOrganizerView {
         System.out.println("\t(1) See a location");
         System.out.println("\t(2) Add location");
         System.out.println("\t(3) Remove a location");
-        System.out.println("\t(4) Edit room");
+        System.out.println("\t(4) Edit location");
         System.out.println("\t(5) Sign out");
 
         int choice = 0;
@@ -125,7 +125,7 @@ public class LevelTwoOrganizerView {
         }
     }
     private void editLocation(){
-        System.out.println("\nWhich location do you want to remove?");
+        System.out.println("\nWhich location do you want to edit?");
 
         int location = -1;
         try{
@@ -196,10 +196,10 @@ public class LevelTwoOrganizerView {
                 addRoom();
                 break;
             case 3:
-                removeRoom();
+                editRoom();
                 break;
             case 4:
-                editRoom();
+                removeRoom();
                 break;
             case 5:
                 return;
@@ -390,7 +390,9 @@ public class LevelTwoOrganizerView {
         int lengthOfEvent = -1;
         int price = -1;
         try {
-            System.out.println("Age limit");
+            System.out.println("Length of event (in houers):");
+            lengthOfEvent = new Scanner(System.in).nextInt();
+            System.out.println("Age limit:");
             ageLimit = new Scanner(System.in).nextInt();
             System.out.println("Price (in nok): ");
             price = scanner.nextInt();
@@ -470,6 +472,7 @@ public class LevelTwoOrganizerView {
                 " " + Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().get(currentEvent).getDateOfEvent().toLocalTime().toString());
         System.out.println("\tDurance:   " + Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().get(currentEvent).getLengthOfEvent());
         System.out.println("\tAge limit: " + Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().get(currentEvent).getAgeLimit());
+        System.out.println("\tPrice:     " + Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().get(currentEvent).getTickets().get(0).getPriceInNOK() + " kr");
         System.out.println("****************************");
     }
 
