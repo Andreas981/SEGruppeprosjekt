@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestRegisterUserController {
+public class TestControllerRegisterUser {
     RegisterUserController registerUserController;
     Customer customer;
 

@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestCustomerMenuController {
+public class TestControllerCustomerMenu {
     CustomerMenuController customerMenuController;
 
     @Before

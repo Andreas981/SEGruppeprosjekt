@@ -3,7 +3,7 @@ import Dummy.InitStart;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestCustomerEventSelectionController {
+public class TestControllerCustomerEventSelection {
     CustomerEventSelectionController customerEventSelectionController;
 
     @Before
