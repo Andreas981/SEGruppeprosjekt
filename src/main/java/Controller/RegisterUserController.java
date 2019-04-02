@@ -35,9 +35,9 @@ public class RegisterUserController {
 
     public LocalDate checkDateEntered(String birthDayEntered) {
         if(tryParseInputDate(birthDayEntered)){
-            LocalDate userBirthDay;
-            userBirthDay = parseInputDate(birthDayEntered);
-            return  userBirthDay;
+            String[] birthDayArray = birthDayEntered.split("-");
+            LocalDate birthDay = new LocalDate(Integer.parseInt(birthDayArray[0]), Integer.parseInt(birthDayArray[1]), Integer.parseInt(birthDayArray[2]));
+            return  birthDay;
         }
         return null;
     }
