@@ -45,21 +45,24 @@ public class CustomerMenuView {
                         displayOptions();
                     }else{
                         System.out.println();
+                        int amountOfTickets = 0;
                         for (int i = 0; i < Database.currentLoggedInCustomer.getCustomerTickets().size(); i++) {
                             if (orderController.getPlannedEvent() instanceof  NonSeatedPlannedEvent) {
                                 if (((NonSeatedPlannedEvent) orderController.getPlannedEvent()).getTickets().contains(Database.currentLoggedInCustomer.getCustomerTickets().get(i))) {
                                     validTickets = true;
+                                    amountOfTickets++;
                                 }
                             }
                             else if(orderController.getPlannedEvent() instanceof  SeatedPlannedEvent){
                                 if (((SeatedPlannedEvent) orderController.getPlannedEvent()).getTickets().contains(Database.currentLoggedInCustomer.getCustomerTickets().get(i))) {
                                     validTickets = true;
+                                    amountOfTickets++;
                                 }
 
                             }
 
                     }
-                        System.out.println("You have " + (validTickets ? "valid " :" no valid ") +  "tickets for " + orderController.getPlannedEvent().getNameOfEvent());
+                        System.out.println("You have"  + (validTickets ? " valid " :" no valid ") + (amountOfTickets>1 ?  amountOfTickets +" tickets" : " ticket")   + " for " + orderController.getPlannedEvent().getNameOfEvent());
                         displayOptions();
                     }
             } else {
