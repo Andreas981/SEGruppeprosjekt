@@ -21,6 +21,7 @@ public class OrderView {
             new PaymentView(orderController.getPlaceOrder()).displayAmountDue();
         }else {
             System.out.println("Invalid input");
+            displayPromptForSelectingAEvent();
         }
 
         
