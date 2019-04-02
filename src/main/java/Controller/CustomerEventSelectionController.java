@@ -57,7 +57,7 @@ public class CustomerEventSelectionController {
                 System.out.println(aEvent.getNameOfEvent() + " Age Limit: " + aEvent.getAgeLimit() +"+"
                         +"\n" + "Meet up: " + aEvent.getMeetUp());
                 System.out.println((aEvent.getFreeSpace() > 0 ? aEvent.getFreeSpace() : "Sold out" ));
-                System.out.println("Event number: (" + (i) + (nonS) +")");
+                System.out.println("Event number: (" + (i) +"-" + (nonS) +")");
 
                 System.out.println("_____________________________________________________________________");
             }
@@ -87,7 +87,7 @@ public class CustomerEventSelectionController {
                                 + ":" +plannedEvent.getDateOfEvent().getMinuteOfHour() + " "
                                 + plannedEvent.getLengthOfEvent() +  "min runtime \n" +
                                 "            Seats available:" +  (freeSeats > 0 ? ((SeatedPlannedEvent) plannedEvent).getTickets().size() : "Sold out" ) + "\n"+
-                                "            Event number: (" + (i) + (j) + (k) + (m) + ")");
+                                "            Event number: (" + (i)+"-"+(j)+"-"+(k)+"-"+(m) + ")");
 
                     }
             }
@@ -100,7 +100,7 @@ public class CustomerEventSelectionController {
         if(userInput.length()<1){
             return null;
         }
-        String[] eventSplit = userInput.split("");
+        String[] eventSplit = userInput.split("-");
         int[] eventNumber = new int[eventSplit.length];
         try  {
             for (int i = 0; i < eventSplit.length; i++) {
@@ -110,6 +110,8 @@ public class CustomerEventSelectionController {
             System.out.println("Invalid selection entered");
             return null;
         }
+        if(eventNumber.length<1)return null;
+        if(eventNumber.length>2&& eventNumber.length<4) return null;
         if(checkIfEventExist(eventNumber)){
             return eventNumber;
         }
