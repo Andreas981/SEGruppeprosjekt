@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestNonSeatedEventController {
+public class TestControllerNonSeatedEventController {
 
     Organizer organizer;
     NonSeatedPlannedEvent nonSeatedPlannedEvent;

@@ -20,20 +20,20 @@ public class TestRoomController {
     }
 
     @Test
-    public void testAddRoomInExistingLocation() {
+    public void testAddRoom() {
         /*Checks if array's size is not null/0*/
         Assert.assertNotNull(location.getRooms().size());
 
     }
 
     @Test
-    public void testRemoveRoomInExistingLocation() {
+    public void testRemoveRoom() {
         location.getRooms().remove(room);
         Assert.assertEquals(0,location.getRooms().size());
     }
 
     @Test
-    public void testEditRoomInExistingLocation() {
+    public void testEditRoom() {
         room.setName("testEdit");
         room.setMaxParticipents(234);
 
