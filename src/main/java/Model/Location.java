@@ -12,7 +12,6 @@ public class Location {
     Boolean publicLocation;
     ArrayList<Room> rooms;
     //TODO Add accounting for location
-    //TODO
 
     public Location(String name, String address, Boolean publicLocation) {
         this.name = name;
