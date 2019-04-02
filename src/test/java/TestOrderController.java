@@ -53,4 +53,10 @@ public class TestOrderController {
         orderController.getAvailableSlots();
         Assert.assertFalse(orderController.validateUserInput("abc,33,a"));
     }
+
+    @Test
+    public void testGetEventFromDatabase () {
+        Assert.assertSame("Forelesning i Inf. Prog",Database.organizers.get(0).getLocations().get(0).getRooms()
+                .get(0).getEvents().get(3).toString());
+    }
 }
