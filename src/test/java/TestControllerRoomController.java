@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestRoomController {
+public class TestControllerRoomController {
 
     RoomController roomController;
     Room room;
