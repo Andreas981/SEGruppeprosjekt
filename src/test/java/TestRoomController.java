@@ -25,4 +25,19 @@ public class TestRoomController {
         Assert.assertNotNull(location.getRooms().size());
 
     }
+
+    @Test
+    public void testRemoveRoomInExistingLocation() {
+        location.getRooms().remove(room);
+        Assert.assertEquals(0,location.getRooms().size());
+    }
+
+    @Test
+    public void testEditRoomInExistingLocation() {
+        room.setName("testEdit");
+        room.setMaxParticipents(234);
+
+        Assert.assertEquals("testEdit",room.getName());
+        Assert.assertEquals(234,room.getMaxParticipents());
+    }
 }
