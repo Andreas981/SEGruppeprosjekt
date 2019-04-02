@@ -24,23 +24,17 @@ public class TestOrderSystem {
         room = new Room("test romnavn", 123,false,2);
         location = new Location("test navn","test adresse",false);
 
-
-        location.addRoom(room);
-        organizer.addLocation(location);
-
-
-        orderController = new OrderController(new int[1]);
-
-
     }
 /*
     @Test
     public void testAEventIsSelected(){
         Assert.assertNotNull(orderController.getPlannedEvent());
     }
-*/
+
     @Test
     public void testSeatedEventContainsSeats(){
 
     }
+*/
+
 }

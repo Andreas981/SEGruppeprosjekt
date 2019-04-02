@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class TestControllerLocation {
+public class TestControllerLocationController {
 
     Location location;
     Organizer organizer;
