@@ -102,13 +102,14 @@ public class PaymentStub {
     }
 
     private void errorDatabaseConnectionFail(){
-        System.out.println("Sorry, payment failed due to server issues.");
+        System.err.println("Sorry, payment failed due to server issues.\n" +
+                "Please try again");
     }
     private void errorWrongPinCode(){
-        System.out.println("Sorry, payment failed due to wrong pin code");
+        System.err.println("Sorry, payment failed due to wrong pin code");
     }
     private void errorCantFindCard(){
-        System.out.println("Sorry, could not find your card");
+        System.err.println("Sorry, could not find your card");
     }
     private void success(){
         System.out.println("Payment Successfull. Thanks for the order.");
