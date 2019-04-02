@@ -29,7 +29,13 @@ public class PaymentView {
         System.out.println("How would you like to pay?");
         printMenu();
         scanner = new Scanner(System.in);
-        selectedOption(scanner.nextInt());
+        try {
+            String input = scanner.nextLine();
+            selectedOption(Integer.parseInt(input));
+        }catch(NumberFormatException n){
+            System.err.println("Please enter a valid option");
+            displayPaymentOptions();
+        }
         if(paymentOK){
             if(paymentController.reserveSlots()){
                 System.out.println("Tickets added to your account");
@@ -63,12 +69,12 @@ public class PaymentView {
                     System.out.println("Goodbye");
                     break;
                 default:
-                    System.out.println("I did not get that...");
-                    printMenu();
+                    System.out.println("Enter a valid option");
+                    displayPaymentOptions();
                     break;
             }
         } catch (InputMismatchException e) {
-            System.out.println("Sorry, that is not an option");
+            System.out.println("Invalid option selected");
 
         }
     }

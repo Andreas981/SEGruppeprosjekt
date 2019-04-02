@@ -65,7 +65,11 @@ public class CustomerMenuView {
             } else {
                 displayOptions();
             }
-        }else if(selection.equals("4")){}else{
+            // Log the user out
+        }else if(selection.equals("4")){
+            return;
+        }else{
+
             displayOptions();
         }
     }
