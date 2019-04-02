@@ -17,6 +17,7 @@ public class CustomerEventSelectionView {
 
             }else{
             System.out.println("Invalid selection entered");
+            promptUserForAEventSeletion();
             }
         }
     }

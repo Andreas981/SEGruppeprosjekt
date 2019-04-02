@@ -118,7 +118,4 @@ public class CustomerMenuController {
 
     }
 
-    private void selectEvent(int[] eventNumber){
-
-    }
 }
