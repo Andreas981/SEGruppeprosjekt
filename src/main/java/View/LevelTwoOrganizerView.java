@@ -384,13 +384,17 @@ public class LevelTwoOrganizerView {
         String name = new Scanner(System.in).nextLine();
         System.out.println("Date of event (YYYY-MM-DD): ");
         String date = new Scanner(System.in).next();
+        if(!seatedEventController.checkDate(date)){
+            System.out.println("You cannot add an event in the past");
+            return;
+        }
         System.out.println("Start time of event (HH-MM): ");
         String time = new Scanner(System.in).next();
         int ageLimit = -1;
         int lengthOfEvent = -1;
         int price = -1;
         try {
-            System.out.println("Length of event (in houers):");
+            System.out.println("Length of event (in hours):");
             lengthOfEvent = new Scanner(System.in).nextInt();
             System.out.println("Age limit:");
             ageLimit = new Scanner(System.in).nextInt();

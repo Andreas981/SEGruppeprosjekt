@@ -1,4 +1,5 @@
 import Controller.OrderController;
+import Controller.SeatedEventController;
 import Dummy.*;
 import View.MainMenuView;
 

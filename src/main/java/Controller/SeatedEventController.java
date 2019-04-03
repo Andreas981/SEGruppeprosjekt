@@ -3,7 +3,12 @@ package Controller;
 import Dummy.Database;
 import Model.SeatedPlannedEvent;
 import Model.Ticket;
+import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SeatedEventController {
 
@@ -38,5 +43,16 @@ public class SeatedEventController {
             Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(event).setLengthOfEvent(Integer.parseInt(lengthOfEvent));
         if(!ageLimit.equals(".") && Integer.parseInt(ageLimit) > 0)
             Database.currentLoggedInOrganizer.getLocations().get(location).getRooms().get(room).getEvents().get(event).setAgeLimit(Integer.parseInt(ageLimit));
+    }
+
+    public Boolean checkDate(String date){
+        String[] dateArray = date.split("-");
+        if(dateArray.length < 3) return false;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String[] dateNow = dateFormat.format(new Date()).split("/");
+        if(Integer.parseInt(dateArray[0]) < Integer.parseInt(dateNow[0])) return false;
+        if(Integer.parseInt(dateArray[1]) < Integer.parseInt(dateNow[1])) return false;
+        if(Integer.parseInt(dateArray[2]) < Integer.parseInt(dateNow[2])) return false;
+        return true;
     }
 }
