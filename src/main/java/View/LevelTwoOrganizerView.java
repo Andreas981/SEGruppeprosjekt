@@ -242,6 +242,7 @@ public class LevelTwoOrganizerView {
         try{
             System.out.println("Max participents: ");
             max = scanner.nextInt();
+            System.out.println("Rows of seats in the room: ");
             rows = scanner.nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
