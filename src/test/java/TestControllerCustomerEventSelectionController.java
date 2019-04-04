@@ -36,11 +36,20 @@ public class TestControllerCustomerEventSelectionController {
 
     @Test
     public void enterInvalidEventnumber(){
-        Assert.assertNull(null,customerEventSelectionController.validateUserSelection("0-0-0-1"));
+        Assert.assertNull(null,customerEventSelectionController.validateUserSelection("A-B-C-D"));
     }
 
     @Test
-    public void enterValidEventNumber(){
+    public void enterValidNumberButEventDontExist(){
+        Assert.assertNull(null,customerEventSelectionController.validateUserSelection("5-0-0-0"));
+    }
+
+    @Test
+    public void enterValidNumberForAEvent(){
         Assert.assertArrayEquals(validSelectionNumber,customerEventSelectionController.validateUserSelection("0-0-0-0"));
     }
+
+    // TODO Init test
+
+
 }
