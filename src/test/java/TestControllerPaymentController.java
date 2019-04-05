@@ -21,8 +21,6 @@ public class TestControllerPaymentController {
     public void init() {
         ArrayList<Integer> slots = new ArrayList();
         slots.add(2);
-
-
         Database.organizers.add(new Organizer("Kari", "Normann", "kari@normann.no", "12345678", "karino", Security.PassHash.hashPassword("abc123"),new LocalDate(2000,2,2), "HiØ", 2));
         // Setting up locations for Kari Normann
         Database.organizers.get(0).addLocation(new Location("Høgskolen i Østfold", "Veien 12", true));
@@ -40,8 +38,6 @@ public class TestControllerPaymentController {
         nonSeated = new Order(slots,nonSeatedPlannedEvent);
         orderSeated = new Order(slots,seatedPlannedEvent);
         Database.currentLoggedInCustomer = new Customer("Per", "Persen", "per@persen.com", "11223344", "persen", Security.PassHash.hashPassword("abc123"), new LocalDate(2000, 2, 2));
-
-
     }
 
     @Test

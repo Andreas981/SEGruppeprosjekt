@@ -43,6 +43,12 @@ public class TestOrderController {
     }
 
     @Test
+    public void invalidSeatsBecauseTheyAreAlreadyTaken(){
+        orderController.getAvailableSlots();
+        Assert.assertTrue(orderController.validateUserInput("1,2,3"));
+    }
+
+    @Test
     public void invalidSeatsSelected(){
         orderController.getAvailableSlots();
         Assert.assertFalse(orderController.validateUserInput("500"));
@@ -57,6 +63,6 @@ public class TestOrderController {
     @Test
     public void testGetEventFromDatabase () {
         Assert.assertSame("Forelesning i Inf. Prog",Database.organizers.get(0).getLocations().get(0).getRooms()
-                .get(0).getEvents().get(3).toString());
+                .get(0).getEvents().get(0).toString());
     }
 }
