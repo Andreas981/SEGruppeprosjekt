@@ -97,7 +97,7 @@ public class CustomerEventSelectionController {
     }
 
     public int[] validateUserSelection(String userInput) {
-        if(userInput.length()<1){
+        if(userInput.length()<2){
             return null;
         }
         String[] eventSplit = userInput.split("-");
@@ -110,7 +110,7 @@ public class CustomerEventSelectionController {
             System.out.println("Invalid selection entered");
             return null;
         }
-        if(eventNumber.length<1)return null;
+        if(eventNumber.length<2)return null;
         if(eventNumber.length>2&& eventNumber.length<4) return null;
         if(checkIfEventExist(eventNumber)){
             return eventNumber;
