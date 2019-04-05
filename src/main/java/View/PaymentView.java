@@ -13,6 +13,7 @@ public class PaymentView {
     private PaymentController paymentController;
     private Scanner scanner;
     private boolean paymentOK;
+    private boolean quit = false;
 
     public PaymentView(Order order) {
         this.order = order;
@@ -34,7 +35,7 @@ public class PaymentView {
             selectedOption(Integer.parseInt(input));
         }catch(NumberFormatException n){
             System.err.println("Please enter a valid option");
-            displayPaymentOptions();
+
         }
         if(paymentOK){
             if(paymentController.reserveSlots()){
@@ -43,7 +44,10 @@ public class PaymentView {
                 System.out.println("There was an error processing your order, please contact service");
             }
 
-        }else{
+        }else if(quit){
+            return;
+        }
+        else{
             displayPaymentOptions();
         }
     }
@@ -51,32 +55,31 @@ public class PaymentView {
     public void selectedOption(int userSelection) {
         paymentOK = false;
         try {
-            switch (userSelection) {
-                case 1:
-                    System.out.println("PayPal Selected");
-                    paymentOK = new PaymentStub().payPal(Database.currentLoggedInCustomer.getUsername());
-                    break;
-                case 2:
-                    System.out.println("Debit card selected");
-                    System.out.println("Enter a 4 digit card number:");
-                    paymentOK = new PaymentStub().debitCard(scanner.nextInt());
-                    break;
-                case 3:
-                    System.out.println("Vipps selected");
-                    paymentOK = new PaymentStub().vipps((Integer.parseInt(Database.currentLoggedInCustomer.getTelephone())));
-                    break;
-                case 4:
-                    System.out.println("Goodbye");
-                    break;
-                default:
-                    System.out.println("Enter a valid option");
-                    displayPaymentOptions();
-                    break;
+            if(userSelection==1) {
+                System.out.println("PayPal Selected");
+                paymentOK = new PaymentStub().payPal(Database.currentLoggedInCustomer.getUsername());
+            }else if (userSelection==2) {
+                System.out.println("Debit card selected");
+                System.out.println("Enter a 4 digit card number:");
+                paymentOK = new PaymentStub().debitCard(scanner.nextInt());
+            }else if (userSelection==3) {
+                System.out.println("Vipps selected");
+                paymentOK = new PaymentStub().vipps((Integer.parseInt(Database.currentLoggedInCustomer.getTelephone())));
+            }else if(userSelection==4) {
+                System.out.println("Aborting purchase");
+                paymentOK = false;
+                quit = true;
+            }else {
+                System.out.println("Enter a valid option");
+                paymentOK = false;
             }
+
         } catch (InputMismatchException e) {
+            paymentOK = false;
             System.out.println("Invalid option selected");
 
         }
+
     }
 
     public void printMenu() {

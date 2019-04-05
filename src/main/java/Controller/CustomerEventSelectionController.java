@@ -56,7 +56,7 @@ public class CustomerEventSelectionController {
                 NonSeatedPlannedEvent aEvent = Database.organizers.get(i).getNonSeatedPlannedEvents().get(nonS);
                 System.out.println(aEvent.getNameOfEvent() + " Age Limit: " + aEvent.getAgeLimit() +"+"
                         +"\n" + "Meet up: " + aEvent.getMeetUp());
-                System.out.println((aEvent.getFreeSpace() > 0 ? aEvent.getFreeSpace() : "Sold out" ));
+                System.out.println("Available tickets: " + (aEvent.getFreeSpace() > 0 ? aEvent.getFreeSpace() : "Sold out" ));
                 System.out.println("Event number: (" + (i) +"-" + (nonS) +")");
 
                 System.out.println("_____________________________________________________________________");
