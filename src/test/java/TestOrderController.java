@@ -42,7 +42,7 @@ public class TestOrderController {
         Assert.assertTrue(orderController.validateUserInput("1,2,3"));
     }
 
-    @Test
+    @Test // Need init test
     public void invalidSeatsBecauseTheyAreAlreadyTaken(){
         orderController.getAvailableSlots();
         Assert.assertTrue(orderController.validateUserInput("1,2,3"));
