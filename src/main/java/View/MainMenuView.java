@@ -36,7 +36,7 @@ public class MainMenuView {
                     System.out.println("Goodbye");
                     break;
                 default:
-                    System.out.println("Please enter a valid value");
+                    System.out.println("Please enter a valid selection");
             }
         }catch (InputMismatchException e){
             System.out.println("Sorry, that is not an option");

@@ -39,6 +39,8 @@ public class TestControllerPaymentController {
         Database.organizers.get(0).addNonSeatedPlannedEvent(nonSeatedPlannedEvent);
         nonSeated = new Order(slots,nonSeatedPlannedEvent);
         orderSeated = new Order(slots,seatedPlannedEvent);
+        Database.currentLoggedInCustomer = new Customer("Per", "Persen", "per@persen.com", "11223344", "persen", Security.PassHash.hashPassword("abc123"), new LocalDate(2000, 2, 2));
+
 
     }
 
@@ -54,6 +56,23 @@ public class TestControllerPaymentController {
         paymentController = new PaymentController(this.nonSeated);
         // The customer orders "2" tickets
         Assert.assertEquals(200,paymentController.getAmountOfOrder());
+    }
+
+    @Test
+    public void paymentCompletedReserveTicketsSeatedEvent(){
+        // User has payed for the tickets.
+        // Reserve and assign them to the user:
+        paymentController = new PaymentController(this.nonSeated);
+        // User with tickets:
+        Assert.assertTrue(paymentController.reserveSlots());
+        // User should now have two tickets in inventory
+        Assert.assertEquals(2,Database.currentLoggedInCustomer.getCustomerTickets().size());
+    }
+
+    @Test
+    public void paymentFailedUserShouldHaveNoTickets(){
+        // User should now have two tickets in inventory
+        Assert.assertEquals(0,Database.currentLoggedInCustomer.getCustomerTickets().size());
     }
 
 
