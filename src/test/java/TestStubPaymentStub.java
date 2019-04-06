@@ -13,8 +13,13 @@ public class TestStubPaymentStub {
     }
 
     @Test
-    public void paymentFromPayPalAccount(){
+    public void paymentFromPayPalAccountIsTrue(){
         Assert.assertTrue(stub.payPal("andremi"));
+    }
+
+    @Test
+    public void paymentForPayPalAccountIsFalse(){
+        Assert.assertFalse(stub.payPal("andreni"));
     }
 
 }
