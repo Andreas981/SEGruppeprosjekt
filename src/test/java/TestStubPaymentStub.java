@@ -22,4 +22,14 @@ public class TestStubPaymentStub {
         Assert.assertFalse(stub.payPal("andreni"));
     }
 
+    @Test
+    public void paymentForDebitCardisTrue(){
+        Assert.assertTrue(stub.debitCard(4444));
+    }
+
+    @Test
+    public void paymentForDebitCardIsFalse(){
+        Assert.assertFalse(stub.debitCard(123));
+    }
+
 }
