@@ -32,4 +32,14 @@ public class TestStubPaymentStub {
         Assert.assertFalse(stub.debitCard(123));
     }
 
+    @Test
+    public void paymentFroVippsIsTrue(){
+        Assert.assertTrue(stub.vipps(82312312));
+    }
+
+    @Test
+    public void paymentForVippsIsFalse(){
+        Assert.assertFalse(stub.vipps(12345678));
+    }
+
 }
