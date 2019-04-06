@@ -85,6 +85,7 @@ public class LevelOneOrganizerView {
         }
         System.out.println("Address of the event:");
         String address = new Scanner(System.in).nextLine();
+        System.out.println("Your event in registered!");
     }
 
     private void displayForNotAnOption(){
