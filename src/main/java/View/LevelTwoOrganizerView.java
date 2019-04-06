@@ -25,11 +25,11 @@ public class LevelTwoOrganizerView {
             System.out.println("\t(" + i + ") " + Database.currentLoggedInOrganizer.getLocations().get(i).getName());
 
         System.out.println("\nWhat would you like to do?");
-        System.out.println("\t(1) See a location");
-        System.out.println("\t(2) Add location");
-        System.out.println("\t(3) Remove a location");
-        System.out.println("\t(4) Edit location");
-        System.out.println("\t(5) Sign out");
+        System.out.println("\tType '1' See a location");
+        System.out.println("\tType '2' Add location");
+        System.out.println("\tType '3' Remove a location");
+        System.out.println("\tType '4' Edit location");
+        System.out.println("\tType '5' Sign out");
 
         int choice = 0;
         try {
@@ -175,11 +175,11 @@ public class LevelTwoOrganizerView {
 
 
         System.out.println("\nWhat would you like to do?");
-        System.out.println("\t(1) See a room");
-        System.out.println("\t(2) Add a room");
-        System.out.println("\t(3) Edit a room");
-        System.out.println("\t(4) Remove a room");
-        System.out.println("\t(5) Go back");
+        System.out.println("\tType '1' See a room");
+        System.out.println("\tType '2' Add a room");
+        System.out.println("\tType '3' Edit a room");
+        System.out.println("\tType '4' Remove a room");
+        System.out.println("\tType '5' Go back");
 
         int choice = 0;
         try{
@@ -321,11 +321,11 @@ public class LevelTwoOrganizerView {
         System.out.println("****************************");
 
         System.out.println("\nWhat would you like to do?");
-        System.out.println("\t(1) See event");
-        System.out.println("\t(2) Add event");
-        System.out.println("\t(3) Remove event");
-        System.out.println("\t(4) Edit event");
-        System.out.println("\t(5) Go back");
+        System.out.println("\tType '1' See event");
+        System.out.println("\tType '2' Add event");
+        System.out.println("\tType '3' Remove event");
+        System.out.println("\tType '4' Edit event");
+        System.out.println("\tType '5' Go back");
 
         int choice = 0;
         try{

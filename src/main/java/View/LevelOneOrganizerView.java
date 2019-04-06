@@ -21,8 +21,8 @@ public class LevelOneOrganizerView {
             System.out.println("\t**No events have been added**");
 
         System.out.println("\nWhat would you like to do?");
-        System.out.println("\t(0) Add an event");
-        System.out.println("\t(1) Sign out");
+        System.out.println("\tType '0' Add an event");
+        System.out.println("\tType '1' Sign out");
 
         int choice = -1;
         try {

@@ -35,7 +35,7 @@ public class CustomerMenuView {
             System.out.println("You have been successfully logged out!");
         } else if (selection.equals("3")) {
             new CustomerEventSelectionController().enterCustomerMenu();
-            System.out.println("Please enter the event number");
+            System.out.println("Please enter the event number(X-X-X-X)");
             selection = scanner.next();
             int[] event = customerEventSelectionController.validateUserSelection(selection);
             if (event != null) {
@@ -80,10 +80,10 @@ public class CustomerMenuView {
 
     private void printMenu() {
         System.out.println(
-                "(1) Buy ticket(s)\n" +
-                "(2) Display bought ticket(s) \n" +
-                "(3) Validate ticket(s) \n" +
-                "(4) Logout");
+                "Type '1' Buy ticket(s)\n" +
+                "Type '2' Display bought ticket(s) \n" +
+                "Type '3' Validate ticket(s) \n" +
+                "Type '4' Logout");
     }
 
 
