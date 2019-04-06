@@ -56,8 +56,6 @@ public class TestControllerSeatedEventController {
         Assert.assertEquals(new LocalDateTime(1990,1,1,1,1),Database.currentLoggedInOrganizer.getLocations().get(0).getRooms().get(0).getEvents().get(0).getDateOfEvent());
         Assert.assertEquals(1,Database.currentLoggedInOrganizer.getLocations().get(0).getRooms().get(0).getEvents().get(0).getLengthOfEvent());
     }
-    // TODO Test for ticketbuying
-    // TODO Test
 }
 /*
 

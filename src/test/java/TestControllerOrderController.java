@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestOrderController {
+public class TestControllerOrderController {
 
     Organizer organizer;
     SeatedEventController seatedEventController = new SeatedEventController();
@@ -37,7 +37,7 @@ public class TestOrderController {
 
     // A seated event is tested with room size 400
     @Test
-    public void validSeatsSelected(){
+    public void testValidSeatsSelected(){
         orderController.getAvailableSlots();
         Assert.assertTrue(orderController.validateUserInput("1,2,3"));
     }
@@ -49,13 +49,13 @@ public class TestOrderController {
     }
 
     @Test
-    public void invalidSeatsSelected(){
+    public void testInvalidSeatsSelected(){
         orderController.getAvailableSlots();
         Assert.assertFalse(orderController.validateUserInput("500"));
     }
 
     @Test
-    public void invalidInputEntered(){
+    public void testInvalidInputEntered(){
         orderController.getAvailableSlots();
         Assert.assertFalse(orderController.validateUserInput("abc,33,a"));
     }
@@ -63,6 +63,10 @@ public class TestOrderController {
     @Test
     public void testGetEventFromDatabase () {
         Assert.assertSame("Forelesning i Inf. Prog",Database.organizers.get(0).getLocations().get(0).getRooms()
+<<<<<<< HEAD:src/test/java/TestControllerOrderController.java
+                .get(0).getEvents().get(0).getNameOfEvent());
+=======
                 .get(0).getEvents().get(0).toString());
+>>>>>>> BugFix_Tests:src/test/java/TestOrderController.java
     }
 }
