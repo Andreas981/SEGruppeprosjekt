@@ -85,15 +85,6 @@ public class LevelOneOrganizerView {
         }
         System.out.println("Address of the event:");
         String address = new Scanner(System.in).nextLine();
-        System.out.println("Is it a free event? (yes/no):");
-        String freeEvent = scanner.next();
-
-        if (Security.RegEx.regEx(patternForDate, date) && Security.RegEx.regEx(patternForTime, time) && ageLimit != -1){
-            eventController.addNonSeatedEvent(name, date, time, lengthOfEvent, ageLimit, freeSpace, address, freeEvent, price);
-            System.out.println("Event added");
-        }else{
-            displayForNotAnOption();
-        }
     }
 
     private void displayForNotAnOption(){
