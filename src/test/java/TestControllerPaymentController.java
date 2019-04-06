@@ -60,13 +60,26 @@ public class TestControllerPaymentController {
 
     @Test
     public void paymentCompletedReserveTicketsSeatedEvent(){
-        // User has payed for the tickets.
-        // Reserve and assign them to the user:
-        paymentController = new PaymentController(this.nonSeated);
-        // User with tickets:
-        Assert.assertTrue(paymentController.reserveSlots());
         // User pays for the tickets
         Assert.assertTrue(stub.debitCard(4444));
+        // Reserve and assign them to the user:
+        paymentController = new PaymentController(orderSeated);
+        // User with tickets:
+        Assert.assertTrue(paymentController.reserveSlots());
+
+        // User should now have one ticket in inventory
+        Assert.assertEquals(1,Database.currentLoggedInCustomer.getCustomerTickets().size());
+    }
+
+    @Test
+    public void paymentCompletedReserveTicketsNonSeatedEvent(){
+        // User pays for the tickets
+        Assert.assertTrue(stub.debitCard(4444));
+        // Reserve and assign them to the user:
+        paymentController = new PaymentController(nonSeated);
+        // User with tickets:
+        Assert.assertTrue(paymentController.reserveSlots());
+
         // User should now have two tickets in inventory
         Assert.assertEquals(2,Database.currentLoggedInCustomer.getCustomerTickets().size());
     }
