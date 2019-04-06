@@ -14,15 +14,15 @@ public class TestControllerRoomController {
     @Before
     public void init() {
         roomController = new RoomController();
-        room = new Room("test romnavn", 123,false,2);
-        location = new Location("test navn","test adresse",false);
+        room = new Room("test room", 123,false,2);
+        location = new Location("test location","test adresse",false);
         location.getRooms().add(room);
     }
 
     @Test
     public void testAddRoom() {
         /*Checks if array's size is not null/0*/
-        Assert.assertNotNull(location.getRooms().size());
+        Assert.assertEquals(1,location.getRooms().size());
 
     }
 
@@ -34,10 +34,11 @@ public class TestControllerRoomController {
 
     @Test
     public void testEditRoom() {
+        Assert.assertEquals("test room",room.getName());
         room.setName("testEdit");
-        room.setMaxParticipents(234);
-
+        Assert.assertEquals(123,room.getMaxParticipents());
         Assert.assertEquals("testEdit",room.getName());
+        room.setMaxParticipents(234);
         Assert.assertEquals(234,room.getMaxParticipents());
     }
 }
