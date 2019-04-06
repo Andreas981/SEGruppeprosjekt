@@ -62,11 +62,6 @@ public class TestControllerOrderController {
 
     @Test
     public void testGetEventFromDatabase () {
-        Assert.assertSame("Forelesning i Inf. Prog",Database.organizers.get(0).getLocations().get(0).getRooms()
-<<<<<<< HEAD:src/test/java/TestControllerOrderController.java
-                .get(0).getEvents().get(0).getNameOfEvent());
-=======
-                .get(0).getEvents().get(0).toString());
->>>>>>> BugFix_Tests:src/test/java/TestOrderController.java
+        Assert.assertSame("Forelesning i Inf. Prog",Database.organizers.get(0).getLocations().get(0).getRooms());
     }
 }
