@@ -1,3 +1,4 @@
+import Controller.LocationController;
 import Dummy.Database;
 import Model.Location;
 import Model.Organizer;
@@ -11,6 +12,7 @@ public class TestControllerLocationController {
 
     Location location;
     Organizer organizer;
+    LocationController locationController;
 
     @Before
     public void init(){
@@ -20,16 +22,25 @@ public class TestControllerLocationController {
                 "HiØ", 1);
         Database.currentLoggedInOrganizer = organizer;
         Database.currentLoggedInOrganizer.addLocation(location);
+        locationController = new LocationController();
     }
 
     @Test
     public void testAddingLocationToOrganizerAndGettingTheName(){
-        organizer.addLocation(new Location("test name","test address",false));
+        organizer.addLocation(location);
         Assert.assertEquals("test name", organizer.getLocations().get(0).getName());
     }
 
     @Test
     public void testAddLocation() {
         Assert.assertEquals("test name", Database.currentLoggedInOrganizer.getLocations().get(0).getName());
+    }
+
+    @Test
+    public void removeLocationFromOrganizer(){
+        // Organizer has one location:
+        Assert.assertEquals(1,organizer.getLocations().size());
+        // Remove current location from organizer:
+        Assert.assertTrue(locationController.removeLocation(0));
     }
 }
