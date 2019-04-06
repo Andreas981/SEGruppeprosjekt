@@ -20,7 +20,6 @@ public class Order {
     }
 
     private int amountDue(){
-        System.out.println("Amount due called");
         amountDueInNOK = 0;
         // Get ticket prize
         for (Integer slot : slots) {
