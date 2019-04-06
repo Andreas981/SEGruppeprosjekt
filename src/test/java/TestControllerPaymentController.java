@@ -1,5 +1,6 @@
 import Controller.PaymentController;
 import Dummy.Database;
+import Dummy.PaymentStub;
 import Model.*;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
@@ -15,6 +16,7 @@ public class TestControllerPaymentController {
     Order nonSeated;
     SeatedPlannedEvent seatedPlannedEvent;
     PaymentController paymentController;
+    PaymentStub stub;
 
 
     @Before
@@ -38,6 +40,8 @@ public class TestControllerPaymentController {
         nonSeated = new Order(slots,nonSeatedPlannedEvent);
         orderSeated = new Order(slots,seatedPlannedEvent);
         Database.currentLoggedInCustomer = new Customer("Per", "Persen", "per@persen.com", "11223344", "persen", Security.PassHash.hashPassword("abc123"), new LocalDate(2000, 2, 2));
+
+        stub = new PaymentStub();
     }
 
     @Test
@@ -61,6 +65,8 @@ public class TestControllerPaymentController {
         paymentController = new PaymentController(this.nonSeated);
         // User with tickets:
         Assert.assertTrue(paymentController.reserveSlots());
+        // User pays for the tickets
+        Assert.assertTrue(stub.debitCard(4444));
         // User should now have two tickets in inventory
         Assert.assertEquals(2,Database.currentLoggedInCustomer.getCustomerTickets().size());
     }
