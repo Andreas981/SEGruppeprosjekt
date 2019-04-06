@@ -27,7 +27,7 @@ public class TestControllerLocationController {
 
     @Test
     public void testAddingLocationToOrganizerAndGettingTheName(){
-        organizer.addLocation(location);
+        Assert.assertTrue(locationController.addLocation("test name","test address",0));
         Assert.assertEquals("test name", organizer.getLocations().get(0).getName());
     }
 
