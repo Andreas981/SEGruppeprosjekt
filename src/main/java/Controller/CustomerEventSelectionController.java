@@ -49,9 +49,9 @@ public class CustomerEventSelectionController {
     public void enterCustomerMenu() {
         System.out.println("_____________________________________________________________________");
         for(int i = 0;i<Database.organizers.size();i++) {
-            System.out.println("*********************************************************************");
-            System.out.println("Arranger name: " + Database.organizers.get(i).getOrganization());
             for(int nonS = 0; nonS < Database.organizers.get(i).getNonSeatedPlannedEvents().size();nonS++ ) {
+                System.out.println("*********************************************************************");
+                System.out.println("Arranger name: " + Database.organizers.get(i).getOrganization());
                 System.out.println("Outdoor event");
                 NonSeatedPlannedEvent aEvent = Database.organizers.get(i).getNonSeatedPlannedEvents().get(nonS);
                 System.out.println(aEvent.getNameOfEvent() + " Age Limit: " + aEvent.getAgeLimit() +"+"
@@ -62,15 +62,18 @@ public class CustomerEventSelectionController {
                 System.out.println("_____________________________________________________________________");
             }
 
-            for (int j = 0; j < Database.organizers.get(i).getLocations().size();j++) { ;
-                System.out.println("Playing at: " + Database.organizers.get(i)
-                        .getLocations().get(j).getName());
+            for (int j = 0; j < Database.organizers.get(i).getLocations().size();j++) {
                 for(int k = 0; k < Database.organizers.get(i).getLocations().get(j).getRooms().size();k++){
-                    System.out.println("        _______________________________________________________");
-                    System.out.println("        In room: " + Database.organizers.get(i).getLocations()
-                            .get(j).getRooms().get(k).getName());
+
                     for(int m = 0; m<Database.organizers.get(i).getLocations().get(j)
                             .getRooms().get(k).getEvents().size();m++){
+                        System.out.println("*********************************************************************");
+                        System.out.println("Arranger name: " + Database.organizers.get(i).getOrganization());
+                        System.out.println("Playing at: " + Database.organizers.get(i)
+                                .getLocations().get(j).getName());
+                        System.out.println("        _______________________________________________________");
+                        System.out.println("        In room: " + Database.organizers.get(i).getLocations()
+                                .get(j).getRooms().get(k).getName());
                         System.out.println("            _________________________________________________");
                         PlannedEvent plannedEvent = Database.organizers.get(i).getLocations().get(j).getRooms()
                                 .get(k).getEvents()
@@ -94,6 +97,7 @@ public class CustomerEventSelectionController {
         }
 
         }
+        System.out.println("___________________________________________________________________________");
     }
 
     public int[] validateUserSelection(String userInput) {
