@@ -32,8 +32,22 @@ public class TestControllerLocationController {
     }
 
     @Test
-    public void testAddLocation() {
-        Assert.assertEquals("test name", Database.currentLoggedInOrganizer.getLocations().get(0).getName());
+    public void userChangesNameOfLocation(){
+        Assert.assertEquals("test name", organizer.getLocations().get(0).getName());
+        // User selects this event, and changes the name
+        locationController.editLocaiton(0,"test name edit","test",
+                "y");
+        Assert.assertEquals("test name edit",organizer.getLocations().get(0).getName());
+    }
+
+    @Test
+    public void checkIfThereIsAlocation(){
+        Assert.assertTrue(locationController.checkExistance(0));
+    }
+
+    @Test
+    public void selectInvalidLocation(){
+        Assert.assertFalse(locationController.checkExistance(1));
     }
 
     @Test
