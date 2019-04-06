@@ -75,7 +75,7 @@ public class LevelOneOrganizerView {
             return;
         }
 
-        System.out.println("Amount of free space:");
+        System.out.println("Number of attendees:");
         int freeSpace = -1;
         try{
             freeSpace = scanner.nextInt();
