@@ -31,6 +31,8 @@ public class CustomerMenuView {
                 System.out.println(Database.currentLoggedInCustomer.getCustomerTickets().get(i).getValidForEvent().getNameOfEvent());
             }
             displayOptions();
+        } else if (selection.equals("4")) {
+            System.out.println("You have been successfully logged out!");
         } else if (selection.equals("3")) {
             new CustomerEventSelectionController().enterCustomerMenu();
             System.out.println("Please enter the event number");
@@ -39,49 +41,49 @@ public class CustomerMenuView {
             if (event != null) {
                 orderController = new OrderController(event);
                 // Validate tickets
-                    boolean validTickets = false;
-                    if (Database.currentLoggedInCustomer.getCustomerTickets().size()<1) {
-                        System.out.println("You don't have any tickets");
-                        displayOptions();
-                    }else{
-                        System.out.println();
-                        int amountOfTickets = 0;
-                        for (int i = 0; i < Database.currentLoggedInCustomer.getCustomerTickets().size(); i++) {
-                            if (orderController.getPlannedEvent() instanceof  NonSeatedPlannedEvent) {
-                                if (((NonSeatedPlannedEvent) orderController.getPlannedEvent()).getTickets().contains(Database.currentLoggedInCustomer.getCustomerTickets().get(i))) {
-                                    validTickets = true;
-                                    amountOfTickets++;
-                                }
+                boolean validTickets = false;
+                if (Database.currentLoggedInCustomer.getCustomerTickets().size() < 1) {
+                    System.out.println("You don't have any tickets");
+                    displayOptions();
+                } else {
+                    System.out.println();
+                    int amountOfTickets = 0;
+                    for (int i = 0; i < Database.currentLoggedInCustomer.getCustomerTickets().size(); i++) {
+                        if (orderController.getPlannedEvent() instanceof NonSeatedPlannedEvent) {
+                            if (((NonSeatedPlannedEvent) orderController.getPlannedEvent()).getTickets().contains(Database.currentLoggedInCustomer.getCustomerTickets().get(i))) {
+                                validTickets = true;
+                                amountOfTickets++;
                             }
-                            else if(orderController.getPlannedEvent() instanceof  SeatedPlannedEvent){
-                                if (((SeatedPlannedEvent) orderController.getPlannedEvent()).getTickets().contains(Database.currentLoggedInCustomer.getCustomerTickets().get(i))) {
-                                    validTickets = true;
-                                    amountOfTickets++;
-                                }
-
+                        } else if (orderController.getPlannedEvent() instanceof SeatedPlannedEvent) {
+                            if (((SeatedPlannedEvent) orderController.getPlannedEvent()).getTickets().contains(Database.currentLoggedInCustomer.getCustomerTickets().get(i))) {
+                                validTickets = true;
+                                amountOfTickets++;
                             }
 
+                        }
+
                     }
-                        System.out.println("You have"  + (validTickets ? " valid " :" no valid ") + (amountOfTickets>1 ?  amountOfTickets +" tickets" : " ticket")   + " for " + orderController.getPlannedEvent().getNameOfEvent());
-                        displayOptions();
-                    }
+                    System.out.println("You have" + (validTickets ? " valid " : " no valid ") + (amountOfTickets > 1 ? amountOfTickets + " tickets" : " ticket") + " for " + orderController.getPlannedEvent().getNameOfEvent());
+                    displayOptions();
+                }
             } else {
                 displayOptions();
             }
             // Log the user out
-        }else if(selection.equals("4")){
+        } else if (selection.equals("4")) {
             return;
-        }else{
+        } else {
 
             displayOptions();
         }
     }
 
     private void printMenu() {
-        System.out.println("Enter 1 to buy a ticket for available events  \n" +
-                "Enter 2 to display tickets in your inventory \n" +
-                "Enter 3 to validate tickets for a event \n" +
-                "Enter 4 to log out");
+        System.out.println(
+                "(1) Buy ticket(s)\n" +
+                "(2) Display bought ticket(s) \n" +
+                "(3) Validate ticket(s) \n" +
+                "(4) Logout");
     }
 
 
