@@ -56,7 +56,7 @@ public class CustomerEventSelectionController {
                 NonSeatedPlannedEvent aEvent = Database.organizers.get(i).getNonSeatedPlannedEvents().get(nonS);
                 System.out.println(aEvent.getNameOfEvent() + " Age Limit: " + aEvent.getAgeLimit() +"+"
                         +"\n" + "Meet up: " + aEvent.getMeetUp());
-                System.out.println((aEvent.getFreeSpace() > 0 ? aEvent.getFreeSpace() : "Sold out" ));
+                System.out.println("Available tickets: " + (aEvent.getFreeSpace() > 0 ? aEvent.getFreeSpace() : "Sold out" ));
                 System.out.println("Event number: (" + (i) +"-" + (nonS) +")");
 
                 System.out.println("_____________________________________________________________________");
@@ -97,7 +97,7 @@ public class CustomerEventSelectionController {
     }
 
     public int[] validateUserSelection(String userInput) {
-        if(userInput.length()<1){
+        if(userInput.length()<2){
             return null;
         }
         String[] eventSplit = userInput.split("-");
@@ -110,7 +110,7 @@ public class CustomerEventSelectionController {
             System.out.println("Invalid selection entered");
             return null;
         }
-        if(eventNumber.length<1)return null;
+        if(eventNumber.length<2)return null;
         if(eventNumber.length>2&& eventNumber.length<4) return null;
         if(checkIfEventExist(eventNumber)){
             return eventNumber;

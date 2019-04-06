@@ -22,6 +22,7 @@ public class MainMenuView {
             switch (userSelection) {
                 case 1:
                     new SignInView().askForSignInType();
+                    displayMenu();
                     break;
                 case 2:
                     new RegisterUserView().displayPromptForUserName();
@@ -33,17 +34,14 @@ public class MainMenuView {
                     break;
                 case 4:
                     System.out.println("Goodbye");
-                    return;
+                    break;
                 default:
-                    System.out.println("Something went wrong");
-                    printMenu();
+                    System.out.println("Please enter a valid selection");
             }
         }catch (InputMismatchException e){
             System.out.println("Sorry, that is not an option");
+            displayMenu();
         }
-
-        displayMenu();
-
     }
 
     public static void printMenu(){

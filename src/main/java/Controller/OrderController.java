@@ -53,7 +53,7 @@ public class OrderController {
     }
 
     private void displayAvalibleSlots(NonSeatedPlannedEvent plannedEvent) {
-        System.out.println(plannedEvent.getFreeSpace());
+        System.out.println(plannedEvent.getFreeSpace() + " tickets available.");
         System.out.println("Enter how many reservations you want:");
         System.out.println("Example: 1 or 5");
     }

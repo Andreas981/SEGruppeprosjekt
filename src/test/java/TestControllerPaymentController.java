@@ -1,5 +1,7 @@
-import Model.Order;
-import Model.SeatedPlannedEvent;
+import Controller.PaymentController;
+import Dummy.Database;
+import Model.*;
+import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,22 +11,64 @@ import java.util.ArrayList;
 
 public class TestControllerPaymentController {
 
-    Order order;
+    Order orderSeated;
+    Order nonSeated;
     SeatedPlannedEvent seatedPlannedEvent;
+    PaymentController paymentController;
+
 
     @Before
     public void init() {
         ArrayList<Integer> slots = new ArrayList();
         slots.add(2);
-        seatedPlannedEvent = new SeatedPlannedEvent("test name",
-                new LocalDateTime(1990,1,1,1,1,1),1,1,0,0,1);
-
-        order = new Order(slots,seatedPlannedEvent);
+        Database.organizers.add(new Organizer("Kari", "Normann", "kari@normann.no", "12345678", "karino", Security.PassHash.hashPassword("abc123"),new LocalDate(2000,2,2), "HiØ", 2));
+        // Setting up locations for Kari Normann
+        Database.organizers.get(0).addLocation(new Location("Høgskolen i Østfold", "Veien 12", true));
+        // Setting up rooms for Kari Normann
+        Database.organizers.get(0).getLocations().get(0).addRoom(new Room("Aud Max", 400, false, 10));
+        // Dummy event for HIØ Playing at Aud Max
+        Database.currentLoggedInOrganizer = Database.organizers.get(0);
+        SeatedPlannedEvent seatedPlannedEvent = new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,0),200,20, 0, 0, 100);
+        NonSeatedPlannedEvent  nonSeatedPlannedEvent = new NonSeatedPlannedEvent("test name",
+                new LocalDateTime(1,2,3,4,5),1, 18,2,
+                "test address",true, 100);
+        Database.organizers.get(0).getLocations().get(0).getRooms()
+                .get(0).addEvent(seatedPlannedEvent);
+        Database.organizers.get(0).addNonSeatedPlannedEvent(nonSeatedPlannedEvent);
+        nonSeated = new Order(slots,nonSeatedPlannedEvent);
+        orderSeated = new Order(slots,seatedPlannedEvent);
+        Database.currentLoggedInCustomer = new Customer("Per", "Persen", "per@persen.com", "11223344", "persen", Security.PassHash.hashPassword("abc123"), new LocalDate(2000, 2, 2));
     }
 
     @Test
-    public void testGetAmountOfOrder() {
-        Assert.assertEquals(2,order.getAmountDueInNOK());
+    public void testGetAmountOfOrderForSeatedEvent() {
+        paymentController = new PaymentController(this.orderSeated);
+        // Since the slot is "2" it is treated as a seat selection
+        Assert.assertEquals(100,paymentController.getAmountOfOrder());
+    }
+
+    @Test
+    public void testGetAmountOfOrderForNonSeatedEvent() {
+        paymentController = new PaymentController(this.nonSeated);
+        // The customer orders "2" tickets
+        Assert.assertEquals(200,paymentController.getAmountOfOrder());
+    }
+
+    @Test
+    public void paymentCompletedReserveTicketsSeatedEvent(){
+        // User has payed for the tickets.
+        // Reserve and assign them to the user:
+        paymentController = new PaymentController(this.nonSeated);
+        // User with tickets:
+        Assert.assertTrue(paymentController.reserveSlots());
+        // User should now have two tickets in inventory
+        Assert.assertEquals(2,Database.currentLoggedInCustomer.getCustomerTickets().size());
+    }
+
+    @Test
+    public void paymentFailedUserShouldHaveNoTickets(){
+        // User should now have two tickets in inventory
+        Assert.assertEquals(0,Database.currentLoggedInCustomer.getCustomerTickets().size());
     }
 
 

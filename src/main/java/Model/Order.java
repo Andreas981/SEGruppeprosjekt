@@ -27,7 +27,6 @@ public class Order {
             if (plannedEvent instanceof SeatedPlannedEvent) {
                 amountDueInNOK += ((SeatedPlannedEvent) plannedEvent).getTickets().get(slot).getPriceInNOK();
            }else{
-                // TODO Implement price
                 amountDueInNOK = ((NonSeatedPlannedEvent) plannedEvent).getTickets().get(0).getPriceInNOK() * slot;
             }
         }

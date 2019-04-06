@@ -242,6 +242,7 @@ public class LevelTwoOrganizerView {
         try{
             System.out.println("Max participents: ");
             max = scanner.nextInt();
+            System.out.println("Rows of seats in the room: ");
             rows = scanner.nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
@@ -384,13 +385,17 @@ public class LevelTwoOrganizerView {
         String name = new Scanner(System.in).nextLine();
         System.out.println("Date of event (YYYY-MM-DD): ");
         String date = new Scanner(System.in).next();
+        if(!seatedEventController.checkDate(date)){
+            System.out.println("You cannot add an event in the past");
+            return;
+        }
         System.out.println("Start time of event (HH-MM): ");
         String time = new Scanner(System.in).next();
         int ageLimit = -1;
         int lengthOfEvent = -1;
         int price = -1;
         try {
-            System.out.println("Length of event (in houers):");
+            System.out.println("Length of event (in hours):");
             lengthOfEvent = new Scanner(System.in).nextInt();
             System.out.println("Age limit:");
             ageLimit = new Scanner(System.in).nextInt();
@@ -413,39 +418,6 @@ public class LevelTwoOrganizerView {
             displayNotAnOption();
         }
     }
-
-    private void wrongPriceInEvent(int currentLocation, int currentRoom, String name, String date, String time, int ageLimit, int lengthOfEvent, int price) {
-        System.out.println("The price was not legal");
-        System.out.println("Please enter a new one:");
-        price = -1;
-        try{
-            price = new Scanner(System.in).nextInt();
-        }catch (InputMismatchException e){
-            displayNotAnOption();
-        }
-        if (price < 1){
-            wrongPriceInEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
-        }else{
-            seatedEventController.addSeatedEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
-            System.out.println("Event added");
-        }
-    }
-
-    private void removeEvent() {
-        System.out.println("Which event do you want to remove?");
-        int choice = -1;
-        try{
-            choice = new Scanner(System.in).nextInt();
-        }catch (InputMismatchException e){
-            displayNotAnOption();
-        }
-        if(choice > -1 && choice < Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().size()){
-            seatedEventController.removeSeatedEvent(currentLocation, currentRoom, choice);
-            System.out.println("Event removed!");
-        }else {
-            displaySomethingWentWrong();
-        }
-    }
     private void editEvent() {
         System.out.println("Which event do you want to edit?");
         int event;
@@ -462,6 +434,10 @@ public class LevelTwoOrganizerView {
             String name = new Scanner(System.in).nextLine();
             System.out.println("Date of event (YYYY-MM-DD): ");
             String date = scanner.next();
+            if(!seatedEventController.checkDate(date)){
+                System.out.println("You cannot add an event in the past");
+                return;
+            }
             System.out.println("Age limit");
             String ageLimit = scanner.next();
             try{
@@ -484,6 +460,38 @@ public class LevelTwoOrganizerView {
             System.out.println("Event edited!");
         }else{
             displayNotAnOption();
+        }
+    }
+    private void removeEvent() {
+        System.out.println("Which event do you want to remove?");
+        int choice = -1;
+        try{
+            choice = new Scanner(System.in).nextInt();
+        }catch (InputMismatchException e){
+            displayNotAnOption();
+        }
+        if(choice > -1 && choice < Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().size()){
+            seatedEventController.removeSeatedEvent(currentLocation, currentRoom, choice);
+            System.out.println("Event removed!");
+        }else {
+            displaySomethingWentWrong();
+        }
+    }
+
+    private void wrongPriceInEvent(int currentLocation, int currentRoom, String name, String date, String time, int ageLimit, int lengthOfEvent, int price) {
+        System.out.println("The price was not legal");
+        System.out.println("Please enter a new one:");
+        price = -1;
+        try{
+            price = new Scanner(System.in).nextInt();
+        }catch (InputMismatchException e){
+            displayNotAnOption();
+        }
+        if (price < 1){
+            wrongPriceInEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
+        }else{
+            seatedEventController.addSeatedEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
+            System.out.println("Event added");
         }
     }
 
