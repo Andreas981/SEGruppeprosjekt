@@ -85,6 +85,9 @@ public class LevelOneOrganizerView {
         }
         System.out.println("Address of the event:");
         String address = new Scanner(System.in).nextLine();
+
+        eventController.addNonSeatedEvent(name, date, time, lengthOfEvent, ageLimit, freeSpace, address, "f", 100);
+
         System.out.println("Your event in registered!");
     }
 
