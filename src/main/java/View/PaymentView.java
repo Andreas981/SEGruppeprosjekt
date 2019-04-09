@@ -42,6 +42,7 @@ public class PaymentView {
                 System.out.println("Tickets added to your account");
             }else{
                 System.out.println("There was an error processing your order, please contact service");
+                return;
             }
 
         }else if(quit){

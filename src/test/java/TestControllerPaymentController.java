@@ -90,5 +90,15 @@ public class TestControllerPaymentController {
         Assert.assertEquals(0,Database.currentLoggedInCustomer.getCustomerTickets().size());
     }
 
+    @Test
+    public void ifUserLosesConnectionToTheSystemOrderShouldNotBeCompleted(){
+        Assert.assertTrue(stub.debitCard(4444));
+        paymentController = new PaymentController(nonSeated);
+        // User loses connection
+        Database.currentLoggedInCustomer = null;
+        // User with tickets:
+        Assert.assertFalse(paymentController.reserveSlots());
+    }
+
 
 }

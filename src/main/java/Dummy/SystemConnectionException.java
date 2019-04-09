@@ -1,4 +1,4 @@
 package Dummy;
 
-public class SystemConnectionException {
+public class SystemConnectionException extends Exception {
 }
