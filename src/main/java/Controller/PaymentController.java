@@ -27,7 +27,6 @@ public class PaymentController {
             SeatedPlannedEvent plannedEvent = (SeatedPlannedEvent) order.getPlannedEvent();
             for (int i = 0; i < order.getSlots().size(); i++) {
                 plannedEvent.getTickets().get(order.getSlots().get(i)).setAvailable(false);
-
                 tickets.add(plannedEvent.getTickets().get(order.getSlots().get(i)));
             }
             Database.currentLoggedInCustomer.getCustomerTickets().addAll(tickets);

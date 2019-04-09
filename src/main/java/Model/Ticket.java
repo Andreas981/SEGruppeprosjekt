@@ -19,6 +19,7 @@ public class Ticket {
         this(validForEvent, priceInNOK);
         this.idForTicket = idForTicket;
         this.seatNumber = seatNumber;
+        this.available = true;
     }
 
 
