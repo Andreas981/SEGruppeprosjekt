@@ -323,8 +323,8 @@ public class LevelTwoOrganizerView {
         System.out.println("\nWhat would you like to do?");
         System.out.println("\tType '1' See event");
         System.out.println("\tType '2' Add event");
-        System.out.println("\tType '3' Remove event");
-        System.out.println("\tType '4' Edit event");
+        System.out.println("\tType '3' Edit event");
+        System.out.println("\tType '4' Remove event");
         System.out.println("\tType '5' Go back");
 
         int choice = 0;
@@ -343,10 +343,10 @@ public class LevelTwoOrganizerView {
                 addEvent();
                 break;
             case 3:
-                removeEvent();
+                editEvent();
                 break;
             case 4:
-                editEvent();
+                removeEvent();
                 break;
             case 5:
                 return;
