@@ -9,27 +9,28 @@ public class CustomerEventSelectionController {
         // For use in main screen
         System.out.println("_____________________________________________________________________");
         for (Organizer organizer : Database.organizers){
-            System.out.println("*********************************************************************");
-            System.out.println("Arranger: " + organizer.getOrganization());
-            // TODO Add listing of nonSeated events
-
-
             for(NonSeatedPlannedEvent nonSeatedPlannedEvent : organizer.getNonSeatedPlannedEvents()) {
+                System.out.println("*********************************************************************");
+                System.out.println("Arranger: " + organizer.getOrganization());
                 System.out.println("Outdoor event");
                 System.out.println(nonSeatedPlannedEvent.getNameOfEvent() + " Age Limit: " + nonSeatedPlannedEvent.getAgeLimit() +"+"
-                        +"\n" + "Meet up: " + nonSeatedPlannedEvent.getMeetUp());
+                        +"\n" + "Meet up: " + nonSeatedPlannedEvent.getMeetUp()
+                        );
 
                 System.out.println("_____________________________________________________________________");
             }
 
             for(Location location : organizer.getLocations()){
-                System.out.println("    Playing at: " + location.getName());
+
                 for(Room aRoom : location.getRooms()){
-                    System.out.println("        In room: " + aRoom.getName());
+
                     if(aRoom.getEvents().size()<1){
-                        System.out.println("            No planned events");
+
                     }else{
                         for(Model.PlannedEvent aEvent : aRoom.getEvents()){
+                            System.out.println("    Playing at: " + location.getName());
+                            System.out.println("        In room: " + aRoom.getName());
+                            System.out.println("            No planned events");
                             System.out.println("            " + aEvent.getNameOfEvent()
                                     + " " + aEvent.getDateOfEvent().toLocalDate().toString() + " \n" +
                                     "               Starting at: " + aEvent.getDateOfEvent().toLocalTime().getHourOfDay() + ":" +aEvent.getDateOfEvent().getMinuteOfHour() + " "
