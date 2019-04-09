@@ -37,11 +37,13 @@ public class MainMenuView {
                     break;
                 default:
                     System.out.println("Please enter a valid selection");
+                    displayMenu();
             }
         }catch (InputMismatchException e){
             System.out.println("Sorry, that is not an option");
             displayMenu();
         }
+
     }
 
     public static void printMenu(){

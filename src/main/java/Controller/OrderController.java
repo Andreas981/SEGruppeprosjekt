@@ -43,6 +43,7 @@ public class OrderController {
         return plannedEvent;
     }
 
+    // Available tickets
     public void getAvailableSlots() {
         if( plannedEvent instanceof NonSeatedPlannedEvent){
             displayAvalibleSlots((NonSeatedPlannedEvent) plannedEvent);
@@ -120,7 +121,7 @@ public class OrderController {
     }
 
     private void setupAorder(ArrayList<Integer> slots) {
-        placeOrder = new Order(slots,plannedEvent);
+        placeOrder = new Order(slots,plannedEvent,getEventNumber());
     }
 
     private boolean checkIfPositionIsTaken(ArrayList<Integer> seats) {
