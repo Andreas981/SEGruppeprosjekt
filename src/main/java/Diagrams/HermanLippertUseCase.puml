@@ -2,21 +2,24 @@
 
 Customer --> (Choose events)
 Customer --> (Buy ticket)
-Customer --> (Cancel ticket)
 Customer --> (See ticket history)
 
 newpage
 
-Organizer -->(Create Events<seated and nonseated>)
-Organizer -->(Delete Events<seated and nonseated>)
-Organizer -->(Edit Events<seated and nonseated>)
+OrganizerLevelTwo -->(Create Events<seated>)
+OrganizerLevelTwo -->(Delete Events<seated>)
+OrganizerLevelTwo -->(Edit Events<seated>)
+OrganizerLevelTwo -->(Create Location)
+OrganizerLevelTwo -->(Delete Location)
+OrganizerLevelTwo -->(Edit Location)
+OrganizerLevelTwo -->(Create Rooms)
+OrganizerLevelTwo -->(Delete Rooms)
+OrganizerLevelTwo -->(Edit Rooms)
 
-Organizer -->(Create Location)
-Organizer -->(Delete Location)
-Organizer -->(Edit Location)
+newpage
 
-Organizer -->(Create Rooms)
-Organizer -->(Delete Rooms)
-Organizer -->(Edit Rooms)
+OrganizerLevelOne -->(Create Events<nonseated>)
+OrganizerLevelOne -->(Delete Events<nonseated>)
+OrganizerLevelOne -->(Edit Events<nonseated>)
 
 @enduml
