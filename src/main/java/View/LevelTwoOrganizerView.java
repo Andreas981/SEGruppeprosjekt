@@ -4,6 +4,7 @@ import Controller.SeatedEventController;
 import Controller.LocationController;
 import Controller.RoomController;
 import Dummy.Database;
+import jdk.internal.util.xml.impl.Input;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -32,8 +33,15 @@ public class LevelTwoOrganizerView {
         System.out.println("\tType '5' Sign out");
 
         int choice = 0;
-        try {
-            choice = scanner.nextInt();
+        Boolean inputOk = true;
+        try{
+            choice = new Scanner(System.in).nextInt();
+        }catch (Exception e){
+            displayNotAnOption();
+            inputOk = false;
+        }
+
+        if(inputOk){
             switch (choice){
                 case 1:
                     seeLocation();
@@ -53,9 +61,8 @@ public class LevelTwoOrganizerView {
                     displayNotAnOption();
                     break;
             }
-        }catch (InputMismatchException e){
-            displayNotAnOption();
         }
+
         startView();
     }
 
@@ -64,7 +71,7 @@ public class LevelTwoOrganizerView {
 
         int choice = -1;
         try{
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
@@ -101,16 +108,15 @@ public class LevelTwoOrganizerView {
 
     }
     private void removeLocation() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Which location do you want to remove?");
 
         int choice;
         try{
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
             System.out.println("Are you sure?");
             System.out.println("yes(y)/no(n)");
 
-            String confirm = scanner.next();
+            String confirm = new Scanner(System.in).next();
             if (confirm.toLowerCase().startsWith("n")){
                 return;
             }else if(confirm.toLowerCase().startsWith("y")){
@@ -129,7 +135,7 @@ public class LevelTwoOrganizerView {
 
         int location = -1;
         try{
-            location = scanner.nextInt();
+            location = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
@@ -239,15 +245,21 @@ public class LevelTwoOrganizerView {
 
         int max = -1;
         int rows  = -1;
+        System.out.println("Max participents: ");
         try{
-            System.out.println("Max participents: ");
             max = scanner.nextInt();
-            System.out.println("Rows of seats in the room: ");
+        }catch (InputMismatchException e){
+            displayNotAnOption();
+            return;
+        }
+        System.out.println("Rows of seats in the room: ");
+        try{
             rows = scanner.nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
         }
+
         roomController.addRoom(currentLocation, name, max, rows);
         System.out.println("Room added!");
 
