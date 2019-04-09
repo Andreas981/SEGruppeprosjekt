@@ -110,6 +110,8 @@ public class OrderController {
         try{
             for (String slot : slots) {
                 seats.add(Integer.parseInt(slot));
+                // If we discover a negative value, stop parsing the slots:
+                if(Integer.parseInt(slot) < 0) return null;
             }
         }catch (NumberFormatException e){
             return null;

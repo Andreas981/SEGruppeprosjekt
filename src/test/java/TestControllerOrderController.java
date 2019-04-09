@@ -66,7 +66,7 @@ public class TestControllerOrderController {
         // User selects more tickets than are available;
         Assert.assertTrue(orderController.validateUserInput("200"));
     }
-
+ 
     @Test
     public void testInvalidInputEntered(){
         orderController.getAvailableSlots();
