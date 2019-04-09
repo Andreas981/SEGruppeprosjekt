@@ -50,9 +50,25 @@ public class SeatedEventController {
         if(dateArray.length < 3) return false;
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         String[] dateNow = dateFormat.format(new Date()).split("/");
-        if(Integer.parseInt(dateArray[0]) < Integer.parseInt(dateNow[0])) return false;
-        if(Integer.parseInt(dateArray[1]) < Integer.parseInt(dateNow[1])) return false;
-        if(Integer.parseInt(dateArray[2]) < Integer.parseInt(dateNow[2])) return false;
+        if(Integer.parseInt(dateArray[0]) > Integer.parseInt(dateNow[0]))
+            return true;
+        else if(Integer.parseInt(dateArray[0]) == Integer.parseInt(dateNow[0])){
+            if(Integer.parseInt(dateArray[1]) > Integer.parseInt(dateNow[1]))
+                return true;
+            else if(Integer.parseInt(dateArray[1]) == Integer.parseInt(dateNow[1])){
+                if(Integer.parseInt(dateArray[2]) > Integer.parseInt(dateNow[2]))
+                    return true;
+                else if(Integer.parseInt(dateArray[2]) == Integer.parseInt(dateNow[2]))
+                    return true;
+                if(Integer.parseInt(dateArray[2]) < Integer.parseInt(dateNow[2]))
+                    return false;
+            }
+            if(Integer.parseInt(dateArray[1]) < Integer.parseInt(dateNow[1]))
+                return false;
+        }
+        else if(Integer.parseInt(dateArray[0]) < Integer.parseInt(dateNow[0]))
+            return false;
+
         return true;
     }
 }
