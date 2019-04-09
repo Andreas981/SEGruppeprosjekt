@@ -1,6 +1,7 @@
 package Controller;
 
 import Dummy.Database;
+import Dummy.SystemConnectionException;
 import Model.NonSeatedPlannedEvent;
 import Model.Order;
 import Model.SeatedPlannedEvent;
@@ -21,8 +22,9 @@ public class PaymentController {
         return amount;
     }
 
-    public boolean reserveSlots() {
+    public boolean reserveSlots() throws SystemConnectionException {
         // If there is a logged in customer:
+
         if (Database.currentLoggedInCustomer != null) {
             ArrayList<Ticket> tickets = new ArrayList<Ticket>();
             if (order.getPlannedEvent() instanceof SeatedPlannedEvent) {
@@ -42,8 +44,11 @@ public class PaymentController {
                 Database.currentLoggedInCustomer.getCustomerTickets().addAll(tickets);
                 return true;
             }
+
+
         }
-        return false;
+        throw new SystemConnectionException();
+
     }
 
 

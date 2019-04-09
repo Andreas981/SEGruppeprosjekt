@@ -3,6 +3,7 @@ package View;
 import Controller.PaymentController;
 import Dummy.Database;
 import Dummy.PaymentStub;
+import Dummy.SystemConnectionException;
 import Model.Order;
 
 import java.util.InputMismatchException;
@@ -23,10 +24,14 @@ public class PaymentView {
     public void displayAmountDue(){
         int amountToPay = paymentController.getAmountOfOrder();
         System.out.println("Amount to pay: " + amountToPay +" NOK");
-        displayPaymentOptions();
+        try {
+            displayPaymentOptions();
+        } catch (SystemConnectionException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void displayPaymentOptions(){
+    public void displayPaymentOptions() throws SystemConnectionException {
         System.out.println("How would you like to pay?");
         printMenu();
         scanner = new Scanner(System.in);

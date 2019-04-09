@@ -1,6 +1,7 @@
 import Controller.PaymentController;
 import Dummy.Database;
 import Dummy.PaymentStub;
+import Dummy.SystemConnectionException;
 import Model.*;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
@@ -59,7 +60,7 @@ public class TestControllerPaymentController {
     }
 
     @Test
-    public void paymentCompletedReserveTicketsSeatedEvent(){
+    public void paymentCompletedReserveTicketsSeatedEvent() throws SystemConnectionException {
         // User pays for the tickets
         Assert.assertTrue(stub.debitCard(4444));
         // Reserve and assign them to the user:
@@ -72,7 +73,7 @@ public class TestControllerPaymentController {
     }
 
     @Test
-    public void paymentCompletedReserveTicketsNonSeatedEvent(){
+    public void paymentCompletedReserveTicketsNonSeatedEvent() throws SystemConnectionException {
         // User pays for the tickets
         Assert.assertTrue(stub.debitCard(4444));
         // Reserve and assign them to the user:
@@ -90,8 +91,8 @@ public class TestControllerPaymentController {
         Assert.assertEquals(0,Database.currentLoggedInCustomer.getCustomerTickets().size());
     }
 
-    @Test
-    public void ifUserLosesConnectionToTheSystemOrderShouldNotBeCompleted(){
+    @Test(expected = SystemConnectionException.class)
+    public void ifUserLosesConnectionToTheSystemOrderShouldNotBeCompleted() throws SystemConnectionException{
         Assert.assertTrue(stub.debitCard(4444));
         paymentController = new PaymentController(nonSeated);
         // User loses connection
