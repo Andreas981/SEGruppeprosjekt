@@ -14,6 +14,8 @@ public class InitStart {
         // Setting up organizers
         Database.organizers.add(new Organizer("Kari", "Normann", "kari@normann.no", "12345678", "karino", Security.PassHash.hashPassword("abc123"), new LocalDate(2000, 2, 2), "HiØ", 2));
         Database.organizers.add(new Organizer("Ole", "Olsen", "Ole.12@gmail.no", "98765432", "oleol", Security.PassHash.hashPassword("abc123"), new LocalDate(2000, 2, 2), "Thon Hotell", 1));
+        Database.organizers.add(new Organizer("Ole", "Olsen", "Ole.12@gmail.no", "98765432", "test1", Security.PassHash.hashPassword("test"), new LocalDate(2000, 2, 2), "Thon Hotell", 1));
+        Database.organizers.add(new Organizer("Ole", "Olsen", "Ole.12@gmail.no", "98765432", "test2", Security.PassHash.hashPassword("test"), new LocalDate(2000, 2, 2), "Thon Hotell", 2));
 
 
         // Setting up customer
@@ -40,6 +42,6 @@ public class InitStart {
 
         Database.organizers.get(0).getLocations().get(0).getRooms()
                 .get(1).addEvent(new SeatedPlannedEvent("Forelesning i Datasikkerhet", new LocalDateTime(2019, 3, 2, 22, 0), 200, 20, 0, 0, 100));
-
+        Database.organizers.get(0).getLocations().get(0).getRooms().get(1).getEvents().get(0).getTickets().get(1).setAvailable(false);
     }
 }

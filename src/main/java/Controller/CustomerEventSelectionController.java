@@ -9,27 +9,28 @@ public class CustomerEventSelectionController {
         // For use in main screen
         System.out.println("_____________________________________________________________________");
         for (Organizer organizer : Database.organizers){
-            System.out.println("*********************************************************************");
-            System.out.println("Arranger: " + organizer.getOrganization());
-            // TODO Add listing of nonSeated events
-
-
             for(NonSeatedPlannedEvent nonSeatedPlannedEvent : organizer.getNonSeatedPlannedEvents()) {
+                System.out.println("*********************************************************************");
+                System.out.println("Arranger: " + organizer.getOrganization());
                 System.out.println("Outdoor event");
                 System.out.println(nonSeatedPlannedEvent.getNameOfEvent() + " Age Limit: " + nonSeatedPlannedEvent.getAgeLimit() +"+"
-                        +"\n" + "Meet up: " + nonSeatedPlannedEvent.getMeetUp());
+                        +"\n" + "Meet up: " + nonSeatedPlannedEvent.getMeetUp()
+                        );
 
                 System.out.println("_____________________________________________________________________");
             }
 
             for(Location location : organizer.getLocations()){
-                System.out.println("    Playing at: " + location.getName());
+
                 for(Room aRoom : location.getRooms()){
-                    System.out.println("        In room: " + aRoom.getName());
+
                     if(aRoom.getEvents().size()<1){
-                        System.out.println("            No planned events");
+
                     }else{
                         for(Model.PlannedEvent aEvent : aRoom.getEvents()){
+                            System.out.println("    Playing at: " + location.getName());
+                            System.out.println("        In room: " + aRoom.getName());
+
                             System.out.println("            " + aEvent.getNameOfEvent()
                                     + " " + aEvent.getDateOfEvent().toLocalDate().toString() + " \n" +
                                     "               Starting at: " + aEvent.getDateOfEvent().toLocalTime().getHourOfDay() + ":" +aEvent.getDateOfEvent().getMinuteOfHour() + " "
@@ -49,35 +50,38 @@ public class CustomerEventSelectionController {
     public void enterCustomerMenu() {
         System.out.println("_____________________________________________________________________");
         for(int i = 0;i<Database.organizers.size();i++) {
-            System.out.println("*********************************************************************");
-            System.out.println("Arranger name: " + Database.organizers.get(i).getOrganization());
             for(int nonS = 0; nonS < Database.organizers.get(i).getNonSeatedPlannedEvents().size();nonS++ ) {
+                System.out.println("*********************************************************************");
+                System.out.println("Arranger name: " + Database.organizers.get(i).getOrganization());
                 System.out.println("Outdoor event");
                 NonSeatedPlannedEvent aEvent = Database.organizers.get(i).getNonSeatedPlannedEvents().get(nonS);
                 System.out.println(aEvent.getNameOfEvent() + " Age Limit: " + aEvent.getAgeLimit() +"+"
                         +"\n" + "Meet up: " + aEvent.getMeetUp());
-                System.out.println((aEvent.getFreeSpace() > 0 ? aEvent.getFreeSpace() : "Sold out" ));
-                System.out.println("Event number: (" + (i) + (nonS) +")");
+                System.out.println("Available tickets: " + (aEvent.getFreeSpace() > 0 ? aEvent.getFreeSpace() : "Sold out" ));
+                if(aEvent.getFreeSpace()>0) System.out.println("Event number: (" + (i) +"-" + (nonS) +")");
 
                 System.out.println("_____________________________________________________________________");
             }
 
-            for (int j = 0; j < Database.organizers.get(i).getLocations().size();j++) { ;
-                System.out.println("Playing at: " + Database.organizers.get(i)
-                        .getLocations().get(j).getName());
+            for (int j = 0; j < Database.organizers.get(i).getLocations().size();j++) {
                 for(int k = 0; k < Database.organizers.get(i).getLocations().get(j).getRooms().size();k++){
-                    System.out.println("        _______________________________________________________");
-                    System.out.println("        In room: " + Database.organizers.get(i).getLocations()
-                            .get(j).getRooms().get(k).getName());
+
                     for(int m = 0; m<Database.organizers.get(i).getLocations().get(j)
                             .getRooms().get(k).getEvents().size();m++){
+                        System.out.println("*********************************************************************");
+                        System.out.println("Arranger name: " + Database.organizers.get(i).getOrganization());
+                        System.out.println("Playing at: " + Database.organizers.get(i)
+                                .getLocations().get(j).getName());
+                        System.out.println("        _______________________________________________________");
+                        System.out.println("        In room: " + Database.organizers.get(i).getLocations()
+                                .get(j).getRooms().get(k).getName());
                         System.out.println("            _________________________________________________");
-                        PlannedEvent plannedEvent = Database.organizers.get(i).getLocations().get(j).getRooms()
+                        SeatedPlannedEvent plannedEvent = Database.organizers.get(i).getLocations().get(j).getRooms()
                                 .get(k).getEvents()
                                 .get(m);
                         int freeSeats = 0;
-                        for(int h = 0; h < ((SeatedPlannedEvent) plannedEvent).getTickets().size();h++){
-                            if(((SeatedPlannedEvent) plannedEvent).getTickets().get(h).getAvailable()){
+                        for(int h = 0; h < plannedEvent.getTickets().size(); h++){
+                            if(plannedEvent.getTickets().get(h).getAvailable()){
                                 freeSeats++;
                             }
                         }
@@ -86,21 +90,23 @@ public class CustomerEventSelectionController {
                                 "            Starting at: " + plannedEvent.getDateOfEvent().toLocalTime().getHourOfDay()
                                 + ":" +plannedEvent.getDateOfEvent().getMinuteOfHour() + " "
                                 + plannedEvent.getLengthOfEvent() +  "min runtime \n" +
-                                "            Seats available:" +  (freeSeats > 0 ? ((SeatedPlannedEvent) plannedEvent).getTickets().size() : "Sold out" ) + "\n"+
-                                "            Event number: (" + (i) + (j) + (k) + (m) + ")");
-
+                                "            Seats available:" +  (freeSeats > 0 ? freeSeats : "Sold out" ) + "\n");
+                        if(freeSeats>0){
+                            System.out.println("            Event number: (" + (i)+"-"+(j)+"-"+(k)+"-"+(m) + ")");
+                        }
                     }
             }
         }
 
         }
+        System.out.println("___________________________________________________________________________");
     }
 
     public int[] validateUserSelection(String userInput) {
-        if(userInput.length()<1){
+        if(userInput.length()<2){
             return null;
         }
-        String[] eventSplit = userInput.split("");
+        String[] eventSplit = userInput.split("-");
         int[] eventNumber = new int[eventSplit.length];
         try  {
             for (int i = 0; i < eventSplit.length; i++) {
@@ -110,6 +116,8 @@ public class CustomerEventSelectionController {
             System.out.println("Invalid selection entered");
             return null;
         }
+        if(eventNumber.length<2)return null;
+        if(eventNumber.length == 3) return null;
         if(checkIfEventExist(eventNumber)){
             return eventNumber;
         }

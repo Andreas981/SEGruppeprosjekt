@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestSignInUserController {
+public class TestControllerSignInUserController {
 
     Organizer organizer;
     Customer customer;
@@ -26,11 +26,14 @@ public class TestSignInUserController {
     @Test
     public void testSignInOrganizer() {
         Assert.assertEquals("test name",Database.currentLoggedInOrganizer.getFirstName());
+        Assert.assertEquals("test password",Database.currentLoggedInOrganizer.getPassword());
     }
 
     @Test
     public void testSignInCustomer() {
         Assert.assertEquals("test name",Database.currentLoggedInCustomer.getFirstName());
+        Assert.assertEquals("test password",Database.currentLoggedInCustomer.getPassword());
+
     }
 
 }

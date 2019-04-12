@@ -8,11 +8,26 @@ import java.util.ArrayList;
 public class Order {
     private ArrayList<Integer> slots;
     private PlannedEvent plannedEvent;
+    private int[] eventNumber;
     private int amountDueInNOK;
 
+    public Order(ArrayList<Integer> slots, PlannedEvent plannedEvent, int[] eventNumber) {
+        this.slots = slots;
+        this.plannedEvent = plannedEvent;
+        this.eventNumber = eventNumber;
+    }
     public Order(ArrayList<Integer> slots, PlannedEvent plannedEvent) {
         this.slots = slots;
         this.plannedEvent = plannedEvent;
+
+    }
+
+    public int[] getEventNumber() {
+        return eventNumber;
+    }
+
+    public void setEventNumber(int[] eventNumber) {
+        this.eventNumber = eventNumber;
     }
 
     public ArrayList<Integer> getSlots() {
@@ -20,14 +35,12 @@ public class Order {
     }
 
     private int amountDue(){
-        System.out.println("Amount due called");
         amountDueInNOK = 0;
         // Get ticket prize
         for (Integer slot : slots) {
             if (plannedEvent instanceof SeatedPlannedEvent) {
                 amountDueInNOK += ((SeatedPlannedEvent) plannedEvent).getTickets().get(slot).getPriceInNOK();
            }else{
-                // TODO Implement price
                 amountDueInNOK = ((NonSeatedPlannedEvent) plannedEvent).getTickets().get(0).getPriceInNOK() * slot;
             }
         }

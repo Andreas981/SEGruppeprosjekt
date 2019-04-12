@@ -3,6 +3,7 @@ package View;
 import Controller.PaymentController;
 import Dummy.Database;
 import Dummy.PaymentStub;
+import Dummy.SystemConnectionException;
 import Model.Order;
 
 import java.util.InputMismatchException;
@@ -13,6 +14,7 @@ public class PaymentView {
     private PaymentController paymentController;
     private Scanner scanner;
     private boolean paymentOK;
+    private boolean quit = false;
 
     public PaymentView(Order order) {
         this.order = order;
@@ -22,22 +24,36 @@ public class PaymentView {
     public void displayAmountDue(){
         int amountToPay = paymentController.getAmountOfOrder();
         System.out.println("Amount to pay: " + amountToPay +" NOK");
-        displayPaymentOptions();
+        try {
+            displayPaymentOptions();
+        } catch (SystemConnectionException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void displayPaymentOptions(){
+    public void displayPaymentOptions() throws SystemConnectionException {
         System.out.println("How would you like to pay?");
         printMenu();
         scanner = new Scanner(System.in);
-        selectedOption(scanner.nextInt());
+        try {
+            String input = scanner.nextLine();
+            selectedOption(Integer.parseInt(input));
+        }catch(NumberFormatException n){
+            System.err.println("Please enter a valid option");
+
+        }
         if(paymentOK){
             if(paymentController.reserveSlots()){
                 System.out.println("Tickets added to your account");
             }else{
                 System.out.println("There was an error processing your order, please contact service");
+                return;
             }
 
-        }else{
+        }else if(quit){
+            return;
+        }
+        else{
             displayPaymentOptions();
         }
     }
@@ -45,32 +61,31 @@ public class PaymentView {
     public void selectedOption(int userSelection) {
         paymentOK = false;
         try {
-            switch (userSelection) {
-                case 1:
-                    System.out.println("PayPal Selected");
-                    paymentOK = new PaymentStub().payPal(Database.currentLoggedInCustomer.getUsername());
-                    break;
-                case 2:
-                    System.out.println("Debit card selected");
-                    System.out.println("Enter a 4 digit card number:");
-                    paymentOK = new PaymentStub().debitCard(scanner.nextInt());
-                    break;
-                case 3:
-                    System.out.println("Vipps selected");
-                    paymentOK = new PaymentStub().vipps((Integer.parseInt(Database.currentLoggedInCustomer.getTelephone())));
-                    break;
-                case 4:
-                    System.out.println("Goodbye");
-                    break;
-                default:
-                    System.out.println("I did not get that...");
-                    printMenu();
-                    break;
+            if(userSelection==1) {
+                System.out.println("PayPal Selected");
+                paymentOK = new PaymentStub().payPal(Database.currentLoggedInCustomer.getUsername());
+            }else if (userSelection==2) {
+                System.out.println("Debit card selected");
+                System.out.println("Enter a 4 digit card number:");
+                paymentOK = new PaymentStub().debitCard(scanner.nextInt());
+            }else if (userSelection==3) {
+                System.out.println("Vipps selected");
+                paymentOK = new PaymentStub().vipps((Integer.parseInt(Database.currentLoggedInCustomer.getTelephone())));
+            }else if(userSelection==4) {
+                System.out.println("Aborting purchase");
+                paymentOK = false;
+                quit = true;
+            }else {
+                System.out.println("Enter a valid option");
+                paymentOK = false;
             }
+
         } catch (InputMismatchException e) {
-            System.out.println("Sorry, that is not an option");
+            paymentOK = false;
+            System.out.println("Invalid option selected");
 
         }
+
     }
 
     public void printMenu() {

@@ -12,7 +12,6 @@ public class TestRegisterAUser {
     @Before
     public void init(){
         registerUserController = new RegisterUserController();
-        //Instansier customer
     }
 
     @Test

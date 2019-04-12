@@ -11,19 +11,18 @@ public class OrderView {
         this.orderController = new OrderController(eventNumber);
     }
 
-    public void displayPromptForSelectingAEvent(){
+    public void displayPromptForSelectingAEvent() {
         orderController.getAvailableSlots();
 
         String slotsInput = scanner.nextLine();
+            if (orderController.validateUserInput(slotsInput)) {
+                System.out.println("Order is valid");
+                new PaymentView(orderController.getPlaceOrder()).displayAmountDue();
+            } else {
+                System.out.println("Invalid input");
+                displayPromptForSelectingAEvent();
+            }
 
-        if(orderController.validateUserInput(slotsInput)){
-            System.out.println("Order is valid");
-            new PaymentView(orderController.getPlaceOrder()).displayAmountDue();
-        }else {
-            System.out.println("Invalid input");
-        }
-
-        
     }
 
 }

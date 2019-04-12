@@ -43,6 +43,7 @@ public class OrderController {
         return plannedEvent;
     }
 
+    // Available tickets
     public void getAvailableSlots() {
         if( plannedEvent instanceof NonSeatedPlannedEvent){
             displayAvalibleSlots((NonSeatedPlannedEvent) plannedEvent);
@@ -53,7 +54,7 @@ public class OrderController {
     }
 
     private void displayAvalibleSlots(NonSeatedPlannedEvent plannedEvent) {
-        System.out.println(plannedEvent.getFreeSpace());
+        System.out.println(plannedEvent.getFreeSpace() + " tickets available.");
         System.out.println("Enter how many reservations you want:");
         System.out.println("Example: 1 or 5");
     }
@@ -87,7 +88,8 @@ public class OrderController {
         String[] strings = reservation.split(",");
 
         ArrayList<Integer> slots = parseInputForSlots(strings);
-        if(slots == null){
+        // If there was no numbers extracted from the input:
+        if(slots == null|| slots.size()<1){
             return false;
         }
         if(getPlannedEvent() instanceof  NonSeatedPlannedEvent){
@@ -109,6 +111,8 @@ public class OrderController {
         try{
             for (String slot : slots) {
                 seats.add(Integer.parseInt(slot));
+                // If we discover a negative value, stop parsing the slots:
+                if(Integer.parseInt(slot) < 0) return null;
             }
         }catch (NumberFormatException e){
             return null;
@@ -117,7 +121,7 @@ public class OrderController {
     }
 
     private void setupAorder(ArrayList<Integer> slots) {
-        placeOrder = new Order(slots,plannedEvent);
+        placeOrder = new Order(slots,plannedEvent,getEventNumber());
     }
 
     private boolean checkIfPositionIsTaken(ArrayList<Integer> seats) {

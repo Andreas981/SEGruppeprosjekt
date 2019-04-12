@@ -7,6 +7,6 @@ public class RegEx {
     public static Boolean regEx(String pattern, String input){
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(input);
-        return m.find();
+        return m.matches();
     }
 }

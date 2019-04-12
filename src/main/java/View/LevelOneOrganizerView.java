@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class LevelOneOrganizerView {
 
-    private Scanner scanner = new Scanner(System.in);
     private NonSeatedEventController eventController = new NonSeatedEventController();
 
     public void startView() {
@@ -21,12 +20,12 @@ public class LevelOneOrganizerView {
             System.out.println("\t**No events have been added**");
 
         System.out.println("\nWhat would you like to do?");
-        System.out.println("\t(0) Add an event");
-        System.out.println("\t(1) Sign out");
+        System.out.println("\tType '0' Add an event");
+        System.out.println("\tType '1' Sign out");
 
         int choice = -1;
         try {
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
 
         }catch (InputMismatchException e){
             displayForNotAnOption();
@@ -58,9 +57,9 @@ public class LevelOneOrganizerView {
         int lengthOfEvent = -1;
         try {
             System.out.println("The events age limit:");
-            ageLimit = scanner.nextInt();
+            ageLimit = new Scanner(System.in).nextInt();
             System.out.println("Length of event (in hours):");
-            lengthOfEvent = scanner.nextInt();
+            lengthOfEvent = new Scanner(System.in).nextInt();
 
         } catch (InputMismatchException e) {
             displayForNotAnOption();
@@ -69,31 +68,26 @@ public class LevelOneOrganizerView {
         System.out.println("Price (in nok): ");
         int price = -1;
         try{
-            price = scanner.nextInt();
+            price = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayForNotAnOption();
             return;
         }
 
-        System.out.println("Amount of free space:");
+        System.out.println("Number of attendees:");
         int freeSpace = -1;
         try{
-            freeSpace = scanner.nextInt();
+            freeSpace = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayForNotAnOption();
             return;
         }
         System.out.println("Address of the event:");
         String address = new Scanner(System.in).nextLine();
-        System.out.println("Is it a free event? (yes/no):");
-        String freeEvent = scanner.next();
 
-        if (Security.RegEx.regEx(patternForDate, date) && Security.RegEx.regEx(patternForTime, time) && ageLimit != -1){
-            eventController.addNonSeatedEvent(name, date, time, lengthOfEvent, ageLimit, freeSpace, address, freeEvent, price);
-            System.out.println("Event added");
-        }else{
-            displayForNotAnOption();
-        }
+        eventController.addNonSeatedEvent(name, date, time, lengthOfEvent, ageLimit, freeSpace, address, "f", 100);
+
+        System.out.println("Your event in registered!");
     }
 
     private void displayForNotAnOption(){

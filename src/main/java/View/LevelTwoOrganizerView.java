@@ -4,13 +4,13 @@ import Controller.SeatedEventController;
 import Controller.LocationController;
 import Controller.RoomController;
 import Dummy.Database;
+import jdk.internal.util.xml.impl.Input;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LevelTwoOrganizerView {
 
-    private Scanner scanner = new Scanner(System.in);
     private LocationController locationController = new LocationController();
     private RoomController roomController = new RoomController();
     private SeatedEventController seatedEventController = new SeatedEventController();
@@ -25,15 +25,22 @@ public class LevelTwoOrganizerView {
             System.out.println("\t(" + i + ") " + Database.currentLoggedInOrganizer.getLocations().get(i).getName());
 
         System.out.println("\nWhat would you like to do?");
-        System.out.println("\t(1) See a location");
-        System.out.println("\t(2) Add location");
-        System.out.println("\t(3) Remove a location");
-        System.out.println("\t(4) Edit room");
-        System.out.println("\t(5) Sign out");
+        System.out.println("\tType '1' See a location");
+        System.out.println("\tType '2' Add location");
+        System.out.println("\tType '3' Edit location");
+        System.out.println("\tType '4' Remove a location");
+        System.out.println("\tType '5' Sign out");
 
         int choice = 0;
-        try {
-            choice = scanner.nextInt();
+        Boolean inputOk = true;
+        try{
+            choice = new Scanner(System.in).nextInt();
+        }catch (Exception e){
+            displayNotAnOption();
+            inputOk = false;
+        }
+
+        if(inputOk){
             switch (choice){
                 case 1:
                     seeLocation();
@@ -42,10 +49,10 @@ public class LevelTwoOrganizerView {
                     addLocation();
                     break;
                 case 3:
-                    removeLocation();
+                    editLocation();
                     break;
                 case 4:
-                    editLocation();
+                    removeLocation();
                     break;
                 case 5:
                     return;
@@ -53,9 +60,8 @@ public class LevelTwoOrganizerView {
                     displayNotAnOption();
                     break;
             }
-        }catch (InputMismatchException e){
-            displayNotAnOption();
         }
+
         startView();
     }
 
@@ -64,7 +70,7 @@ public class LevelTwoOrganizerView {
 
         int choice = -1;
         try{
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
@@ -94,23 +100,22 @@ public class LevelTwoOrganizerView {
         if(publicLocaiton == 1 || publicLocaiton == 2){
             if(locationController.addLocation(name, address, publicLocaiton)){
                 System.out.println("Location added!");
-            }else{
-                displaySomethingWentWrong();
             }
+        }else{
+            displaySomethingWentWrong();
         }
 
     }
     private void removeLocation() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Which location do you want to remove?");
 
         int choice;
         try{
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
             System.out.println("Are you sure?");
             System.out.println("yes(y)/no(n)");
 
-            String confirm = scanner.next();
+            String confirm = new Scanner(System.in).next();
             if (confirm.toLowerCase().startsWith("n")){
                 return;
             }else if(confirm.toLowerCase().startsWith("y")){
@@ -125,11 +130,11 @@ public class LevelTwoOrganizerView {
         }
     }
     private void editLocation(){
-        System.out.println("\nWhich location do you want to remove?");
+        System.out.println("\nWhich location do you want to edit?");
 
         int location = -1;
         try{
-            location = scanner.nextInt();
+            location = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
@@ -175,15 +180,15 @@ public class LevelTwoOrganizerView {
 
 
         System.out.println("\nWhat would you like to do?");
-        System.out.println("\t(1) See a room");
-        System.out.println("\t(2) Add a room");
-        System.out.println("\t(3) Edit a room");
-        System.out.println("\t(4) Remove a room");
-        System.out.println("\t(5) Go back");
+        System.out.println("\tType '1' See a room");
+        System.out.println("\tType '2' Add a room");
+        System.out.println("\tType '3' Edit a room");
+        System.out.println("\tType '4' Remove a room");
+        System.out.println("\tType '5' Go back");
 
         int choice = 0;
         try{
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             seeLocationView();
@@ -196,10 +201,10 @@ public class LevelTwoOrganizerView {
                 addRoom();
                 break;
             case 3:
-                removeRoom();
+                editRoom();
                 break;
             case 4:
-                editRoom();
+                removeRoom();
                 break;
             case 5:
                 return;
@@ -218,7 +223,7 @@ public class LevelTwoOrganizerView {
 
         int choice = -1;
         try{
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
@@ -235,18 +240,26 @@ public class LevelTwoOrganizerView {
     }
     private void addRoom() {
         System.out.println("\nRoom name: ");
+        Scanner scanner = new Scanner(System.in);
         String name = new Scanner(System.in).nextLine();
 
         int max = -1;
         int rows  = -1;
+        System.out.println("Max participents: ");
         try{
-            System.out.println("Max participents: ");
             max = scanner.nextInt();
-            rows = scanner.nextInt();
+        }catch (NumberFormatException e){
+            displayNotAnOption();
+            return;
+        }
+        System.out.println("Rows of seats in the room: ");
+        try{
+            rows = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
         }
+
         roomController.addRoom(currentLocation, name, max, rows);
         System.out.println("Room added!");
 
@@ -256,7 +269,7 @@ public class LevelTwoOrganizerView {
 
         int choice = -1;
         try{
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
@@ -264,7 +277,7 @@ public class LevelTwoOrganizerView {
         System.out.println("Are you sure?");
         System.out.println("yes(y)/no(n)");
 
-        String confirm = scanner.next();
+        String confirm = new Scanner(System.in).next();
         if(confirm.toLowerCase().startsWith("y")){
             if (choice > -1 && choice < Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().size()) {
                 roomController.removeRoom(currentLocation, choice);
@@ -279,7 +292,7 @@ public class LevelTwoOrganizerView {
         System.out.println("Which room do you want to edit?");
         int room;
         try{
-            room = scanner.nextInt();
+            room = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
@@ -290,7 +303,7 @@ public class LevelTwoOrganizerView {
             System.out.println("Name: ");
             String name = new Scanner(System.in).nextLine();
             System.out.println("Max participents: ");
-            String max = scanner.next();
+            String max = new Scanner(System.in).next();
 
             try{
                 Integer.parseInt(max);
@@ -320,15 +333,15 @@ public class LevelTwoOrganizerView {
         System.out.println("****************************");
 
         System.out.println("\nWhat would you like to do?");
-        System.out.println("\t(1) See event");
-        System.out.println("\t(2) Add event");
-        System.out.println("\t(3) Remove event");
-        System.out.println("\t(4) Edit event");
-        System.out.println("\t(5) Go back");
+        System.out.println("\tType '1' See event");
+        System.out.println("\tType '2' Add event");
+        System.out.println("\tType '3' Edit event");
+        System.out.println("\tType '4' Remove event");
+        System.out.println("\tType '5' Go back");
 
         int choice = 0;
         try{
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             seeRoomView();
@@ -342,10 +355,10 @@ public class LevelTwoOrganizerView {
                 addEvent();
                 break;
             case 3:
-                removeEvent();
+                editEvent();
                 break;
             case 4:
-                editEvent();
+                removeEvent();
                 break;
             case 5:
                 return;
@@ -363,7 +376,7 @@ public class LevelTwoOrganizerView {
         System.out.println("\nWhich event do you want to see");
         int choice = -1;
         try{
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
             return;
@@ -384,16 +397,22 @@ public class LevelTwoOrganizerView {
         String name = new Scanner(System.in).nextLine();
         System.out.println("Date of event (YYYY-MM-DD): ");
         String date = new Scanner(System.in).next();
+        if(!seatedEventController.checkDate(date)){
+            System.out.println("You cannot add an event in the past");
+            return;
+        }
         System.out.println("Start time of event (HH-MM): ");
         String time = new Scanner(System.in).next();
         int ageLimit = -1;
         int lengthOfEvent = -1;
         int price = -1;
         try {
-            System.out.println("Age limit");
+            System.out.println("Length of event (in hours):");
+            lengthOfEvent = new Scanner(System.in).nextInt();
+            System.out.println("Age limit:");
             ageLimit = new Scanner(System.in).nextInt();
             System.out.println("Price (in nok): ");
-            price = scanner.nextInt();
+            price = new Scanner(System.in).nextInt();
 
         } catch (InputMismatchException e) {
             displayNotAnOption();
@@ -401,8 +420,56 @@ public class LevelTwoOrganizerView {
         }
 
         if (Security.RegEx.regEx(patternForDate, date) && Security.RegEx.regEx(patternForTime, time) && ageLimit != -1){
+            if(price < 1){
+                wrongPriceInEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
+                return;
+            }
             seatedEventController.addSeatedEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
             System.out.println("Event added");
+        }else{
+            displayNotAnOption();
+        }
+    }
+    private void editEvent() {
+        System.out.println("Which event do you want to edit?");
+        int event;
+        try{
+            event = new Scanner(System.in).nextInt();
+        }catch (InputMismatchException e){
+            displayNotAnOption();
+            return;
+        }
+        if(event >= 0 && event < Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().size()){
+
+            System.out.println("Write \".\" if you dont want to change a field");
+            System.out.println("Name: ");
+            String name = new Scanner(System.in).nextLine();
+            System.out.println("Date of event (YYYY-MM-DD): ");
+            String date = new Scanner(System.in).next();
+            if(!seatedEventController.checkDate(date)){
+                System.out.println("You cannot add an event in the past");
+                return;
+            }
+            System.out.println("Age limit");
+            String ageLimit = new Scanner(System.in).next();
+            try{
+                Integer.parseInt(ageLimit);
+            }catch (NumberFormatException e){
+                displayNotAnOption();
+                return;
+            }
+            System.out.println("Length of event:");
+            String lengthOfEvent = new Scanner(System.in).next();
+            try{
+                Integer.parseInt(lengthOfEvent);
+            }catch (NumberFormatException e){
+                displayNotAnOption();
+                return;
+            }
+
+            seatedEventController.editSeatedEvent(currentLocation, currentRoom, event, name, date, lengthOfEvent, ageLimit);
+
+            System.out.println("Event edited!");
         }else{
             displayNotAnOption();
         }
@@ -422,44 +489,21 @@ public class LevelTwoOrganizerView {
             displaySomethingWentWrong();
         }
     }
-    private void editEvent() {
-        System.out.println("Which event do you want to edit?");
-        int event;
+
+    private void wrongPriceInEvent(int currentLocation, int currentRoom, String name, String date, String time, int ageLimit, int lengthOfEvent, int price) {
+        System.out.println("The price was not legal");
+        System.out.println("Please enter a new one:");
+        price = -1;
         try{
-            event = scanner.nextInt();
+            price = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayNotAnOption();
-            return;
         }
-        if(event >= 0 && event < Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().size()){
-
-            System.out.println("Write \".\" if you dont want to change a field");
-            System.out.println("Name: ");
-            String name = new Scanner(System.in).nextLine();
-            System.out.println("Date of event (YYYY-MM-DD): ");
-            String date = scanner.next();
-            System.out.println("Age limit");
-            String ageLimit = scanner.next();
-            try{
-                Integer.parseInt(ageLimit);
-            }catch (NumberFormatException e){
-                displayNotAnOption();
-                return;
-            }
-            System.out.println("Length of event:");
-            String lengthOfEvent = scanner.next();
-            try{
-                Integer.parseInt(lengthOfEvent);
-            }catch (NumberFormatException e){
-                displayNotAnOption();
-                return;
-            }
-
-            seatedEventController.editSeatedEvent(currentLocation, currentRoom, event, name, date, lengthOfEvent, ageLimit);
-
-            System.out.println("Event edited!");
+        if (price < 1){
+            wrongPriceInEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
         }else{
-            displayNotAnOption();
+            seatedEventController.addSeatedEvent(currentLocation, currentRoom, name, date, time, ageLimit, lengthOfEvent, price);
+            System.out.println("Event added");
         }
     }
 
@@ -470,6 +514,7 @@ public class LevelTwoOrganizerView {
                 " " + Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().get(currentEvent).getDateOfEvent().toLocalTime().toString());
         System.out.println("\tDurance:   " + Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().get(currentEvent).getLengthOfEvent());
         System.out.println("\tAge limit: " + Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().get(currentEvent).getAgeLimit());
+        System.out.println("\tPrice:     " + Database.currentLoggedInOrganizer.getLocations().get(currentLocation).getRooms().get(currentRoom).getEvents().get(currentEvent).getTickets().get(0).getPriceInNOK() + " kr");
         System.out.println("****************************");
     }
 
@@ -477,6 +522,6 @@ public class LevelTwoOrganizerView {
         System.out.println("Sorry, that is not an option");
     }
     private void displaySomethingWentWrong(){
-        System.out.println("Something went wrong");
+        System.out.println("Invalid input entered");
     }
 }

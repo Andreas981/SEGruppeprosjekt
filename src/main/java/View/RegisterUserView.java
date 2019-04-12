@@ -87,6 +87,7 @@ public class RegisterUserView {
         System.out.println("Please enter a valid birth date. \n" +
                 "In format: YYYY-MM-DD");
         String birthDayEntered = scanner.next();
+        System.out.println("Bday: " + birthDayEntered);
         userBirthDay = registerUserController.checkDateEntered(birthDayEntered);
         if(userBirthDay!=null) sendRegistrationToController();
         else{

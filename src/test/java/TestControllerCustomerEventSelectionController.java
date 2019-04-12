@@ -1,24 +1,25 @@
-import Controller.OrderController;
-import Controller.SeatedEventController;
+import Controller.CustomerEventSelectionController;
 import Dummy.Database;
 import Dummy.InitStart;
-import Model.*;
+import Model.Location;
+import Model.Organizer;
+import Model.Room;
+import Model.SeatedPlannedEvent;
+
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestOrderController {
-
-    Organizer organizer;
-    SeatedEventController seatedEventController = new SeatedEventController();
-    OrderController orderController;
-    PlannedEvent plannedEvent;
-    int[] eventNunber = new int[4];
+public class TestControllerCustomerEventSelectionController {
+    CustomerEventSelectionController customerEventSelectionController;
+    int[] validSelectionNumber = {0,0,0,0};
 
     @Before
-    public void init() {
+    public void initTests(){
+        /* Insert a dummy event into database
+         * Since its the first element the address should be 0-0-0-0 */
         // Setting up organizers
         Database.organizers.add(new Organizer("Kari", "Normann", "kari@normann.no", "12345678", "karino", Security.PassHash.hashPassword("abc123"),new LocalDate(2000,2,2), "HiØ", 2));
         // Setting up locations for Kari Normann
@@ -29,28 +30,26 @@ public class TestOrderController {
         Database.currentLoggedInOrganizer = Database.organizers.get(0);
         Database.organizers.get(0).getLocations().get(0).getRooms()
                 .get(0).addEvent(new SeatedPlannedEvent("Forelesning i Inf. Prog",new LocalDateTime(2019,3,2,22,0),200,20, 0, 0, 100));
-        orderController = new OrderController(eventNunber);
-        plannedEvent = orderController.getPlannedEvent();
-    }
-
-
-
-    // A seated event is tested with room size 400
-    @Test
-    public void validSeatsSelected(){
-        orderController.getAvailableSlots();
-        Assert.assertTrue(orderController.validateUserInput("1,2,3"));
+        customerEventSelectionController = new CustomerEventSelectionController();
+        //InitStart.Init();
     }
 
     @Test
-    public void invalidSeatsSelected(){
-        orderController.getAvailableSlots();
-        Assert.assertFalse(orderController.validateUserInput("500"));
+    public void enterInvalidEventnumber(){
+        Assert.assertNull(null,customerEventSelectionController.validateUserSelection("A-B-C-D"));
     }
 
     @Test
-    public void invalidInputEntered(){
-        orderController.getAvailableSlots();
-        Assert.assertFalse(orderController.validateUserInput("abc,33,a"));
+    public void enterValidNumberButEventDontExist(){
+        Assert.assertNull(null,customerEventSelectionController.validateUserSelection("5-0-0-0"));
     }
+
+    @Test
+    public void enterValidNumberForAEvent(){
+        Assert.assertArrayEquals(validSelectionNumber,customerEventSelectionController.validateUserSelection("0-0-0-0"));
+    }
+
+    // TODO Init test
+
+
 }
