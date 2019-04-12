@@ -100,9 +100,9 @@ public class LevelTwoOrganizerView {
         if(publicLocaiton == 1 || publicLocaiton == 2){
             if(locationController.addLocation(name, address, publicLocaiton)){
                 System.out.println("Location added!");
-            }else{
-                displaySomethingWentWrong();
             }
+        }else{
+            displaySomethingWentWrong();
         }
 
     }
@@ -240,6 +240,7 @@ public class LevelTwoOrganizerView {
     }
     private void addRoom() {
         System.out.println("\nRoom name: ");
+        Scanner scanner = new Scanner(System.in);
         String name = new Scanner(System.in).nextLine();
 
         int max = -1;
@@ -521,6 +522,6 @@ public class LevelTwoOrganizerView {
         System.out.println("Sorry, that is not an option");
     }
     private void displaySomethingWentWrong(){
-        System.out.println("Something went wrong");
+        System.out.println("Invalid input entered");
     }
 }
