@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class LevelOneOrganizerView {
 
-    private Scanner scanner = new Scanner(System.in);
     private NonSeatedEventController eventController = new NonSeatedEventController();
 
     public void startView() {
@@ -26,7 +25,7 @@ public class LevelOneOrganizerView {
 
         int choice = -1;
         try {
-            choice = scanner.nextInt();
+            choice = new Scanner(System.in).nextInt();
 
         }catch (InputMismatchException e){
             displayForNotAnOption();
@@ -58,9 +57,9 @@ public class LevelOneOrganizerView {
         int lengthOfEvent = -1;
         try {
             System.out.println("The events age limit:");
-            ageLimit = scanner.nextInt();
+            ageLimit = new Scanner(System.in).nextInt();
             System.out.println("Length of event (in hours):");
-            lengthOfEvent = scanner.nextInt();
+            lengthOfEvent = new Scanner(System.in).nextInt();
 
         } catch (InputMismatchException e) {
             displayForNotAnOption();
@@ -69,7 +68,7 @@ public class LevelOneOrganizerView {
         System.out.println("Price (in nok): ");
         int price = -1;
         try{
-            price = scanner.nextInt();
+            price = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayForNotAnOption();
             return;
@@ -78,7 +77,7 @@ public class LevelOneOrganizerView {
         System.out.println("Number of attendees:");
         int freeSpace = -1;
         try{
-            freeSpace = scanner.nextInt();
+            freeSpace = new Scanner(System.in).nextInt();
         }catch (InputMismatchException e){
             displayForNotAnOption();
             return;
