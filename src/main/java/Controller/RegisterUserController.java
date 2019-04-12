@@ -4,6 +4,10 @@ import Dummy.Database;
 import Model.Customer;
 import org.joda.time.LocalDate;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class RegisterUserController {
 
     public boolean checkUsername(String userName){
@@ -72,7 +76,8 @@ public class RegisterUserController {
     // See if the data entered is valid:
     private boolean tryParseInputDate(String dateInput) {
         String patternForDate = "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]";
-        return Security.RegEx.regEx(patternForDate, dateInput);
+        if(checkDate(dateInput)) return Security.RegEx.regEx(patternForDate, dateInput);
+        return false;
     }
 
 
@@ -92,6 +97,21 @@ public class RegisterUserController {
         }
         return true;
     }
+
+    public Boolean checkDate(String date){
+        String[] dateArray = date.split("-");
+        if(dateArray.length < 3) return false;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String[] dateNow = dateFormat.format(new Date()).split("/");
+        if(Integer.parseInt(dateArray[0])<Integer.parseInt(dateNow[0])){
+            if(Integer.parseInt(dateArray[1])<13&&Integer.parseInt(dateArray[1])>0){
+                if(Integer.parseInt(dateArray[2])<32&&Integer.parseInt(dateArray[1])>0){
+                    return true;
+                }
+            }
+        }
+            return false;
+        }
 
 
 }
