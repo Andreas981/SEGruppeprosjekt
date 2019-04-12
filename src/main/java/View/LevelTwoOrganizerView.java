@@ -248,7 +248,7 @@ public class LevelTwoOrganizerView {
         System.out.println("Max participents: ");
         try{
             max = scanner.nextInt();
-        }catch (InputMismatchException e){
+        }catch (NumberFormatException e){
             displayNotAnOption();
             return;
         }
