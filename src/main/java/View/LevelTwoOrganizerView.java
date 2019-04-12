@@ -27,8 +27,8 @@ public class LevelTwoOrganizerView {
         System.out.println("\nWhat would you like to do?");
         System.out.println("\tType '1' See a location");
         System.out.println("\tType '2' Add location");
-        System.out.println("\tType '3' Remove a location");
-        System.out.println("\tType '4' Edit location");
+        System.out.println("\tType '3' Edit location");
+        System.out.println("\tType '4' Remove a location");
         System.out.println("\tType '5' Sign out");
 
         int choice = 0;
@@ -49,10 +49,10 @@ public class LevelTwoOrganizerView {
                     addLocation();
                     break;
                 case 3:
-                    removeLocation();
+                    editLocation();
                     break;
                 case 4:
-                    editLocation();
+                    removeLocation();
                     break;
                 case 5:
                     return;
