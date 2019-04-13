@@ -6,6 +6,13 @@ Besvarelse for gruppeprosjektet i ITF20317-1 19V Software Engineering og testing
 
 Ettersom underholdningsbildet i norske byer stadig blir større ønsker de lokale kinoene et system som kan bistå andre lokale arrangører med oppsett og billettsalg for arrangementer. Vi skal utvikle kjernesystemet i denne sfæren og definere det som er påkrevd for at produkteier får det produktet de ønsker.
 
+## Besvarelse
+
+Besvarelsen er i flere deler:
+* Prototypen, skrevet i Java
+* Dokumentasjon/Produkt beskrivelse
+* Grupperapport
+
 ## Kjør prototypen
 
 Enten 
