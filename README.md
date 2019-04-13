@@ -15,11 +15,13 @@ Besvarelsen er i flere deler:
 
 ## Kjør prototypen
 
-Enten 
+Prototypen kan bli kjørt på flere måter.
+Man kan enten:
 ```bash
 java -jar ~\SEGruppeprosjekt\out\artifacts\SEGruppeprosjekt_jar\SEGruppeprosjekt.jar
 ```
-Eller dobbeltklikk .jar filen
+eller dobbeltklikk .jar filen
+eller åpne prosjektet i en IDE som kompilerer Java
 
 ## Contributers
 
