@@ -23,3 +23,7 @@ Eller dobbeltklikk .jar filen
 [Herman Lippert](https://github.com/Hermanlippert)
 
 [Gudjon Sveinbjørnsson](https://github.com/Gudjon97)
+
+## License
+
+[License goes here]
