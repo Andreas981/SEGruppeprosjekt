@@ -17,6 +17,9 @@ Eller dobbeltklikk .jar filen
 ## Contributers
 
 [Andreas Nielsen](https://github.com/Andreni)
+
 [Andreas Mikalsen](https://github.com/Andreas981)
+
 [Herman Lippert](https://github.com/Hermanlippert)
+
 [Gudjon Sveinbjørnsson](https://github.com/Gudjon97)
