@@ -47,6 +47,15 @@ public class TestControllerOrderController {
     }
 
     @Test
+    public void userShouldNotBeAbleToSelectReservedSeat(){
+        // Reserve seat:
+        Database.organizers.get(0).getLocations().get(0).getRooms().get(0).getEvents().get(0).getTickets().get(1).setAvailable(false);
+        orderController.getAvailableSlots();
+        // User selects a reserved seat
+        Assert.assertFalse(orderController.validateUserInput("1"));
+    }
+
+    @Test
     public void testInvalidSeatsSelected(){
         orderController.getAvailableSlots();
         Assert.assertFalse(orderController.validateUserInput("500"));
