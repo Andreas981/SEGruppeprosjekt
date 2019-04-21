@@ -65,15 +65,15 @@ public class OrderController {
         seatedPlannedEvent = (SeatedPlannedEvent) plannedEvent;
 
         for (int i = 0; i < seatedPlannedEvent.getTickets().size(); i++){
-            if( i%30 == 0 && i != 0) System.out.println(" ");
+           // if( i%10 == 0 && i != 0) System.out.println("\n");
             if(!seatedPlannedEvent.getTickets().get(i).getAvailable()){
                 // TODO Format output in columns
-                System.out.format("%5s", "X");
+                System.out.format("X  ,");
             }else{
-                System.out.print((seatedPlannedEvent.getTickets().get(i).getSeatNumber())+ "   ,");
+                System.out.print((seatedPlannedEvent.getTickets().get(i).getSeatNumber())+ "  ,");
             }
             // TODO Replace with row number
-            if(i%30==0&&i!=0) System.out.println(" ");
+            if(i%10==0&&i!=0) System.out.println("\n");
         }
 
     }

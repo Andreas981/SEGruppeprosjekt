@@ -84,6 +84,6 @@ public class TestControllerOrderController {
 
     @Test
     public void testGetEventFromDatabase () {
-        Assert.assertSame("Forelesning i Inf. Prog",Database.organizers.get(0).getLocations().get(0).getRooms());
+        Assert.assertSame(plannedEvent,Database.organizers.get(0).getLocations().get(0).getRooms().get(0).getEvents().get(0));
     }
 }
