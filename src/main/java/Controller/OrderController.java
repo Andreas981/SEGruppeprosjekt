@@ -60,7 +60,7 @@ public class OrderController {
     }
 
     private void displayTickets(){
-        System.out.println("Enter how many seats you want:");
+        System.out.println("Please choose your seats:");
         System.out.println("Example: 1,2,3");
         seatedPlannedEvent = (SeatedPlannedEvent) plannedEvent;
 
